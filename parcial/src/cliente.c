@@ -24,10 +24,11 @@ int client_add(Client *list, int len)
 	int index;
 	if(list != NULL && len > 0)
 	{
-		if(utn_getString("Ingrese el nombre del cliente: ", "\nERROR! Ingrese un nombre valido: ", buffer.name, 2, NAME_SIZE) == 0 &&
+		if(client_searchEmpty(list, len, &index) == 0 && index >= 0 &&
+		   utn_getString("Ingrese el nombre del cliente: ", "\nERROR! Ingrese un nombre valido: ", buffer.name, 2, NAME_SIZE) == 0 &&
 	       utn_getString("Ingrese el apellido del cliente: ", "\nERROR! Ingrese un apellido valido: ", buffer.lastName, 2, NAME_SIZE) == 0 &&
 		   utn_getCuit("Ingrese el cuit del cliente: ", "\nERROR! Ingrese un cuit valido: ", buffer.cuit, 2, CUIT_SIZE)==0 &&
-		   client_searchEmpty(list, len, &index) == 0 && index >= 0)
+		   client_isCuitAlreadyRegistered(list, len, buffer.cuit, index) == 0)
 		{
 			buffer.id = idGenerate();
 			buffer.isEmpty = FALSE;
@@ -47,22 +48,28 @@ int client_add(Client *list, int len)
  * \param int len: Length of the array
  * \return (-1) if something went wrong, (0) if everything is OK
  */
-
 int client_modify(Client *list, int len)
 {
 	int retornar = -1;
 	int index;
 	int id;
+	Client buffer;
 	if(list != NULL && len > 0 && client_searchForNoEmpty(list, len) == 0)
 	{
 		client_print(list, len);
 		if(utn_getInt("\n\nIngrese el id del cliente a modificar: ", "\nError! Ingrese un ID valido: ", &id, 2, 0, 999) == 0 &&
 		   client_findById(list, len, id, &index) == 0 && index>=0 &&
-		   utn_getString("Ingrese el nuevo nombre: ", "\nERROR! Ingrese un nombre valido: ", list[index].name, 2, NAME_SIZE) == 0 && !capitalizeStrings(list[index].name) &&
-		   utn_getString("Ingrese el nuevo apelido: ", "\nERROR!Ingrese un apellido valido: ", list[index].lastName, 2, NAME_SIZE) == 0 && !capitalizeStrings(list[index].lastName) &&
-		   utn_getCuit("Ingrese el nuevo CUIT: ", "\nERROR!Ingrese un cuit valido: ", list[index].cuit, 2, CUIT_SIZE) == 0)
+		   utn_getString("Ingrese el nuevo nombre: ", "\nERROR! Ingrese un nombre valido: ", buffer.name, 2, NAME_SIZE) == 0 && !capitalizeStrings(buffer.name) &&
+		   utn_getString("Ingrese el nuevo apelido: ", "\nERROR!Ingrese un apellido valido: ", buffer.lastName, 2, NAME_SIZE) == 0 && !capitalizeStrings(buffer.lastName) &&
+		   utn_getCuit("Ingrese el nuevo CUIT: ", "\nERROR!Ingrese un cuit valido: ", buffer.cuit, 2, CUIT_SIZE) == 0)
 		{
+			if(client_isCuitAlreadyRegistered(list, len, buffer.cuit, index)==0)
+			{
+			strncpy(list[index].name,buffer.name, NAME_SIZE);
+			strncpy(list[index].lastName,buffer.lastName, NAME_SIZE);
+			strncpy(list[index].cuit,buffer.cuit, CUIT_SIZE);
 			retornar=0;
+			}
 		}
 		else
 		{
@@ -104,7 +111,6 @@ int client_remove(Client *list, int len, int id)
  * \param int len: Length of the array
  * \return (-1) if something went wrong, (0) if everything is OK
  */
-
 int client_print(Client *list, int len)
 {
 	int retorno = -1;
@@ -153,7 +159,6 @@ int client_searchEmpty(Client *list, int len, int *pIndex)
  * \param int len: Length of the array
  * \return (-1) if something went wrong, (0) if everything is OK
  */
-
 int client_searchForNoEmpty(Client *list, int len)
 {
 	int retornar = -1;
@@ -191,8 +196,6 @@ int client_init(Client* list, int len)
 	}
 	return retornar;
 }
-
-
 
 /**
  * \brief Function to auto-generate an ID
@@ -232,10 +235,34 @@ int client_findById(Client *list, int len, int id, int *pIndex)
 }
 
 /**
+ * \brief Function to ask if a cuit is already registered
+ * \param Client *list: Pointer to a Client array
+ * \param int len: Length of the array
+ * \param char *cuit: Pointer of the cuit to compare
+ * \param int index: receive the index of an already registered client (to skip)
+ * \return (-1) if something went wrong or (0) if OK
+ */
+int client_isCuitAlreadyRegistered(Client *list, int len, char *cuit, int index)
+{
+	int retornar=0;
+	if(list!=NULL && len>0)
+	{
+		for(int i=0;i<len;i++)
+		{
+			if(i!=index && strncmp(list[i].cuit, cuit, CUIT_SIZE)==0)
+			{
+				printf("\nEl cuit ya fue ingresado!\n");
+				retornar=1;
+			}
+		}
+	}
+	return retornar;
+}
+
+/**
  * \brief Function to converts an string to lowercase and it first letter to uppercase
  * \param char *string: receive an string, preferents a name
  */
-
 static int capitalizeStrings(char *string)
 {
 	int retornar = -1;
@@ -257,7 +284,6 @@ static int capitalizeStrings(char *string)
  * \param int len: Length of the array
  * \return (-1) if something went wrong or (0) if OK
  */
-
 int client_hardcodeAdd(Client *list, int len)
 {
 	int retornar = -1;
@@ -280,7 +306,6 @@ int client_hardcodeAdd(Client *list, int len)
  * \param char *cuit: receive the cuit of the client
  * \return (-1) if something went wrong or (0) if OK
  */
-
 static int addClients(Client *list, int len, char *name, char *lastName, char *cuit)
 {
 	int retornar = -1;

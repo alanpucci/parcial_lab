@@ -24,6 +24,7 @@ int client_print(Client *list, int len);
 int client_searchForNoEmpty(Client *list, int len);
 int client_searchEmpty(Client *list, int len, int *pIndex);
 int client_findById(Client *list, int len, int id, int *pIndex);
+int client_isCuitAlreadyRegistered(Client *list, int len, char *cuit, int index);
 
 int client_hardcodeAdd(Client *list, int len);
 

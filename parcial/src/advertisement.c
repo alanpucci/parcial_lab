@@ -59,7 +59,7 @@ int advertisement_pauseAd(Advertisement *list, int len, Client *clientList, int 
 	int id;
 	int index;
 	int choosedOption;
-	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForNoEmptyAndActive(list, len) == 0)
+	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForNoEmpty(list, len) == 0 && advertisement_searchForActive(list, len) == 1)
 	{
 		advertisement_print(list, len);
 		if(utn_getInt("\n\nIngrese el id de la publicacion a pausar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 &&
@@ -87,7 +87,7 @@ int advertisement_reanudeAd(Advertisement *list, int len, Client *clientList, in
 	int id;
 	int index;
 	int choosedOption;
-	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForNoEmptyAndInactive(list, len) == 0)
+	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForNoEmpty(list, len) == 0 && advertisement_searchForActive(list, len) == 0)
 	{
 		advertisement_print(list, len);
 		if(utn_getInt("\nIngrese el id de la publicacion a reanudar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 &&
@@ -252,19 +252,19 @@ int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter)
 }
 
 /**
- * \brief Function to search in the Advertisement array for an no empty field(isEmpty false) and if isActive is true
+ * \brief Function to search in the advertisement array for an no empty field
  * \param Advertisement *list: Pointer to an Advertisement array
  * \param int len: Length of the array
  * \return (-1) if something went wrong, (0) if everything is OK
  */
-int advertisement_searchForNoEmptyAndActive(Advertisement *list, int len)
+int advertisement_searchForNoEmpty(Advertisement *list, int len)
 {
 	int retornar = -1;
 	if(list != NULL && len > 0)
 	{
 		for(int i=0; i<len; i++)
 		{
-			if(list[i].isEmpty == FALSE && list[i].isActive == TRUE)
+			if(list[i].isEmpty == FALSE)
 			{
 				retornar = 0;
 				break;
@@ -275,29 +275,12 @@ int advertisement_searchForNoEmptyAndActive(Advertisement *list, int len)
 }
 
 /**
- * \brief Function to search in the Advertisement array for an no empty field (isEmpty false) and if isActive is false
+ * \brief Function to search in the advertisement array if there's any active
  * \param Advertisement *list: Pointer to an Advertisement array
  * \param int len: Length of the array
- * \return (-1) if something went wrong, (0) if everything is OK
+ * \return (1) is there any active field TRUE or (0) if not
  */
-int advertisement_searchForNoEmptyAndInactive(Advertisement *list, int len)
-{
-	int retornar = -1;
-	if(list != NULL && len > 0)
-	{
-		for(int i=0; i<len; i++)
-		{
-			if(list[i].isEmpty == FALSE && list[i].isActive == FALSE)
-			{
-				retornar = 0;
-				break;
-			}
-		}
-	}
-	return retornar;
-}
-
-int advertisement_isArrayEmpty(Advertisement *list, int len)
+int advertisement_searchForActive(Advertisement *list, int len)
 {
 	int retornar = 0;
 	if(list != NULL && len > 0)
@@ -447,7 +430,7 @@ int advertisement_sectorMaxQtyAds(Advertisement *list, int len)
 				}
 			}
 		}
-		printf("\nEl rubro con mas avisos es el: %d", aux.sector);
+		printf("\nEl rubro con mas avisos es el: %d\n", aux.sector);
 	}
 	return retornar;
 }

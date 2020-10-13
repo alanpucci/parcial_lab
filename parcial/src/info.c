@@ -13,7 +13,6 @@
  * \param int adLen: Length of the array
  * \param int id: receive the ID to be search
  * \return (-1) if something went wrong, (0) if everything is OK
- *
  */
 int info_printAdsByClientID(Client *clientList, int clientLen, Advertisement *adList, int adLen, int id)
 {
@@ -32,7 +31,6 @@ int info_printAdsByClientID(Client *clientList, int clientLen, Advertisement *ad
 					{
 						printf("\n> > > ID publicacion: %d - Estado: %d - texto: %s",adList[i].id, adList[i].isActive, adList[i].adText);
 					}
-
 				}
 			}
 			else
@@ -88,8 +86,7 @@ int info_report(Client *clientList, int clientLen, Advertisement *adList, int ad
 	int retornar = -1;
 	int option;
 	int adsCounter;
-	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && client_searchForNoEmpty(clientList, clientLen)==0 &&
-	   (advertisement_searchForNoEmptyAndActive(adList, adLen)==0 || advertisement_searchForNoEmptyAndInactive(adList, adLen)==0))
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && client_searchForNoEmpty(clientList, clientLen)==0 && advertisement_searchForNoEmpty(adList, adLen)==0)
 	{
 		do
 		{
@@ -106,12 +103,12 @@ int info_report(Client *clientList, int clientLen, Advertisement *adList, int ad
 				case 2:
 					if(advertisement_pausedAdsQty(adList, adLen, &adsCounter)==0)
 					{
-						printf("\nCantidad de avisos pausados: %d", adsCounter);
+						printf("\nCantidad de avisos pausados: %d\n", adsCounter);
 						retornar=0;
 					}
 					else
 					{
-						printf("\nNo hay avisos pausados");
+						printf("\nNo hay avisos pausados\n");
 					}
 				break;
 				case 3:
@@ -121,7 +118,7 @@ int info_report(Client *clientList, int clientLen, Advertisement *adList, int ad
 					}
 					else
 					{
-						printf("\nNo hay rubros cargados");
+						printf("\nNo hay rubros cargados\n");
 					}
 				break;
 				}
@@ -159,7 +156,7 @@ int info_clientWithMaxAdQty(Client *clientList, int clientLen, Advertisement *ad
 		}
 		if(client_findById(clientList, clientLen, bufferMax.id, &index)==0)
 		{
-			printf("\nEl cliente con mas avisos es: %s %s, CUIT: %s", clientList[index].name, clientList[index].lastName, clientList[index].cuit);
+			printf("\nEl cliente con mas avisos es: %s %s, CUIT: %s\n", clientList[index].name, clientList[index].lastName, clientList[index].cuit);
 			retornar = 0;
 		}
 	}

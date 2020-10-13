@@ -1,7 +1,3 @@
-//VER FUNCION DE searchForNoEmpty SI ES NECESARIO TENERLA O SE PUEDE USAR searchForEmpty NEGADA
-//Punto 3 no me deja borrar cliente sin publicaciones
-//Revisar punto 5 y 6 si dejar esa funcion (mejorarla) o separadas
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
@@ -25,21 +21,14 @@ int main(void) {
 				switch(menuOption)
 				{
 					case 1:
-
-						if(client_hardcodeAdd(arrayClient, ARRAYCLIENT_SIZE)==0)
-						{
-							printf("\nClientes dados de alta exitosamente\n");
-						}
-						/*
 						if(client_add(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
 							printf("\nCliente dado de alta!\n");
 						}
 						else
 						{
-							printf("\nHubo un error!");
+							printf("\nHubo un error!\n");
 						}
-						*/
 					break;
 					case 2:
 						if(client_modify(arrayClient, ARRAYCLIENT_SIZE)==0)
