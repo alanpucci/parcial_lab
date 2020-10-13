@@ -1,0 +1,23 @@
+#ifndef ADCLIENT_H_
+#define ADCLIENT_H_
+#include "cliente.h"
+#include "advertisement.h"
+
+int findClientIdPrintAds(Client *clientList, int clientLen, Advertisement *adList, int adLen, int id)
+{
+	int retorno = -1;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0)
+	{
+		for(int i=0; i<clientLen; i++)
+		{
+			if(clientList[i].id == id)
+			{
+
+			}
+		}
+	}
+	return retorno;
+}
+
+
+#endif /* ADCLIENT_H_ */

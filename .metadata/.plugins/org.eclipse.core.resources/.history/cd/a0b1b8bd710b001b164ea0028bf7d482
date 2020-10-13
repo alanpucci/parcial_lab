@@ -1,0 +1,8 @@
+#ifndef ADCLIENT_H_
+#define ADCLIENT_H_
+#include "cliente.h"
+#include "advertisement.h"
+
+int findClientIdPrintAds(Client *clientList, int clientLen, Advertisement *adList, int adLen, int id)
+
+#endif /* ADCLIENT_H_ */

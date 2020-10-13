@@ -1,0 +1,11 @@
+#ifndef ADCLIENT_H_
+#define ADCLIENT_H_
+#include "cliente.h"
+#include "advertisement.h"
+
+int adclient_printAdsByClientID(Client *clientList, int clientLen, Advertisement *adList, int adLen, int id);
+int adclient_printClientsAndAdCounter(Client *clientList, int clientLen, Advertisement *adList, int adLen);
+int adclient_report(Client *clientList, int clientLen, Advertisement *adList, int adLen);
+int adclient_clientWithMaxAd(Client *clientList, int clientLen, Advertisement *adList, int adLen);
+
+#endif /* ADCLIENT_H_ */

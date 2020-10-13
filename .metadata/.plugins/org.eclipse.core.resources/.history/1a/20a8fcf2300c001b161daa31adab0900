@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "utn.h"
+#include "cliente.h"
+#include "advertisement.h"
+
+int adclient_printAdsByClientID(Client *clientList, int clientLen, Advertisement *adList, int adLen, int id)
+{
+	int retorno = -1;
+	int clientIndex;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && id>0)
+	{
+		if(client_findById(clientList, clientLen, id, &clientIndex)==0 && advertisement_findByClientId(adList, adLen, id)==0)
+		{
+			printf("\nID cliente: %d - Nombre: %s - Apellido: %s - CUIT: %s", clientList[clientIndex].id, clientList[clientIndex].name, clientList[clientIndex].lastName, clientList[clientIndex].cuit);
+			for(int i=0; i<adLen; i++)
+			{
+				if(adList[i].clientID == id)
+				{
+					printf("\n	ID publicacion: %d - Estado: %d - texto: %s",adList[i].id, adList[i].isActive, adList[i].adText);
+					retorno = 0;
+				}
+			}
+		}
+		else
+		{
+			printf("\nCliente no encontrado o no tiene publicaciones hechas");
+		}
+	}
+	return retorno;
+}
+
+int adclient_printClientsAndActiveAds(Client *clientList, int clientLen, Advertisement *adList, int adLen)
+{
+	int retornar = -1;
+	int adCounter;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && client_searchForNoEmpty(clientList, clientLen)==0 && advertisement_searchForNoEmptyAndActive(adList, adLen)==0)
+	{
+		for(int i=0;i<clientLen;i++)
+		{
+			if(clientList[i].isEmpty == FALSE && advertisement_adCounterEachClient(adList, adLen, clientList[i].id, &adCounter)==0)
+			{
+				printf("\nID cliente: %d - Nombre: %s - Apellido: %s - CUIT: %s - Cantidad de anuncios activos: %d", clientList[i].id, clientList[i].name, clientList[i].lastName, clientList[i].cuit, adCounter);
+				retornar=0;
+			}
+		}
+	}
+	return retornar;
+}
+
+int adclient_report(Client *clientList, int clientLen, Advertisement *adList, int adLen)
+{
+	int retornar = -1;
+	int option;
+	int adsCounter;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && client_searchForNoEmpty(clientList, clientLen)==0)
+	{
+		do
+		{
+			if(utn_getInt("\nElija una opcion: \n1)Cliente con mas avisos\n2)Cantidad de avisos pausados\n3)Rubro con mas avisos\n4)Salir ", "\nERROR! Elija una opcion valida", &option, 2, 1, 4)==0)
+			{
+				switch(option)
+				{
+				case 1:
+					if(adclient_clientWithMaxAd(clientList, clientLen, adList, adLen)==0)
+					{
+						retornar=0;
+					}
+				break;
+				case 2:
+					if(advertisement_pausedAdsQty(adList, adLen, &adsCounter)==0)
+					{
+						printf("\nCantidad de avisos pausados: %d", adsCounter);
+						retornar=0;
+					}
+					else
+					{
+						printf("\nNo hay avisos pausados");
+					}
+				break;
+				case 3:
+
+				break;
+				}
+			}
+		}while(option != 4);
+	}
+	return retornar;
+}
+
+int adclient_clientWithMaxAd(Client *clientList, int clientLen, Advertisement *adList, int adLen)
+{
+	int retornar=-1;
+	int actualCounter;
+	int maxCounter;
+	int index;
+	Client bufferMax;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0)
+	{
+		for(int i=0;i<clientLen;i++)
+		{
+			advertisement_adCounterEachClient(adList, adLen, clientList[i].id, &actualCounter);
+			if(i==0 || actualCounter>maxCounter)
+			{
+				maxCounter = actualCounter;
+				bufferMax = clientList[i];
+			}
+		}
+		if(client_findById(clientList, clientLen, bufferMax.id, &index)==0)
+		{
+			printf("\nEl cliente con mas avisos es: %s %s, CUIT: %s", clientList[index].name, clientList[index].lastName, clientList[index].cuit);
+			retornar = 0;
+		}
+	}
+	return retornar;
+}
+

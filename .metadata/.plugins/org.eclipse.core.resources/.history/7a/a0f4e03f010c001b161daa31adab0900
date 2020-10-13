@@ -1,0 +1,118 @@
+//VER FUNCION DE searchForNoEmpty SI ES NECESARIO TENERLA O SE PUEDE USAR searchForEmpty NEGADA
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "utn.h"
+#include "cliente.h"
+#include "advertisement.h"
+#include "adclient.h"
+
+int main(void) {
+	setbuf(stdout, NULL);
+	Client arrayClient[ARRAYCLIENT_SIZE];
+	Advertisement arrayAd[ARRAYAD_SIZE];
+	int menuOption;
+	int clientId;
+
+	if(client_init(arrayClient, ARRAYCLIENT_SIZE)==0 && advertisement_init(arrayAd, ARRAYAD_SIZE) == 0)
+	{
+		do
+		{
+			if(utn_getMenu(&menuOption, 2, 1, 9)==0)
+			{
+				switch(menuOption)
+				{
+					case 1:
+						if(client_hardcodeAdd(arrayClient, ARRAYCLIENT_SIZE)==0)
+						{
+							printf("\nClientes dados de alta exitosamente");
+						}
+						/*
+						if(client_add(arrayClient, ARRAYCLIENT_SIZE)==0)
+						{
+							printf("\nCliente dado de alta!\n");
+						}
+						else
+						{
+							printf("\nHubo un error!");
+						}
+						*/
+					break;
+					case 2:
+						if(client_modify(arrayClient, ARRAYCLIENT_SIZE)==0)
+						{
+							printf("\nCliente dado de alta!\n");
+						}
+						else
+						{
+							printf("\nHubo un error!");
+						}
+					break;
+					case 3:
+						/*
+						if(adclient_printAdsByClientID(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE) == 0)
+						{
+							printf("\nCliente dado de baja exitosamente");
+						}
+						else
+						{
+							printf("\nCliente no existente o sin pubicaciones");
+						}
+						*/
+						if(client_searchForNoEmpty(arrayClient, ARRAYCLIENT_SIZE)==0 && client_print(arrayClient, ARRAYCLIENT_SIZE)==0 &&
+						   utn_getInt("\nIngrese el id del cliente a eliminar: ", "\nERROR! Ingrese un id valido: ", &clientId, 2, 1, 9999)==0 &&
+						   adclient_printAdsByClientID(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE, clientId)==0 &&
+						   client_remove(arrayClient, ARRAYCLIENT_SIZE, clientId)==0 && advertisement_remove(arrayAd, ARRAYAD_SIZE, clientId)==0)
+						{
+							printf("\nDada de baja exitosa!");
+						}
+						else
+						{
+							printf("\nHubo un error!");
+						}
+					break;
+					case 4:
+						if(advertisement_add(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE) == 0)
+						{
+							printf("\nAviso creado exitosamente!");
+						}
+						else
+						{
+							printf("\nHubo un error!");
+						}
+					break;
+					case 5:
+						if(advertisement_pauseAd(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE)==0)
+						{
+							printf("\nAviso pausado exitosamente");
+						}
+						else
+						{
+							printf("\nNo se pudo pausar ningun aviso");
+						}
+					break;
+					case 6:
+						if(advertisement_reanudeAd(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE)==0)
+						{
+							printf("\nAviso reanudado exitosamente!");
+						}
+						else
+						{
+							printf("\nHubo un error");
+						}
+					break;
+					case 7:
+						if(adclient_printClientsAndEachAd(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE)==0)
+						{
+							printf("\nFin de la impresion");
+						}
+					break;
+					case 8:
+						client_print(arrayClient, ARRAYCLIENT_SIZE);
+					break;
+				}
+			}
+		}while(menuOption!=9);
+	}
+	return EXIT_SUCCESS;
+}

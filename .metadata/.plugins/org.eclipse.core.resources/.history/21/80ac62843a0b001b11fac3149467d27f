@@ -1,0 +1,34 @@
+#ifndef cliente_H_
+#define cliente_H_
+
+#define TRUE 1
+#define FALSE 0
+#define NAME_SIZE 51
+#define FLOAT_MIN 0
+#define FLOAT_MAX 999999.000
+#define INT_MIN 0
+#define INT_MAX 999999
+#define ARRAY_SIZE 100
+
+typedef struct
+{
+	int id;
+	char name[NAME_SIZE];
+	float numberFloat;
+	int numberInt;
+	int isEmpty;
+}Cliente;
+
+int cliente_init(Cliente* list, int len);
+int cliente_add(Cliente *list, int len);
+int cliente_modify(Cliente *list, int len);
+int cliente_remove(Cliente *list, int len);
+int cliente_report(Cliente *list, int len);
+
+int cliente_print(Cliente *list, int len);
+int cliente_searchForNoEmpty(Cliente *list, int len);
+int cliente_searchEmpty(Cliente *list, int len, int *pIndex);
+int cliente_findById(Cliente *list, int len, int id);
+int cliente_sort(Cliente *list, int len, int order);
+
+#endif

@@ -1,0 +1,348 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <limits.h>
+#include <ctype.h>
+
+#include "cliente.h"
+#include "utn.h"
+
+static int idGenerate(void);
+static int capitalizeStrings(char *string);
+static int addClients(Client *list, int len, char *name, char *lastName, char *cuit);
+
+/**
+ * \brief Function to add an Client asking for name, last name, salary and sector. ID is generated automatically
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Client array length
+ * \return (-1) if something went wrong, (0) if everything is OK.
+ */
+int client_add(Client *list, int len)
+{
+	int retornar = -1;
+	Client buffer;
+	int index;
+	if(list != NULL && len > 0)
+	{
+		if(utn_getString("Ingrese el nombre del cliente: ", "\nERROR! Ingrese un nombre valido: ", buffer.name, 2, NAME_SIZE) == 0 &&
+	       utn_getString("Ingrese el apellido del cliente: ", "\nERROR! Ingrese un apellido valido: ", buffer.lastName, 2, NAME_SIZE) == 0 &&
+		   utn_getCuit("Ingrese el cuit del cliente: ", "\nERROR! Ingrese un cuit valido: ", buffer.cuit, 2, CUIT_SIZE)==0 &&
+		   client_searchEmpty(list, len, &index) == 0 && index >= 0)
+		{
+			buffer.id = idGenerate();
+			buffer.isEmpty = FALSE;
+			capitalizeStrings(buffer.name);
+			capitalizeStrings(buffer.lastName);
+			list[index] = buffer;
+			retornar = 0;
+			printf("\nID para el nuevo cliente: %d", list[index].id);
+		}
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to modify an Client searched by ID
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+
+int client_modify(Client *list, int len)
+{
+	int retornar = -1;
+	int index;
+	int id;
+	if(list != NULL && len > 0 && client_searchForNoEmpty(list, len) == 0)
+	{
+		client_print(list, len);
+		if(utn_getInt("\nIngrese el id del cliente a modificar: ", "\nError! Ingrese un ID valido: ", &id, 2, 0, 999) == 0 &&
+		   client_findById(list, len, id, &index) == 0 && index>=0 &&
+		   utn_getString("Ingrese el nuevo nombre: ", "\nERROR! Ingrese un nombre valido: ", list[index].name, 2, NAME_SIZE) == 0 &&
+		   utn_getString("Ingrese el nuevo appelido: ", "\nERROR!Ingrese un apellido valido: ", list[index].lastName, 2, NAME_SIZE) == 0 &&
+		   utn_getCuit("Ingrese el nuevo CUIT: ", "\nERROR!Ingrese un cuit valido: ", list[index].cuit, 2, CUIT_SIZE) == 0)
+		{
+			printf("\nEmpleado modificado con exito!");
+		}
+		else
+		{
+			printf("\nID no encontrado! Vuelva a intentar");
+		}
+	}
+	return retornar;
+}
+
+
+/**
+ * \brief Function to modify an Client searched by ID
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+
+int client_remove(Client *list, int len)
+{
+	int retornar = -1;
+	int id;
+	//int index;
+	if(list != NULL && len > 0 && client_searchForNoEmpty(list, len) == 0)
+	{
+		client_print(list, len);
+		if(utn_getInt("\nIngrese el id a eliminar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0)
+		{
+			index = client_findById(list, len, id);
+			if(index >= 0 && list[index].isEmpty == FALSE)
+			{
+				list[index].isEmpty = TRUE;
+				retornar = 0;
+			}
+		}
+	}
+	return retornar;
+}
+*/
+
+/**
+ * \brief Function to print all the Clients in the array
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+
+int client_print(Client *list, int len)
+{
+	int retorno = -1;
+	if(list != NULL && len > 0)
+	{
+		for(int i=0;i<len;i++)
+		{
+			if(list[i].isEmpty == FALSE)
+			{
+				printf("\nID: %d - Nombre: %s - Apellido: %s - CUIT: %s", list[i].id, list[i].name, list[i].lastName, list[i].cuit);
+				retorno = 0;
+			}
+		}
+	}
+	return retorno;
+}
+
+
+/**
+ * \brief Function to report by printing: list of Clients (ascendent or descendent), salary accumulated of all Clients, the average of salary
+ *        and how many emplooyes surpass the average
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+
+int client_report(Client *list, int len)
+{
+	int retornar = -1;
+	int order;
+	if(list != NULL && len > 0 && client_searchForNoEmpty(list, len) == 0)
+	{
+		if(utn_getInt("\nIngrese un numero para ordenar:\n0)De forma descendente\n1)De forma ascendente ",
+					  "\nERROR! Ingrese una opcion valida", &order, 2, 0, 1) == 0)
+		{
+			client_sort(list, len, order);
+			retornar = 0;
+		}
+		client_print(list, len);
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to search in the Client array for an no empty field
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+
+int client_searchForNoEmpty(Client *list, int len)
+{
+	int retornar = -1;
+	if(list != NULL && len > 0)
+	{
+		for(int i=0; i<len; i++)
+		{
+			if(list[i].isEmpty == FALSE)
+			{
+				retornar = 0;
+				break;
+			}
+		}
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to sort the list of Clients by ascendent (0) or descendent(1)
+ * \param Client *list: Pointer the an Client array
+ * \param int len: Length of the array
+ * \param int order: Number we receive to determine if the list is going to sort ascendent or descendent
+ * \return (-1) if something went wrong, (0) if everything is OK
+*/
+
+int client_sort(Client *list, int len, int order)
+{
+	int retornar = -1;
+	//Client auxSwap;
+	int flagSwap;
+	if(list != NULL && len > 0 && (order == 1 || order == 0))
+	{
+		do
+		{
+			flagSwap = 0;
+			for(int i=0; i<len-1; i++)
+			{
+				/*
+				if( (order == 1 && ( (strncmp(list[i].name, list[i+1].name, NAME_SIZE) > 0) ||
+					(strncmp(list[i].name, list[i+1].name, NAME_SIZE) == 0 && list[i].numberInt > list[i+1].numberInt)))
+						||
+					(order == 0 && ( (strncmp(list[i].name, list[i+1].name, NAME_SIZE) < 0) ||
+					(strncmp(list[i].name, list[i+1].name, NAME_SIZE) == 0 && list[i].numberInt < list[i+1].numberInt))))
+				{
+					auxSwap = list[i];
+					list[i] = list[i+1];
+					list[i+1] = auxSwap;
+					flagSwap = 1;
+					retornar = 0;
+				}
+				*/
+			}
+		}while(flagSwap);
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to init isEmpty to TRUE of an Client array
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+int client_init(Client* list, int len)
+{
+	int retornar = -1;
+	if(list != NULL && len > 0)
+	{
+		for(int i=0;i<len;i++)
+		{
+			list[i].isEmpty = TRUE;
+			list[i].id = -1;
+		}
+		retornar = 0;
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function that returns the first index found on an Client array that is empty
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \param int *pIndex: pointer of the index
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+int client_searchEmpty(Client *list, int len, int *pIndex)
+{
+	int retornar = -1;
+	if(list != NULL)
+	{
+		for(int i = 0; i < len; i++)
+		{
+			if(list[i].isEmpty == TRUE && list[i].id == -1)
+			{
+				retornar = 0;
+				*pIndex = i;
+				break;
+			}
+		}
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to auto-generate an ID
+ * \return the id
+ */
+static int idGenerate(void)
+{
+	static int id=0;
+	id = id+1;
+	return id;
+}
+
+/**
+ * \brief Function to find an Client index receiving an id
+ * \param Client *list: Pointer to an Client array
+ * \param int len: Length of the array
+ * \param int id: receive the id to be searched
+ * \return the index or (-1) if something went wrong
+ */
+int client_findById(Client *list, int len, int id, int *pIndex)
+{
+	int retornar = -1;
+	if(list != NULL && len > 0 && id > 0)
+	{
+		for(int i=0; i < len; i++)
+		{
+			if(list[i].id == id && list[i].isEmpty == FALSE)
+			{
+				*pIndex = i;
+				retornar = 0;
+				break;
+			}
+		}
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to converts an string to lowercase and it first letter to uppercase
+ * \param char *string: receive an string, preferents a name
+ */
+
+static int capitalizeStrings(char *string)
+{
+	int retornar = -1;
+	char bufferName[NAME_SIZE];
+	strncpy(bufferName, string, NAME_SIZE);
+	bufferName[0] = toupper(bufferName[0]);
+	for(int i=1;i<NAME_SIZE;i++)
+	{
+		bufferName[i] = tolower(bufferName[i]);
+	}
+	strncpy(string, bufferName, NAME_SIZE);
+	retornar = 0;
+	return retornar;
+}
+
+
+int client_hardcodeAdd(Client *list, int len)
+{
+	int retornar = -1;
+	if(list!=NULL && len>0)
+	{
+		addClients(list, len, "Alan", "Pucci", "20-38622370-0");
+		addClients(list, len, "Jorge", "Perez", "20-12341566-0");
+		addClients(list, len, "Ernesto", "Camisaki", "20-54143122-0");
+		retornar = 0;
+	}
+	return retornar;
+}
+
+static int addClients(Client *list, int len, char *name, char *lastName, char *cuit)
+{
+	int retornar = -1;
+	int index;
+	if(list!=NULL && len>0 && client_searchEmpty(list, len, &index)==0)
+	{
+		strncpy(list[index].name,name,NAME_SIZE);
+		strncpy(list[index].lastName,lastName,NAME_SIZE);
+		strncpy(list[index].cuit,cuit,CUIT_SIZE);
+		list[index].isEmpty = FALSE;
+		list[index].id = idGenerate();
+		retornar = 0;
+	}
+	return retornar;
+}
