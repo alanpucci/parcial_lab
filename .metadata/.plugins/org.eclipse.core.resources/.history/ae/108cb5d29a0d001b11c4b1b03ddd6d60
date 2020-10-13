@@ -291,7 +291,7 @@ int client_hardcodeAdd(Client *list, int len)
 	{
 		addClients(list, len, "Alan", "Pucci", "20-38622370-0");
 		addClients(list, len, "Jorge", "Perez", "20-12341566-0");
-		addClients(list, len, "Juan", "Camisaki", "20-54143122-0");
+		addClients(list, len, "Ernesto", "Camisaki", "20-54143122-0");
 		retornar = 0;
 	}
 	return retornar;
