@@ -353,11 +353,6 @@ int utn_getCuit(char msg[], char msgError[], char pResult[], int attemps, int li
 	return retorno;
 }
 
-/**
- * \brief Funcion para validar si la cadena de caracteres que recibimos corresponde a un string que acepte numeros, letras, espacios y puntuaciones
- * \char string[]: Es la cadena de caracteres que vamos a validar
- * \return (-1) si algo salio mal (0) si todo esta OK
- */
 static int isAlphaNumeric(char* pResultado)
 {
 	int retorno = 1;
@@ -376,15 +371,6 @@ static int isAlphaNumeric(char* pResultado)
 	return retorno;
 }
 
-/**
- * \brief Funcion para pedirle al usuario un string que acepta numeros, letras, espacios y puntuaciones
- * \param char msg[]: Puntero a una cadena de texto
- * \param char msgError[]: Puntero a una cadena de texto en caso de error
- * \param char *pResult: El CUIT que vamos a devolver
- * \param int attemps: Reintentos que va a tener la funcion en caso de error
- * \param int limit: Es el tamaño para no sobrepasar la cadena de texto
- * \return (-1) si algo salio mal (0) si todo esta OK
- */
 int utn_getStringAlphanumeric(char msg[], char msgError[], char *pResult, int attemps, int len)
 {
 	int retorno = -1;

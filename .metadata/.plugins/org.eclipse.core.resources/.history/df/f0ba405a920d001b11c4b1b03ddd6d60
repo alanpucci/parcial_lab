@@ -380,7 +380,7 @@ static int isAlphaNumeric(char* pResultado)
  * \brief Funcion para pedirle al usuario un string que acepta numeros, letras, espacios y puntuaciones
  * \param char msg[]: Puntero a una cadena de texto
  * \param char msgError[]: Puntero a una cadena de texto en caso de error
- * \param char *pResult: El CUIT que vamos a devolver
+ * \param char pResult[]: El CUIT que vamos a devolver
  * \param int attemps: Reintentos que va a tener la funcion en caso de error
  * \param int limit: Es el tamaño para no sobrepasar la cadena de texto
  * \return (-1) si algo salio mal (0) si todo esta OK
