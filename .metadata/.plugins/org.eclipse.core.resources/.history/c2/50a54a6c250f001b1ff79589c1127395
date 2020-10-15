@@ -504,7 +504,7 @@ int advertisement_sectorMaxQtyAds(Advertisement *list, int len)
 				{
 					maxCounter = currentCounter;
 					aux = list[i];
-					retornar = 0;
+					retornar=0;
 				}
 			}
 		}

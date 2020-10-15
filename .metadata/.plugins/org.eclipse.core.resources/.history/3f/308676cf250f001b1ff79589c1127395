@@ -494,6 +494,7 @@ int advertisement_sectorMaxQtyAds(Advertisement *list, int len)
 	int currentCounter=0;
 	int maxCounter;
 	Advertisement aux;
+	Advertisement anotherAux;
 	if(list!=NULL && len>0)
 	{
 		for(int i=0;i<len;i++)
@@ -504,11 +505,19 @@ int advertisement_sectorMaxQtyAds(Advertisement *list, int len)
 				{
 					maxCounter = currentCounter;
 					aux = list[i];
-					retornar = 0;
 				}
 			}
 		}
-		printf("\nEl rubro con mas avisos es el: %d\n", aux.sector);
+		printf("\nEl/los rubro/s con mas avisos es/son:");
+		printf("\nNumero de rubro: %s con %d avisos",aux.sector,maxCounter);
+		for(int j=0;j<len;j++)
+		{
+			if(currentCounter==maxCounter && list[j].id != aux.id)
+			{
+				anotherAux = list[j];
+			}
+		}
+		retornar = 0;
 	}
 	return retornar;
 }

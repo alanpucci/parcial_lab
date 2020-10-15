@@ -160,7 +160,6 @@ int info_clientWithMaxAdQty(Client *clientList, int clientLen, Advertisement *ad
 	int currentCounter;
 	int maxCounter;
 	Client bufferMax;
-	Client anotherBufferMax;
 	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0)
 	{
 		for(int i=0;i<clientLen;i++)
@@ -179,10 +178,10 @@ int info_clientWithMaxAdQty(Client *clientList, int clientLen, Advertisement *ad
 			advertisement_adCounterPerClient(adList, adLen, clientList[j].id, &currentCounter);
 			if(maxCounter == currentCounter && clientList[j].id != bufferMax.id)
 			{
-				anotherBufferMax = clientList[j];
-				printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
+				printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
 			}
 		}
+
 		retornar = 0;
 	}
 	return retornar;
@@ -203,17 +202,14 @@ int altaForzada(Client *list, int len, Advertisement *adList, int adLen)
 	if(list!=NULL && len>0 && adList!=NULL && adLen>0)
 	{
 		addClients(list, len, "Alan", "Pucci", "20-38622370-0");
-		addAdvertisements(adList, adLen, 1, 1, "Venta de autos", 14);
+		addAdvertisements(adList, adLen, 1, 1, "Venta de autos", 12);
 		addAdvertisements(adList, adLen, 1, 0, "Venta de motos", 11);
-		addAdvertisements(adList, adLen, 1, 1, "Venta de motos", 11);
 		addClients(list, len, "Jorge", "Perez", "20-12341566-0");
 		addAdvertisements(adList, adLen, 2, 1, "Busco a mi perro", 12);
 		addAdvertisements(adList, adLen, 2, 0, "Ya encontre a mi perro", 13);
-		addAdvertisements(adList, adLen, 2, 0, "Ya encontre a mi perro", 12);
 		addClients(list, len, "Juan", "Camisaki", "20-54143122-0");
 		addAdvertisements(adList, adLen, 3, 1, "Vendo pan muy barato", 30);
 		addAdvertisements(adList, adLen, 3, 0, "Venta de remolacha", 15);
-		addAdvertisements(adList, adLen, 3, 0, "Ya encontre a mi perro", 13);
 		retornar = 0;
 		printf("\nClientes dados de alta exitosamente!\n");
 	}

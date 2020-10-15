@@ -24,7 +24,7 @@ int main(void) {
 				switch(menuOption)
 				{
 					case 1:
-						/*
+
 						if(client_add(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
 							printf("\nCliente dado de alta!\n");
@@ -33,9 +33,9 @@ int main(void) {
 						{
 							printf("\nNo hay espacio para cargar un nuevo cliente!\n");
 						}
-						*/
+						/*
 						altaForzada(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE);
-
+						*/
 					break;
 					case 2:
 						if(client_searchForNoEmpty(arrayClient, ARRAYCLIENT_SIZE)==0)
