@@ -1,10 +1,214 @@
-17:29:19 **** Rebuild of configuration Debug for project parcial ****
+20:22:05 **** Rebuild of configuration Debug for project parcial ****
 Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+20:22:34 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+20:52:06 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+21:36:55 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+21:37:24 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+21:37:37 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+21:39:28 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+21:47:39 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+21:48:19 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+22:28:52 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+20:25:38 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+23:43:43 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+..\src\cliente.c: In function 'client_remove':
+..\src\cliente.c:93:6: warning: unused variable 'choosenOption' [-Wunused-variable]
+   93 |  int choosenOption;
+      |      ^~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+23:43:52 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+23:48:04 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+..\src\advertisement.c: In function 'advertisement_print':
+..\src\advertisement.c:172:6: error: too few arguments to function 'strncpy'
+  172 |      strncpy(bufferState, "ACTIVO");
+      |      ^~~~~~~
+In file included from ..\src\advertisement.c:3:
+c:\mingw\include\string.h:86:40: note: declared here
+   86 | _CRTIMP __cdecl __MINGW_NOTHROW  char *strncpy (char *, const char *, size_t);
+      |                                        ^~~~~~~
+..\src\advertisement.c:176:6: error: too few arguments to function 'strncpy'
+  176 |      strncpy(bufferState, "PAUSADO");
+      |      ^~~~~~~
+In file included from ..\src\advertisement.c:3:
+c:\mingw\include\string.h:86:40: note: declared here
+   86 | _CRTIMP __cdecl __MINGW_NOTHROW  char *strncpy (char *, const char *, size_t);
+      |                                        ^~~~~~~
+23:48:21 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+23:51:09 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+..\src\info.c: In function 'info_printAdsByClientID':
+..\src\info.c:22:2: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'if'
+   22 |  if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && id>0)
+      |  ^~
+..\src\info.c:33:7: warning: implicit declaration of function 'strncpy' [-Wimplicit-function-declaration]
+   33 |       strncpy(bufferState, "ACTIVO", STATE_SIZE);
+      |       ^~~~~~~
+..\src\info.c:33:7: warning: incompatible implicit declaration of built-in function 'strncpy'
+..\src\info.c:7:1: note: include '<string.h>' or provide a declaration of 'strncpy'
+    6 | #include "info.h"
+  +++ |+#include <string.h>
+    7 | 
+..\src\info.c:33:15: error: 'bufferState' undeclared (first use in this function)
+   33 |       strncpy(bufferState, "ACTIVO", STATE_SIZE);
+      |               ^~~~~~~~~~~
+..\src\info.c:33:15: note: each undeclared identifier is reported only once for each function it appears in
+..\src\info.c:37:7: warning: incompatible implicit declaration of built-in function 'strncpy'
+   37 |       strncpy(bufferState, "PAUSADO", STATE_SIZE);
+      |       ^~~~~~~
+..\src\info.c:37:7: note: include '<string.h>' or provide a declaration of 'strncpy'
+23:51:23 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+..\src\info.c: In function 'info_printAdsByClientID':
+..\src\info.c:33:7: warning: implicit declaration of function 'strncpy' [-Wimplicit-function-declaration]
+   33 |       strncpy(bufferState, "ACTIVO", STATE_SIZE);
+      |       ^~~~~~~
+..\src\info.c:33:7: warning: incompatible implicit declaration of built-in function 'strncpy'
+..\src\info.c:7:1: note: include '<string.h>' or provide a declaration of 'strncpy'
+    6 | #include "info.h"
+  +++ |+#include <string.h>
+    7 | 
+..\src\info.c:37:7: warning: incompatible implicit declaration of built-in function 'strncpy'
+   37 |       strncpy(bufferState, "PAUSADO", STATE_SIZE);
+      |       ^~~~~~~
+..\src\info.c:37:7: note: include '<string.h>' or provide a declaration of 'strncpy'
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+23:51:34 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+23:55:41 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+23:55:51 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+00:00:14 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+00:17:56 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+00:19:48 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+00:22:37 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+00:24:26 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
 gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
 Info: Nothing to build for parcial
+00:26:10 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+00:27:35 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+00:31:49 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+00:37:25 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+00:41:15 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+00:45:03 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
 Info: Nothing to build for parcial

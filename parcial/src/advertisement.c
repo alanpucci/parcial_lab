@@ -25,20 +25,30 @@ int advertisement_add(Advertisement *list, int len, Client *clientList, int clie
 	Advertisement buffer;
 	int index;
 	int clientIndex;
-	if(list != NULL && len > 0 && client_searchForNoEmpty(clientList, clientLen) == 0)
+	if(list != NULL && len > 0 && advertisement_searchEmpty(list, len, &index) == 0 && index >= 0)
 	{
-		if(advertisement_searchEmpty(list, len, &index) == 0 && index >= 0 && client_print(clientList, clientLen) == 0 &&
-		   utn_getInt("\n\nIngrese el ID del cliente: ", "\nERROR! Ingrese un ID valido: ", &buffer.clientID, 2, 1, 9999)==0 &&
-		   client_findById(clientList, clientLen, buffer.clientID, &clientIndex) == 0 &&
-		   utn_getInt("\nIngrese el numero de rubro: ", "\nERROR! Ingrese un numero de rubro valido: ", &buffer.sector, 2, SECTOR_MIN, SECTOR_MAX)==0 &&
-		   utn_getStringAlphanumeric("\nIngrese el texto del aviso: ", "\nERROR! Ingrese caracteres validos: ", buffer.adText, 2, ADTEXT_SIZE)==0)
+		client_print(clientList, clientLen);
+		if(utn_getInt("\n\nIngrese el ID del cliente: ", "\nERROR! Ingrese un ID valido: ", &buffer.clientID, 2, 1, 9999)==0 &&
+		   client_findById(clientList, clientLen, buffer.clientID, &clientIndex) == 0)
 		{
-			buffer.id = idGenerate();
-			buffer.isEmpty = FALSE;
-			buffer.isActive = TRUE;
-			list[index] = buffer;
-			retornar = 0;
-			printf("\nID para el nuevo aviso: %d", list[index].id);
+			if(utn_getInt("\nIngrese el numero de rubro: ", "\nERROR! Ingrese un numero de rubro valido: ", &buffer.sector, 2, SECTOR_MIN, SECTOR_MAX)==0 &&
+			   utn_getStringAlphanumeric("\nIngrese el texto del aviso: ", "\nERROR! Ingrese caracteres validos: ", buffer.adText, 2, ADTEXT_SIZE)==0)
+			{
+				buffer.id = idGenerate();
+				buffer.isEmpty = FALSE;
+				buffer.isActive = TRUE;
+				list[index] = buffer;
+				retornar = 0;
+				printf("\nID para el nuevo aviso: %d", list[index].id);
+			}
+			else
+			{
+				printf("\nError en la carga de datos, vuelva a intentar\n");
+			}
+		}
+		else
+		{
+			printf("\nID no encontrado, vuelva a intentar\n");
 		}
 	}
 	return retornar;
@@ -59,16 +69,30 @@ int advertisement_pauseAd(Advertisement *list, int len, Client *clientList, int 
 	int id;
 	int index;
 	int choosedOption;
-	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForNoEmpty(list, len) == 0 && advertisement_searchForActive(list, len) == 1)
+	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForActive(list, len) == 1)
 	{
 		advertisement_print(list, len);
-		if(utn_getInt("\n\nIngrese el id de la publicacion a pausar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 &&
-		   list[index].isActive == TRUE && advertisement_printClientInfoByAdId(list, len, clientList, clientLen, id) == 0 &&
-		   utn_getInt("\n\nQuiere pausar esta publicidad? presione 1 para SI o 2 para NO: " , "\nERROR! Ingrese 1 o 2 ", &choosedOption, 2, 1, 2)==0 && choosedOption == 1)
+		if(utn_getInt("\n\nIngrese el id de la publicacion a pausar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 && list[index].isActive == TRUE)
 		{
-			list[index].isActive = FALSE;
-			retornar = 0;
+			if(advertisement_printClientInfoByAdId(list, len, clientList, clientLen, id) == 0 &&
+			   utn_getInt("\n\nQuiere pausar esta publicidad? presione 1 para SI o 2 para NO: " , "\nERROR! Ingrese 1 o 2 ", &choosedOption, 2, 1, 2)==0 && choosedOption == 1)
+			{
+				list[index].isActive = FALSE;
+				retornar = 0;
+			}
+			else
+			{
+				printf("\nAviso NO pausado!\n");
+			}
 		}
+		else
+		{
+			printf("\nNo existe publicacion activa con ese ID, vuelva a intentar\n");
+		}
+	}
+	else
+	{
+		printf("\nNo hay avisos activos para pausar\n");
 	}
 	return retornar;
 }
@@ -87,16 +111,31 @@ int advertisement_reanudeAd(Advertisement *list, int len, Client *clientList, in
 	int id;
 	int index;
 	int choosedOption;
-	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForNoEmpty(list, len) == 0 && advertisement_searchForActive(list, len) == 0)
+	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForActive(list, len) == 0)
 	{
 		advertisement_print(list, len);
-		if(utn_getInt("\nIngrese el id de la publicacion a reanudar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 &&
-		   list[index].isActive == FALSE && advertisement_printClientInfoByAdId(list, len, clientList, clientLen, id) == 0 &&
-		   utn_getInt("\n\nQuiere reanudar esta publicidad? presione 1 para SI o 2 para NO: ", "\nERROR! Ingrese 1 o 2 ", &choosedOption, 2, 1, 2)==0 && choosedOption == 1)
+		if(utn_getInt("\n\nIngrese el id de la publicacion a reanudar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 &&
+		   list[index].isActive == FALSE)
 		{
-			list[index].isActive = TRUE;
-			retornar = 0;
+			if(advertisement_printClientInfoByAdId(list, len, clientList, clientLen, id) == 0 &&
+			   utn_getInt("\n\nQuiere reanudar esta publicidad? presione 1 para SI o 2 para NO: ", "\nERROR! Ingrese 1 o 2 ", &choosedOption, 2, 1, 2)==0 && choosedOption == 1)
+			{
+				list[index].isActive = TRUE;
+				retornar = 0;
+			}
+			else
+			{
+				printf("\nAviso NO reanudado!\n");
+			}
 		}
+		else
+		{
+			printf("\nNo existe una publicacion pausada con ese ID, vuelva a intentar\n");
+		}
+	}
+	else
+	{
+		printf("\nNo hay avisos pausados para reanudar\n");
 	}
 	return retornar;
 }
@@ -111,16 +150,20 @@ int advertisement_reanudeAd(Advertisement *list, int len, Client *clientList, in
 int advertisement_remove(Advertisement *list, int len, int id)
 {
 	int retornar = -1;
+	int choosenOption;
 	if(list!=NULL && len>0)
 	{
-		for(int i=0;i<len;i++)
+		if(utn_getInt("\n\nPresione 1 para confirmar o 2 para salir: ", "\nError! Ingrese 1 o 2: ", &choosenOption, 2, 1, 2) == 0 && choosenOption==1)
 		{
-			if(advertisement_findByClientId(list, len, id)>-1)
+			for(int i=0;i<len;i++)
 			{
-				list[i].isEmpty = TRUE;
+				if(advertisement_findByClientId(list, len, id)>-1)
+				{
+					list[i].isEmpty = TRUE;
+				}
 			}
+			retornar = 0;
 		}
-		retornar = 0;
 	}
 	return retornar;
 }
@@ -156,14 +199,22 @@ int advertisement_printClientInfoByAdId(Advertisement *list, int len, Client *cl
 int advertisement_print(Advertisement *list, int len)
 {
 	int retorno = -1;
+	char bufferState[STATE_SIZE];
 	if(list != NULL && len > 0)
 	{
-		printf("\n|| ESTADO: || 1 = activo || 0 = pausado ||");
 		for(int i=0;i<len;i++)
 		{
 			if(list[i].isEmpty == FALSE)
 			{
-				printf("\nID: %d - Estado: %d - texto: %s",list[i].id, list[i].isActive,list[i].adText);
+				if(list[i].isActive == TRUE)
+				{
+					strncpy(bufferState, "ACTIVO", STATE_SIZE);
+				}
+				else
+				{
+					strncpy(bufferState, "PAUSADO", STATE_SIZE);
+				}
+				printf("\nID: %d - Estado: %s - texto: %s",list[i].id, bufferState, list[i].adText);
 				retorno = 0;
 			}
 		}

@@ -1,9 +1,15 @@
+//Hacer hardcodeo
+//Mejorar informar mostrando dos o mas clientes con mas avisos/rubros con mas anuncios
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
 #include "cliente.h"
 #include "advertisement.h"
 #include "info.h"
+
+#define ARRAYCLIENT_SIZE 100
+#define ARRAYAD_SIZE 1000
 
 int main(void) {
 	setbuf(stdout, NULL);
@@ -21,30 +27,36 @@ int main(void) {
 				switch(menuOption)
 				{
 					case 1:
+						/*
 						if(client_add(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
 							printf("\nCliente dado de alta!\n");
 						}
 						else
 						{
-							printf("\nHubo un error!\n");
+							printf("\nNo hay espacio para cargar un nuevo cliente!\n");
 						}
+						*/
+						client_hardcodeAdd(arrayClient, ARRAYCLIENT_SIZE);
 					break;
 					case 2:
-						if(client_modify(arrayClient, ARRAYCLIENT_SIZE)==0)
+						if(client_searchForNoEmpty(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
-							printf("\nEmpleado modificado con exito!\n");
+							if(client_modify(arrayClient, ARRAYCLIENT_SIZE)==0)
+							{
+								printf("\nEmpleado modificado con exito!\n");
+							}
 						}
 						else
 						{
-							printf("\nHubo un error!\n");
+							printf("\nNo hay clientes cargados!\n");
 						}
 					break;
 					case 3:
-						if(client_searchForNoEmpty(arrayClient, ARRAYCLIENT_SIZE)==0 && client_print(arrayClient, ARRAYCLIENT_SIZE)==0 &&
+						if(client_print(arrayClient, ARRAYCLIENT_SIZE)==0 &&
 						   utn_getInt("\n\nIngrese el id del cliente a eliminar: ", "\nERROR! Ingrese un id valido: ", &clientId, 2, 1, 9999)==0 &&
 						   info_printAdsByClientID(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE, clientId)==0 &&
-						   client_remove(arrayClient, ARRAYCLIENT_SIZE, clientId)==0 && advertisement_remove(arrayAd, ARRAYAD_SIZE, clientId)==0)
+						   advertisement_remove(arrayAd, ARRAYAD_SIZE, clientId)==0 && client_remove(arrayClient, ARRAYCLIENT_SIZE, clientId)==0)
 						{
 							printf("\nCliente dado de baja exitosamente!\n");
 						}
@@ -54,33 +66,42 @@ int main(void) {
 						}
 					break;
 					case 4:
-						if(advertisement_add(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE) == 0)
+						if(client_searchForNoEmpty(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
-							printf("\nAviso creado exitosamente!\n");
+							if(advertisement_add(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE) == 0)
+							{
+								printf("\nAviso creado exitosamente!\n");
+							}
 						}
 						else
 						{
-							printf("\nNo se pudo cargar ningun aviso!\n");
+							printf("\nNo se pueden cargar avisos sin tener algun cliente cargado!\n");
 						}
 					break;
 					case 5:
-						if(advertisement_pauseAd(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE)==0)
+						if(advertisement_searchForNoEmpty(arrayAd, ARRAYAD_SIZE)==0)
 						{
-							printf("\nAviso pausado exitosamente\n");
+							if(advertisement_pauseAd(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE)==0)
+							{
+								printf("\nAviso pausado exitosamente\n");
+							}
 						}
 						else
 						{
-							printf("\nNo se pudo pausar ningun aviso\n");
+							printf("\nNo hay avisos cargados\n");
 						}
 					break;
 					case 6:
-						if(advertisement_reanudeAd(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE)==0)
+						if(advertisement_searchForNoEmpty(arrayAd, ARRAYAD_SIZE)==0)
 						{
-							printf("\nAviso reanudado exitosamente!\n");
+							if(advertisement_reanudeAd(arrayAd, ARRAYAD_SIZE, arrayClient, ARRAYCLIENT_SIZE)==0)
+							{
+								printf("\nAviso reanudado exitosamente!\n");
+							}
 						}
 						else
 						{
-							printf("\nNo se pudo reanudar ningun aviso\n");
+							printf("\nNo hay avisos cargados\n");
 						}
 					break;
 					case 7:
@@ -94,13 +115,16 @@ int main(void) {
 						}
 					break;
 					case 8:
-						if(info_report(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE)==0)
+						if(client_searchForNoEmpty(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
-							printf("\nFin del informe\n");
+							if(info_report(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE)==0)
+							{
+								printf("\nFin del informe\n");
+							}
 						}
 						else
 						{
-							printf("\nHubo un error, no hay clientes o avisos cargados!\n");
+							printf("\nNo hay clientes cargados!\n");
 						}
 					break;
 				}

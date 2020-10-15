@@ -264,7 +264,7 @@ int utn_getMenu(int *pResult, int attemps, int min, int max)
 		do
 		{
 			printf("\nElija una opcion:\n1)Dar de alta un cliente\n2)Modificar datos de un cliente\n3)Dar de baja a un cliente\n4)Publicar"
-					"\n5)Pausar una publicacion\n6)Reanudar una publicacion\n7)Imprimir clientes\n8)Informar\n9)Salir");
+					"\n5)Pausar una publicacion\n6)Reanudar una publicacion\n7)Imprimir clientes\n8)Informar\n9)Salir\n>OPCION: ");
 			if(myGets(bufferString, ARRAY_SIZE) == 0 && isInt(bufferString) == 1)
 			{
 				bufferInt = atoi(bufferString);

@@ -5,10 +5,10 @@
 #define TRUE 1
 #define FALSE 0
 #define NAME_SIZE 51
-#define ARRAYAD_SIZE 1000
 #define ADTEXT_SIZE 65
 #define SECTOR_MIN 0
 #define SECTOR_MAX 999
+#define STATE_SIZE 10
 
 typedef struct
 {

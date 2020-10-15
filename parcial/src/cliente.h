@@ -5,7 +5,6 @@
 #define FALSE 0
 #define NAME_SIZE 51
 #define CUIT_SIZE 14
-#define ARRAYCLIENT_SIZE 100
 
 typedef struct
 {
