@@ -1,6 +1,3 @@
-//Hacer hardcodeo
-//Mejorar informar mostrando dos o mas clientes con mas avisos/rubros con mas anuncios
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
@@ -27,7 +24,7 @@ int main(void) {
 				switch(menuOption)
 				{
 					case 1:
-						/*
+
 						if(client_add(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
 							printf("\nCliente dado de alta!\n");
@@ -36,8 +33,9 @@ int main(void) {
 						{
 							printf("\nNo hay espacio para cargar un nuevo cliente!\n");
 						}
+						/*
+						altaForzada(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE);
 						*/
-						client_hardcodeAdd(arrayClient, ARRAYCLIENT_SIZE);
 					break;
 					case 2:
 						if(client_searchForNoEmpty(arrayClient, ARRAYCLIENT_SIZE)==0)
@@ -53,16 +51,18 @@ int main(void) {
 						}
 					break;
 					case 3:
-						if(client_print(arrayClient, ARRAYCLIENT_SIZE)==0 &&
-						   utn_getInt("\n\nIngrese el id del cliente a eliminar: ", "\nERROR! Ingrese un id valido: ", &clientId, 2, 1, 9999)==0 &&
-						   info_printAdsByClientID(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE, clientId)==0 &&
-						   advertisement_remove(arrayAd, ARRAYAD_SIZE, clientId)==0 && client_remove(arrayClient, ARRAYCLIENT_SIZE, clientId)==0)
+						if(client_print(arrayClient, ARRAYCLIENT_SIZE)==0)
 						{
-							printf("\nCliente dado de baja exitosamente!\n");
+							if(utn_getInt("\n\nIngrese el id del cliente a eliminar: ", "\nERROR! Ingrese un id valido: ", &clientId, 2, 1, 9999)==0 &&
+							   info_printAdsByClientID(arrayClient, ARRAYCLIENT_SIZE, arrayAd, ARRAYAD_SIZE, clientId)==0 &&
+							   advertisement_remove(arrayAd, ARRAYAD_SIZE, clientId)==0 && client_remove(arrayClient, ARRAYCLIENT_SIZE, clientId)==0)
+							{
+								printf("\nCliente dado de baja exitosamente!\n");
+							}
 						}
 						else
 						{
-							printf("\nHubo un error!\n");
+							printf("\nNo hay clientes dados de alta\n");
 						}
 					break;
 					case 4:

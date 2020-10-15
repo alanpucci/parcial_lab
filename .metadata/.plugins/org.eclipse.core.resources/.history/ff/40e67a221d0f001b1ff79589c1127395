@@ -1,0 +1,202 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "cliente.h"
+#include "advertisement.h"
+#include "info.h"
+
+/**
+ * \brief Function to print each ad that a client has (searched by ID)
+ * \param Client *clientList: Pointer to an Client array
+ * \param int clientLen: Client array length
+ * \param Advertisement *adList: Pointer to an Advertisement array
+ * \param int adLen: Length of the array
+ * \param int id: receive the ID to be search
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+int info_printAdsByClientID(Client *clientList, int clientLen, Advertisement *adList, int adLen, int id)
+{
+	int retorno=-1;
+	int clientIndex;
+	char bufferState[STATE_SIZE];
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && id>0)
+	{
+		if(client_findById(clientList, clientLen, id, &clientIndex)==0)
+		{
+			printf("\nID cliente: %d - Nombre: %s - Apellido: %s - CUIT: %s", clientList[clientIndex].id, clientList[clientIndex].name, clientList[clientIndex].lastName, clientList[clientIndex].cuit);
+			if(advertisement_findByClientId(adList, adLen, clientList[clientIndex].id)==0)
+			{
+				for(int i=0;i<adLen;i++)
+				{
+					if(adList[i].isActive == TRUE)
+					{
+						strncpy(bufferState, "ACTIVO", STATE_SIZE);
+					}
+					else
+					{
+						strncpy(bufferState, "PAUSADO", STATE_SIZE);
+					}
+					if(adList[i].clientID==clientList[clientIndex].id)
+					{
+						printf("\n> > > ID publicacion: %d - Estado: %s - texto: %s",adList[i].id, bufferState, adList[i].adText);
+					}
+				}
+			}
+			else
+			{
+				printf(" y no tiene anuncios");
+			}
+			retorno=0;
+		}
+		else
+		{
+			printf("\nID no encontrado, vuelva a intentar\n");
+		}
+	}
+	return retorno;
+}
+
+/**
+ * \brief Function to print clients and how many active ads has
+ * \param Client *clientList: Pointer to an Client array
+ * \param int clientLen: Client array length
+ * \param Advertisement *adList: Pointer to an Advertisement array
+ * \param int adLen: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+int info_printClientsAndActiveAds(Client *clientList, int clientLen, Advertisement *adList, int adLen)
+{
+	int retornar = -1;
+	int adCounter;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0)
+	{
+		for(int i=0;i<clientLen;i++)
+		{
+			if(clientList[i].isEmpty == FALSE && advertisement_activeAdCounterPerClient(adList, adLen, clientList[i].id, &adCounter)==0)
+			{
+				printf("\nID cliente: %d - Nombre: %s - Apellido: %s - CUIT: %s - Cantidad de anuncios activos: %d", clientList[i].id, clientList[i].name, clientList[i].lastName, clientList[i].cuit, adCounter);
+				retornar=0;
+			}
+		}
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to report the client with more ads, how many paused ads are and the sector number with more ads
+ * \param Client *clientList: Pointer to an Client array
+ * \param int clientLen: Client array length
+ * \param Advertisement *adList: Pointer to an Advertisement array
+ * \param int adLen: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+int info_report(Client *clientList, int clientLen, Advertisement *adList, int adLen)
+{
+	int retornar = -1;
+	int option;
+	int adsCounter;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && advertisement_searchForNoEmpty(adList, adLen)==0)
+	{
+		do
+		{
+			if(utn_getInt("\nElija una opcion: \n1)Cliente con mas avisos\n2)Cantidad de avisos pausados\n3)Rubro con mas avisos\n4)Salir ", "\nERROR! Elija una opcion valida", &option, 2, 1, 4)==0)
+			{
+				switch(option)
+				{
+				case 1:
+					if(info_clientWithMaxAdQty(clientList, clientLen, adList, adLen)==0)
+					{
+						retornar=0;
+					}
+					else
+					{
+						printf("\nHubo un error al mostrar el cliente con mas avisos\n");
+					}
+				break;
+				case 2:
+					if(advertisement_pausedAdsQty(adList, adLen, &adsCounter)==0)
+					{
+						printf("\nCantidad de avisos pausados: %d\n", adsCounter);
+						retornar=0;
+					}
+					else
+					{
+						printf("\nNo hay avisos pausados\n");
+					}
+				break;
+				case 3:
+					if(advertisement_sectorMaxQtyAds(adList, adLen)==0)
+					{
+						retornar=0;
+					}
+					else
+					{
+						printf("\nHubo un error al mostrar el rubro con mas anuncios\n");
+					}
+				break;
+				}
+			}
+		}while(option != 4);
+	}
+	else
+	{
+		printf("\nNo hay avisos cargados!\n");
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to find the client with more ads quantity
+ * \param Client *clientList: Pointer to an Client array
+ * \param int clientLen: Client array length
+ * \param Advertisement *adList: Pointer to an Advertisement array
+ * \param int adLen: Length of the array
+ * \return (-1) if something went wrong, (0) if everything is OK
+ */
+int info_clientWithMaxAdQty(Client *clientList, int clientLen, Advertisement *adList, int adLen)
+{
+	int retornar=-1;
+	int currentCounter;
+	int maxCounter;
+	Client bufferMax;
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0)
+	{
+		for(int i=0;i<clientLen;i++)
+		{
+			advertisement_adCounterPerClient(adList, adLen, clientList[i].id, &currentCounter);
+			if(i==0 || currentCounter>maxCounter)
+			{
+				maxCounter = currentCounter;
+				bufferMax = clientList[i];
+			}
+		}
+		printf("\nEl cliente con mas avisos es: %s %s, CUIT: %s\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit);
+		retornar = 0;
+	}
+	return retornar;
+}
+
+
+/**
+ * \brief Function to add 3 clients
+ * \param Client *list: Pointer to a Client array
+ * \param int len: Length of the array
+ * \return (-1) if something went wrong or (0) if OK
+ */
+int altaForzada(Client *list, int len, Advertisement *adList, int adLen)
+{
+	int retornar = -1;
+	if(list!=NULL && len>0 && adList!=NULL && adLen>0)
+	{
+		addClients(list, len, "Alan", "Pucci", "20-38622370-0");
+		addAdvertisements(adList, adLen, 1, 1, "Venta de autos", 12);
+		addAdvertisements(adList, adLen, 1, 0, "Venta de motos", 11);
+		addClients(list, len, "Jorge", "Perez", "20-12341566-0");
+		addAdvertisements(adList, adLen, 2, 1, "Busco a mi perro", 12);
+		addClients(list, len, "Juan", "Camisaki", "20-54143122-0");
+		retornar = 0;
+		printf("\nClientes dados de alta exitosamente!\n");
+	}
+	return retornar;
+}

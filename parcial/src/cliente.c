@@ -9,7 +9,6 @@
 
 static int idGenerate(void);
 static int capitalizeStrings(char *string);
-static int addClients(Client *list, int len, char *name, char *lastName, char *cuit);
 
 /**
  * \brief Function to add a client asking for name, last name and cuit. ID is generated automatically
@@ -295,25 +294,6 @@ static int capitalizeStrings(char *string)
 	return retornar;
 }
 
-/**
- * \brief Function to add 3 clients
- * \param Client *list: Pointer to a Client array
- * \param int len: Length of the array
- * \return (-1) if something went wrong or (0) if OK
- */
-int client_hardcodeAdd(Client *list, int len)
-{
-	int retornar = -1;
-	if(list!=NULL && len>0)
-	{
-		addClients(list, len, "Alan", "Pucci", "20-38622370-0");
-		addClients(list, len, "Jorge", "Perez", "20-12341566-0");
-		addClients(list, len, "Juan", "Camisaki", "20-54143122-0");
-		retornar = 0;
-		printf("\nClientes dados de alta exitosamente!\n");
-	}
-	return retornar;
-}
 
 /**
  * \brief Function to add a client receiving it's name, lastname and cuit
@@ -324,7 +304,7 @@ int client_hardcodeAdd(Client *list, int len)
  * \param char *cuit: receive the cuit of the client
  * \return (-1) if something went wrong or (0) if OK
  */
-static int addClients(Client *list, int len, char *name, char *lastName, char *cuit)
+int addClients(Client *list, int len, char *name, char *lastName, char *cuit)
 {
 	int retornar = -1;
 	int index;

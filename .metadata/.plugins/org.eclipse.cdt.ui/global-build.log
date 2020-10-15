@@ -212,3 +212,199 @@ gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c"
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
 gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
 Info: Nothing to build for parcial
+15:56:33 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+16:00:20 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+16:01:09 **** Rebuild of configuration Debug for project Fantasma ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Fantasma.o" "..\\src\\Fantasma.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\fantasmaVinculado.o" "..\\src\\fantasmaVinculado.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\arrayFantasma.o" "..\\src\\arrayFantasma.c" 
+gcc -o Fantasma.exe "src\\Fantasma.o" "src\\arrayFantasma.o" "src\\fantasmaVinculado.o" "src\\utn.o" 
+16:01:12 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:02:24 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:21:21 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+..\src\info.c: In function 'client_hardcodeAdd':
+..\src\info.c:192:3: warning: implicit declaration of function 'addClients' [-Wimplicit-function-declaration]
+  192 |   addClients(list, len, "Alan", "Pucci", "20-38622370-0");
+      |   ^~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+..\src\cliente.c:308:5: warning: 'addClients' defined but not used [-Wunused-function]
+  308 | int addClients(Client *list, int len, char *name, char *lastName, char *cuit)
+      |     ^~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\info.o: in function `client_hardcodeAdd':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/info.c:192: undefined reference to `addClients'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/info.c:193: undefined reference to `addClients'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/info.c:194: undefined reference to `addClients'
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Fantasma
+16:21:51 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:31:02 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+..\src\info.c: In function 'altaForzada':
+..\src\info.c:190:28: error: 'adlist' undeclared (first use in this function); did you mean 'adList'?
+  190 |  if(list!=NULL && len>0 && adlist!=NULL && adLen>0)
+      |                            ^~~~~~
+      |                            adList
+..\src\info.c:190:28: note: each undeclared identifier is reported only once for each function it appears in
+Info: Nothing to build for Fantasma
+16:31:14 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+..\src\parcial.c: In function 'main':
+..\src\parcial.c:40:7: warning: implicit declaration of function 'client_hardcodeAdd' [-Wimplicit-function-declaration]
+   40 |       client_hardcodeAdd(arrayClient, ARRAYCLIENT_SIZE);
+      |       ^~~~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\parcial.o: in function `main':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/parcial.c:40: undefined reference to `client_hardcodeAdd'
+collect2.exe: error: ld returned 1 exit status
+Info: Nothing to build for Fantasma
+16:31:27 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+..\src\parcial.c: In function 'main':
+..\src\parcial.c:40:7: error: too few arguments to function 'altaForzada'
+   40 |       altaForzada(arrayClient, ARRAYCLIENT_SIZE);
+      |       ^~~~~~~~~~~
+In file included from ..\src\parcial.c:9:
+..\src\info.h:13:5: note: declared here
+   13 | int altaForzada(Client *list, int len, Advertisement *adList, int adLen);
+      |     ^~~~~~~~~~~
+Info: Nothing to build for Fantasma
+16:31:37 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+16:32:51 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:37:23 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:42:18 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+16:42:46 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:45:38 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+16:52:04 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+16:54:34 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+16:54:46 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:55:30 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:56:28 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+16:57:31 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+17:09:17 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+17:09:49 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+17:15:14 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+..\src\info.c: In function 'info_clientWithMaxAdQty':
+..\src\info.c:162:6: warning: unused variable 'sectorCounter' [-Wunused-variable]
+  162 |  int sectorCounter=0;
+      |      ^~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+17:15:18 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial

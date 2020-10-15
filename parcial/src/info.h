@@ -9,4 +9,6 @@ int info_report(Client *clientList, int clientLen, Advertisement *adList, int ad
 int info_clientWithMaxAdQty(Client *clientList, int clientLen, Advertisement *adList, int adLen);
 int info_pausedAdsQty(Client *clientList, int clientLen, Advertisement *adList, int adLen);
 
+
+int altaForzada(Client *list, int len, Advertisement *adList, int adLen);
 #endif /* INFO_H_ */

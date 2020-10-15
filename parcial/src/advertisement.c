@@ -69,12 +69,12 @@ int advertisement_pauseAd(Advertisement *list, int len, Client *clientList, int 
 	int id;
 	int index;
 	int choosedOption;
-	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForActive(list, len) == 1)
+	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForActive(list, len) == 0)
 	{
 		advertisement_print(list, len);
 		if(utn_getInt("\n\nIngrese el id de la publicacion a pausar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 && list[index].isActive == TRUE)
 		{
-			if(advertisement_printClientInfoByAdId(list, len, clientList, clientLen, id) == 0 &&
+			if(advertisement_printClientInfoByAdId(list, len, clientList, clientLen, list[index].clientID) == 0 &&
 			   utn_getInt("\n\nQuiere pausar esta publicidad? presione 1 para SI o 2 para NO: " , "\nERROR! Ingrese 1 o 2 ", &choosedOption, 2, 1, 2)==0 && choosedOption == 1)
 			{
 				list[index].isActive = FALSE;
@@ -111,13 +111,13 @@ int advertisement_reanudeAd(Advertisement *list, int len, Client *clientList, in
 	int id;
 	int index;
 	int choosedOption;
-	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForActive(list, len) == 0)
+	if(list != NULL && len > 0 && clientList != NULL && clientLen>0 && advertisement_searchForPaused(list, len) == 0)
 	{
 		advertisement_print(list, len);
 		if(utn_getInt("\n\nIngrese el id de la publicacion a reanudar: ", "\nError! Ingrese un ID valido: ", &id, 2, 1, 999) == 0 && advertisement_findById(list, len, id, &index)==0 &&
 		   list[index].isActive == FALSE)
 		{
-			if(advertisement_printClientInfoByAdId(list, len, clientList, clientLen, id) == 0 &&
+			if(advertisement_printClientInfoByAdId(list, len, clientList, clientLen, list[index].clientID) == 0 &&
 			   utn_getInt("\n\nQuiere reanudar esta publicidad? presione 1 para SI o 2 para NO: ", "\nERROR! Ingrese 1 o 2 ", &choosedOption, 2, 1, 2)==0 && choosedOption == 1)
 			{
 				list[index].isActive = TRUE;
@@ -163,6 +163,10 @@ int advertisement_remove(Advertisement *list, int len, int id)
 				}
 			}
 			retornar = 0;
+		}
+		else
+		{
+			printf("\nCliente y anuncio/s NO dados de baja\n");
 		}
 	}
 	return retornar;
@@ -326,21 +330,44 @@ int advertisement_searchForNoEmpty(Advertisement *list, int len)
 }
 
 /**
- * \brief Function to search in the advertisement array if there's any active
+ * \brief Function to search in the advertisement array if there's any active ad
  * \param Advertisement *list: Pointer to an Advertisement array
  * \param int len: Length of the array
  * \return (1) is there any active field TRUE or (0) if not
  */
 int advertisement_searchForActive(Advertisement *list, int len)
 {
-	int retornar = 0;
+	int retornar = -1;
 	if(list != NULL && len > 0)
 	{
 		for(int i=0; i<len; i++)
 		{
 			if(list[i].isActive == TRUE)
 			{
-				retornar = 1;
+				retornar = 0;
+				break;
+			}
+		}
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to search in the advertisement array if there's any paused ad
+ * \param Advertisement *list: Pointer to an Advertisement array
+ * \param int len: Length of the array
+ * \return (1) is there any active field TRUE or (0) if not
+ */
+int advertisement_searchForPaused(Advertisement *list, int len)
+{
+	int retornar = -1;
+	if(list != NULL && len > 0)
+	{
+		for(int i=0; i<len; i++)
+		{
+			if(list[i].isActive == FALSE)
+			{
+				retornar = 0;
 				break;
 			}
 		}
@@ -420,7 +447,7 @@ int advertisement_findById(Advertisement *list, int len, int id, int *pIndex)
 	{
 		for(int i=0; i < len; i++)
 		{
-			if(list[i].id==id && list[i].isEmpty==FALSE && (list[i].isActive==TRUE || list[i].isActive==FALSE))
+			if(list[i].id==id && list[i].isEmpty==FALSE && (list[i].isActive == TRUE || list[i].isActive == FALSE))
 			{
 				*pIndex = i;
 				retornar = 0;
@@ -509,6 +536,33 @@ int advertisement_equalSectorQty(Advertisement *list, int len, int sector, int *
 			}
 		}
 		*pCounter = counter;
+	}
+	return retornar;
+}
+
+/**
+ * \brief Function to add an advertisement receiving it's clientID, is active or not, the ad text, and sector
+ * \param Advertisement *list: Pointer to a Client array
+ * \param int len: Length of the array
+ * \param int clientID: receive the client ID
+ * \param int active: receive 1 or 2 (is active or not)
+ * \param char *adText: receive the text for the ad
+ * \param int sector: receive the sector
+ * \return (-1) if something went wrong or (0) if OK
+ */
+int addAdvertisements(Advertisement *list, int len, int clientID, int active, char *adText, int sector)
+{
+	int retornar = -1;
+	int index;
+	if(list!=NULL && len>0 && advertisement_searchEmpty(list, len, &index)==0)
+	{
+		list[index].clientID = clientID;
+		list[index].isActive = active;
+		strncpy(list[index].adText, adText, ADTEXT_SIZE);
+		list[index].id = idGenerate();
+		list[index].sector = sector;
+		list[index].isEmpty = FALSE;
+		retornar=0;
 	}
 	return retornar;
 }
