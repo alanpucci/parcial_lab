@@ -298,21 +298,14 @@ int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter)
 			if(adList[i].isActive == FALSE)
 			{
 				counter++;
+				retornar=0;
 			}
 		}
 		*pCounter = counter;
-		retornar=0;
 	}
 	return retornar;
 }
 
-/**
- * \brief Function to count how many paused ads have each client
- * \param Advertisement *list: Pointer to an Advertisement array
- * \param int len: Length of the array
- * \param int *pCounter: Pointer of the counter
- * \return (-1) if something went wrong, (0) if everything is OK
- */
 int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int id, int *pCounter)
 {
 	int retornar=-1;

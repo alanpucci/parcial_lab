@@ -298,10 +298,10 @@ int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter)
 			if(adList[i].isActive == FALSE)
 			{
 				counter++;
+				retornar=0;
 			}
 		}
 		*pCounter = counter;
-		retornar=0;
 	}
 	return retornar;
 }

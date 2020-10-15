@@ -574,3 +574,137 @@ Info: Nothing to build for Fantasma
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
 gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+18:10:18 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for Fantasma
+18:49:08 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+..\src\info.c: In function 'info_clientWithMaxPausedAd':
+..\src\info.c:257:59: warning: passing argument 3 of 'advertisement_pausedAdsQty' makes pointer from integer without a cast [-Wint-conversion]
+  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
+      |                                              ~~~~~~~~~~~~~^~~
+      |                                                           |
+      |                                                           int
+In file included from ..\src\info.c:6:
+..\src\advertisement.h:36:71: note: expected 'int *' but argument is of type 'int'
+   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
+      |                                                                  ~~~~~^~~~~~~~
+..\src\info.c:257:4: error: too many arguments to function 'advertisement_pausedAdsQty'
+  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\info.c:6:
+..\src\advertisement.h:36:5: note: declared here
+   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Info: Nothing to build for Fantasma
+18:50:32 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+..\src\advertisement.c:309:5: error: conflicting types for 'advertisement_pausedAdsQtyPerClient'
+  309 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int id, int *pCounter)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\advertisement.c:7:
+..\src\advertisement.h:42:5: note: previous declaration of 'advertisement_pausedAdsQtyPerClient' was here
+   42 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int *pCounter);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Info: Nothing to build for Fantasma
+18:52:21 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+..\src\advertisement.c:309:5: error: conflicting types for 'advertisement_pausedAdsQtyPerClient'
+  309 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int id, int *pCounter)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\advertisement.c:7:
+..\src\advertisement.h:42:5: note: previous declaration of 'advertisement_pausedAdsQtyPerClient' was here
+   42 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int *pCounter);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Info: Nothing to build for Fantasma
+18:52:40 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+..\src\info.c: In function 'info_clientWithMaxPausedAd':
+..\src\info.c:257:59: warning: passing argument 3 of 'advertisement_pausedAdsQty' makes pointer from integer without a cast [-Wint-conversion]
+  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
+      |                                              ~~~~~~~~~~~~~^~~
+      |                                                           |
+      |                                                           int
+In file included from ..\src\info.c:6:
+..\src\advertisement.h:36:71: note: expected 'int *' but argument is of type 'int'
+   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
+      |                                                                  ~~~~~^~~~~~~~
+..\src\info.c:257:4: error: too many arguments to function 'advertisement_pausedAdsQty'
+  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ..\src\info.c:6:
+..\src\advertisement.h:36:5: note: declared here
+   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Info: Nothing to build for Fantasma
+18:52:59 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+18:53:48 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:01:01 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:01:36 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:01:54 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:02:28 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:02:58 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:04:04 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:04:48 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial
+Info: Nothing to build for Fantasma
+19:06:03 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+Info: Nothing to build for parcial

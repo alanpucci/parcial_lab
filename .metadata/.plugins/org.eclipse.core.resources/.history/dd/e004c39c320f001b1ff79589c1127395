@@ -153,7 +153,7 @@ int info_report(Client *clientList, int clientLen, Advertisement *adList, int ad
 					}
 					else
 					{
-						printf("\nNo hay cliente con avisos pausados cargados\n");
+						printf("\nHubo un error al mostrar el cliente con mas avisos pausados\n");
 					}
 				break;
 				}
@@ -236,14 +236,14 @@ int info_clientWithMaxActiveAd(Client *clientList, int clientLen, Advertisement 
 			}
 		}
 		printf("\nEl/Los clientes con mas avisos es/son: ");
-		printf("\n%s %s, CUIT: %s cantidad de avisos activos: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
+		printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
 		for(int j=0; j<clientLen; j++)
 		{
 			advertisement_activeAdCounterPerClient(adList, adLen, clientList[j].id, &currentCounter);
 			if(maxCounter == currentCounter && clientList[j].id != bufferMax.id)
 			{
 				anotherBufferMax = clientList[j];
-				printf("\n%s %s, CUIT: %s cantidad de avisos activos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
+				printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
 			}
 		}
 		retornar = 0;
@@ -277,14 +277,14 @@ int info_clientWithMaxPausedAd(Client *clientList, int clientLen, Advertisement 
 			}
 		}
 		printf("\nEl/Los clientes con mas avisos es/son: ");
-		printf("\n%s %s, CUIT: %s cantidad de avisos pausados: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
+		printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
 		for(int j=0; j<clientLen; j++)
 		{
 			advertisement_pausedAdsQtyPerClient(adList, adLen, clientList[j].id, &currentCounter);
 			if(maxCounter == currentCounter && clientList[j].id != bufferMax.id)
 			{
 				anotherBufferMax = clientList[j];
-				printf("\n%s %s, CUIT: %s cantidad de avisos pausados: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
+				printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
 			}
 		}
 		retornar = 0;

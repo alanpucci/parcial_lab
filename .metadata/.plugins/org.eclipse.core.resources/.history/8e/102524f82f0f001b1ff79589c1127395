@@ -84,7 +84,7 @@ int info_printClientsAndActiveAds(Client *clientList, int clientLen, Advertiseme
 }
 
 /**
- * \brief Function to report the client with more ads, how many paused ads are, the sector number with more ads, client with more active ads and client with more paused ads
+ * \brief Function to report the client with more ads, how many paused ads are and the sector number with more ads
  * \param Client *clientList: Pointer to an Client array
  * \param int clientLen: Client array length
  * \param Advertisement *adList: Pointer to an Advertisement array
@@ -137,24 +137,10 @@ int info_report(Client *clientList, int clientLen, Advertisement *adList, int ad
 					}
 				break;
 				case 4:
-					if(info_clientWithMaxActiveAd(clientList, clientLen, adList, adLen)==0)
-					{
-						retornar=0;
-					}
-					else
-					{
-						printf("\nNo hay cliente con avisos activos cargados\n");
-					}
+
 				break;
 				case 5:
-					if(info_clientWithMaxPausedAd(clientList, clientLen, adList, adLen)==0)
-					{
-						retornar=0;
-					}
-					else
-					{
-						printf("\nNo hay cliente con avisos pausados cargados\n");
-					}
+
 				break;
 				}
 			}
@@ -209,14 +195,6 @@ int info_clientWithMaxAdQty(Client *clientList, int clientLen, Advertisement *ad
 	return retornar;
 }
 
-/**
- * \brief Function to find the client with more active ads quantity
- * \param Client *clientList: Pointer to an Client array
- * \param int clientLen: Client array length
- * \param Advertisement *adList: Pointer to an Advertisement array
- * \param int adLen: Length of the array
- * \return (-1) if something went wrong, (0) if everything is OK
- */
 int info_clientWithMaxActiveAd(Client *clientList, int clientLen, Advertisement *adList, int adLen)
 {
 	int retornar=-1;
@@ -224,7 +202,7 @@ int info_clientWithMaxActiveAd(Client *clientList, int clientLen, Advertisement 
 	int maxCounter;
 	Client bufferMax;
 	Client anotherBufferMax;
-	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && advertisement_searchForActive(adList, adLen)==0)
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0)
 	{
 		for(int i=0;i<clientLen;i++)
 		{
@@ -236,14 +214,14 @@ int info_clientWithMaxActiveAd(Client *clientList, int clientLen, Advertisement 
 			}
 		}
 		printf("\nEl/Los clientes con mas avisos es/son: ");
-		printf("\n%s %s, CUIT: %s cantidad de avisos activos: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
+		printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
 		for(int j=0; j<clientLen; j++)
 		{
-			advertisement_activeAdCounterPerClient(adList, adLen, clientList[j].id, &currentCounter);
+			advertisement_adCounterPerClient(adList, adLen, clientList[j].id, &currentCounter);
 			if(maxCounter == currentCounter && clientList[j].id != bufferMax.id)
 			{
 				anotherBufferMax = clientList[j];
-				printf("\n%s %s, CUIT: %s cantidad de avisos activos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
+				printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
 			}
 		}
 		retornar = 0;
@@ -251,14 +229,6 @@ int info_clientWithMaxActiveAd(Client *clientList, int clientLen, Advertisement 
 	return retornar;
 }
 
-/**
- * \brief Function to find the client with more paused ads quantity
- * \param Client *clientList: Pointer to an Client array
- * \param int clientLen: Client array length
- * \param Advertisement *adList: Pointer to an Advertisement array
- * \param int adLen: Length of the array
- * \return (-1) if something went wrong, (0) if everything is OK
- */
 int info_clientWithMaxPausedAd(Client *clientList, int clientLen, Advertisement *adList, int adLen)
 {
 	int retornar=-1;
@@ -266,25 +236,26 @@ int info_clientWithMaxPausedAd(Client *clientList, int clientLen, Advertisement 
 	int maxCounter;
 	Client bufferMax;
 	Client anotherBufferMax;
-	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && advertisement_searchForPaused(adList, adLen)==0)
+	if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0)
 	{
 		for(int i=0;i<clientLen;i++)
 		{
-			if(advertisement_pausedAdsQtyPerClient(adList, adLen, clientList[i].id, &currentCounter) == 0 && (i==0 || currentCounter>maxCounter))
+			advertisement_activeAdCounterPerClient(adList, adLen, clientList[i].id, &currentCounter);
+			if(i==0 || currentCounter>maxCounter)
 			{
 				maxCounter = currentCounter;
 				bufferMax = clientList[i];
 			}
 		}
 		printf("\nEl/Los clientes con mas avisos es/son: ");
-		printf("\n%s %s, CUIT: %s cantidad de avisos pausados: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
+		printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", bufferMax.name, bufferMax.lastName, bufferMax.cuit, maxCounter);
 		for(int j=0; j<clientLen; j++)
 		{
-			advertisement_pausedAdsQtyPerClient(adList, adLen, clientList[j].id, &currentCounter);
+			advertisement_adCounterPerClient(adList, adLen, clientList[j].id, &currentCounter);
 			if(maxCounter == currentCounter && clientList[j].id != bufferMax.id)
 			{
 				anotherBufferMax = clientList[j];
-				printf("\n%s %s, CUIT: %s cantidad de avisos pausados: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
+				printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
 			}
 		}
 		retornar = 0;
@@ -307,16 +278,16 @@ int altaForzada(Client *list, int len, Advertisement *adList, int adLen)
 	{
 		addClients(list, len, "Alan", "Pucci", "20-38622370-0");
 		addAdvertisements(adList, adLen, 1, 1, "Venta de autos", 14);
-		//addAdvertisements(adList, adLen, 1, 0, "Venta de motos", 11);
+		addAdvertisements(adList, adLen, 1, 0, "Venta de motos", 11);
 		addAdvertisements(adList, adLen, 1, 1, "Venta de motos", 11);
 		addClients(list, len, "Jorge", "Perez", "20-12341566-0");
 		addAdvertisements(adList, adLen, 2, 1, "Busco a mi perro", 12);
-		addAdvertisements(adList, adLen, 2, 1, "Ya encontre a mi perro", 13);
-		//addAdvertisements(adList, adLen, 2, 0, "Ya encontre a mi perro", 12);
+		addAdvertisements(adList, adLen, 2, 0, "Ya encontre a mi perro", 13);
+		addAdvertisements(adList, adLen, 2, 0, "Ya encontre a mi perro", 12);
 		addClients(list, len, "Juan", "Camisaki", "20-54143122-0");
 		addAdvertisements(adList, adLen, 3, 1, "Vendo pan muy barato", 30);
-		addAdvertisements(adList, adLen, 3, 1, "Venta de remolacha", 15);
-		//addAdvertisements(adList, adLen, 3, 0, "Ya encontre a mi perro", 13);
+		addAdvertisements(adList, adLen, 3, 0, "Venta de remolacha", 15);
+		addAdvertisements(adList, adLen, 3, 0, "Ya encontre a mi perro", 13);
 		retornar = 0;
 		printf("\nClientes dados de alta exitosamente!\n");
 	}

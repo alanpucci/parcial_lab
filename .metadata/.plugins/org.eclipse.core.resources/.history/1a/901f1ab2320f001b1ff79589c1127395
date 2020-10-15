@@ -284,7 +284,7 @@ int info_clientWithMaxPausedAd(Client *clientList, int clientLen, Advertisement 
 			if(maxCounter == currentCounter && clientList[j].id != bufferMax.id)
 			{
 				anotherBufferMax = clientList[j];
-				printf("\n%s %s, CUIT: %s cantidad de avisos pausados: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
+				printf("\n%s %s, CUIT: %s cantidad de avisos: %d\n", anotherBufferMax.name, anotherBufferMax.lastName, anotherBufferMax.cuit, maxCounter);
 			}
 		}
 		retornar = 0;

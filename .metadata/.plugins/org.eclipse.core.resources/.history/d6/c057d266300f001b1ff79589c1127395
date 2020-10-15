@@ -39,7 +39,6 @@ int advertisement_equalSectorQty(Advertisement *list, int len, int sector, int *
 int advertisement_searchForActive(Advertisement *list, int len);
 int advertisement_searchForPaused(Advertisement *list, int len);
 int advertisement_searchForNoEmpty(Advertisement *list, int len);
-int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int id, int *pCounter);
 
 int addAdvertisements(Advertisement *list, int len, int clientID, int active, char *adText, int sector);
 #endif

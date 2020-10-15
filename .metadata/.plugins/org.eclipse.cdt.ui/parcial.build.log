@@ -1,7 +1,1 @@
-18:08:30 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-
-18:08:31 Build Finished. 0 errors, 0 warnings. (took 1s.237ms)
-
+Info: Nothing to build for parcial
