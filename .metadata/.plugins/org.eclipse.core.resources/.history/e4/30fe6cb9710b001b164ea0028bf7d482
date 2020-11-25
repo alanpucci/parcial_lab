@@ -1,7 +1,0 @@
-#ifndef ADCLIENT_H_
-#define ADCLIENT_H_
-#include "cliente.h"
-#include "advertisement.h"
-
-
-#endif /* ADCLIENT_H_ */

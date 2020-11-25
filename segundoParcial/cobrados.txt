@@ -1,0 +1,3 @@
+id,nombre,apellido,cuit,ventas_cobradas
+12,Cordelie,Megan,23-37933040-2,1
+19,Solomon,Nananne,23-37933040-9,1

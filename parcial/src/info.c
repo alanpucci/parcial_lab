@@ -307,7 +307,7 @@ int altaForzada(Client *list, int len, Advertisement *adList, int adLen)
 	{
 		addClients(list, len, "Alan", "Pucci", "20-38622370-0");
 		addAdvertisements(adList, adLen, 1, 1, "Venta de autos", 14);
-		//addAdvertisements(adList, adLen, 1, 0, "Venta de motos", 11);
+		addAdvertisements(adList, adLen, 1, 1, "Venta de motos", 11);
 		addAdvertisements(adList, adLen, 1, 1, "Venta de motos", 11);
 		addClients(list, len, "Jorge", "Perez", "20-12341566-0");
 		addAdvertisements(adList, adLen, 2, 1, "Busco a mi perro", 12);

@@ -1,0 +1,6 @@
+id_venta,id_cliente,cantidad_afiches,nombre_archivo,zona,estado
+1,10,20,lola,1,1
+2,11,23,asd,3,0
+3,12,41,asdf,2,1
+4,11,34,asff,3,0
+5,20,350,asdqwe,2,0

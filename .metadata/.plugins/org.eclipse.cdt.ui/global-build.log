@@ -1,710 +1,1164 @@
-20:22:05 **** Rebuild of configuration Debug for project parcial ****
+18:50:01 **** Rebuild of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+..\src\LinkedList.c: In function 'll_reduceInt':
+..\src\LinkedList.c:626:26: warning: passing argument 2 of 'pFunc' makes pointer from integer without a cast [-Wint-conversion]
+  626 |    acc=+ pFunc(pElement, id);
+      |                          ^~
+      |                          |
+      |                          int
+..\src\LinkedList.c:626:26: note: expected 'void *' but argument is of type 'int'
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-20:22:34 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_counterSameClients':
+..\src\Controller.c:273:11: warning: passing argument 1 of 'fprintf' from incompatible pointer type [-Wincompatible-pointer-types]
+  273 |   fprintf(path, "id,nombre,apellido,cuit,ventas_cobradas\n");
+      |           ^~~~
+      |           |
+      |           char *
+In file included from ..\src\Controller.c:1:
+c:\mingw\include\stdio.h:461:47: note: expected 'FILE *' {aka 'struct _iobuf *'} but argument is of type 'char *'
+  461 | _CRTIMP __cdecl __MINGW_NOTHROW  int fprintf (FILE *, const char *, ...);
+      |                                               ^~~~~~
+..\src\Controller.c:282:14: warning: passing argument 1 of 'fprintf' from incompatible pointer type [-Wincompatible-pointer-types]
+  282 |      fprintf(path, "%d,%s,%s,%s,%d\n", bufferId, bufferName, bufferLastName, bufferCuit, counter);
+      |              ^~~~
+      |              |
+      |              char *
+In file included from ..\src\Controller.c:1:
+c:\mingw\include\stdio.h:461:47: note: expected 'FILE *' {aka 'struct _iobuf *'} but argument is of type 'char *'
+  461 | _CRTIMP __cdecl __MINGW_NOTHROW  int fprintf (FILE *, const char *, ...);
+      |                                               ^~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu.o" "..\\src\\menu.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+18:52:05 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-20:52:06 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: At top level:
+..\src\Controller.c:244:5: error: conflicting types for 'controller_counterSameClients'
+  244 | int controller_counterSameClients(LinkedList* clientList, LinkedList* sellList)
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..\src\Controller.c:16:12: note: previous declaration of 'controller_counterSameClients' was here
+   16 | static int controller_counterSameClients(char* path, LinkedList* clientList, LinkedList* sellList);
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..\src\Controller.c: In function 'controller_counterSameClients':
+..\src\Controller.c:249:14: warning: variable 'bufferClientList' set but not used [-Wunused-but-set-variable]
+  249 |  LinkedList* bufferClientList;
+      |              ^~~~~~~~~~~~~~~~
+18:52:13 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-21:36:55 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-21:37:24 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-21:37:37 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-21:39:28 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-21:47:39 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-21:48:19 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-22:28:52 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-20:25:38 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-23:43:43 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-..\src\cliente.c: In function 'client_remove':
-..\src\cliente.c:93:6: warning: unused variable 'choosenOption' [-Wunused-variable]
-   93 |  int choosenOption;
-      |      ^~~~~~~~~~~~~
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-23:43:52 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-23:48:04 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-..\src\advertisement.c: In function 'advertisement_print':
-..\src\advertisement.c:172:6: error: too few arguments to function 'strncpy'
-  172 |      strncpy(bufferState, "ACTIVO");
-      |      ^~~~~~~
-In file included from ..\src\advertisement.c:3:
-c:\mingw\include\string.h:86:40: note: declared here
-   86 | _CRTIMP __cdecl __MINGW_NOTHROW  char *strncpy (char *, const char *, size_t);
-      |                                        ^~~~~~~
-..\src\advertisement.c:176:6: error: too few arguments to function 'strncpy'
-  176 |      strncpy(bufferState, "PAUSADO");
-      |      ^~~~~~~
-In file included from ..\src\advertisement.c:3:
-c:\mingw\include\string.h:86:40: note: declared here
-   86 | _CRTIMP __cdecl __MINGW_NOTHROW  char *strncpy (char *, const char *, size_t);
-      |                                        ^~~~~~~
-23:48:21 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-23:51:09 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'info_printAdsByClientID':
-..\src\info.c:22:2: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'if'
-   22 |  if(clientList!=NULL && clientLen>0 && adList!=NULL && adLen>0 && id>0)
-      |  ^~
-..\src\info.c:33:7: warning: implicit declaration of function 'strncpy' [-Wimplicit-function-declaration]
-   33 |       strncpy(bufferState, "ACTIVO", STATE_SIZE);
-      |       ^~~~~~~
-..\src\info.c:33:7: warning: incompatible implicit declaration of built-in function 'strncpy'
-..\src\info.c:7:1: note: include '<string.h>' or provide a declaration of 'strncpy'
-    6 | #include "info.h"
-  +++ |+#include <string.h>
-    7 | 
-..\src\info.c:33:15: error: 'bufferState' undeclared (first use in this function)
-   33 |       strncpy(bufferState, "ACTIVO", STATE_SIZE);
-      |               ^~~~~~~~~~~
-..\src\info.c:33:15: note: each undeclared identifier is reported only once for each function it appears in
-..\src\info.c:37:7: warning: incompatible implicit declaration of built-in function 'strncpy'
-   37 |       strncpy(bufferState, "PAUSADO", STATE_SIZE);
-      |       ^~~~~~~
-..\src\info.c:37:7: note: include '<string.h>' or provide a declaration of 'strncpy'
-23:51:23 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'info_printAdsByClientID':
-..\src\info.c:33:7: warning: implicit declaration of function 'strncpy' [-Wimplicit-function-declaration]
-   33 |       strncpy(bufferState, "ACTIVO", STATE_SIZE);
-      |       ^~~~~~~
-..\src\info.c:33:7: warning: incompatible implicit declaration of built-in function 'strncpy'
-..\src\info.c:7:1: note: include '<string.h>' or provide a declaration of 'strncpy'
-    6 | #include "info.h"
-  +++ |+#include <string.h>
-    7 | 
-..\src\info.c:37:7: warning: incompatible implicit declaration of built-in function 'strncpy'
-   37 |       strncpy(bufferState, "PAUSADO", STATE_SIZE);
-      |       ^~~~~~~
-..\src\info.c:37:7: note: include '<string.h>' or provide a declaration of 'strncpy'
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-23:51:34 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-23:55:41 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-23:55:51 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-00:00:14 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-00:17:56 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-00:19:48 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-00:22:37 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-00:24:26 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-00:26:10 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-00:27:35 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-00:31:49 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-00:37:25 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-00:41:15 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-00:45:03 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-15:56:33 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-16:00:20 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-16:01:09 **** Rebuild of configuration Debug for project Fantasma ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Fantasma.o" "..\\src\\Fantasma.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\fantasmaVinculado.o" "..\\src\\fantasmaVinculado.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\arrayFantasma.o" "..\\src\\arrayFantasma.c" 
-gcc -o Fantasma.exe "src\\Fantasma.o" "src\\arrayFantasma.o" "src\\fantasmaVinculado.o" "src\\utn.o" 
-16:01:12 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:02:24 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:21:21 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'client_hardcodeAdd':
-..\src\info.c:192:3: warning: implicit declaration of function 'addClients' [-Wimplicit-function-declaration]
-  192 |   addClients(list, len, "Alan", "Pucci", "20-38622370-0");
-      |   ^~~~~~~~~~
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
-..\src\cliente.c:308:5: warning: 'addClients' defined but not used [-Wunused-function]
-  308 | int addClients(Client *list, int len, char *name, char *lastName, char *cuit)
-      |     ^~~~~~~~~~
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\info.o: in function `client_hardcodeAdd':
-C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/info.c:192: undefined reference to `addClients'
-c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/info.c:193: undefined reference to `addClients'
-c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/info.c:194: undefined reference to `addClients'
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_counterSameClients':
+..\src\Controller.c:248:14: warning: variable 'bufferClientList' set but not used [-Wunused-but-set-variable]
+  248 |  LinkedList* bufferClientList;
+      |              ^~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+..\src\segundoParcial.c: In function 'main':
+..\src\segundoParcial.c:70:5: warning: implicit declaration of function 'controller_saveClientsWithChargedPosters' [-Wimplicit-function-declaration]
+   70 |     controller_saveClientsWithChargedPosters(listaCliente, listaVenta);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\segundoParcial.o: in function `main':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:70: undefined reference to `controller_saveClientsWithChargedPosters'
 collect2.exe: error: ld returned 1 exit status
-Info: Nothing to build for Fantasma
-16:21:51 **** Incremental Build of configuration Debug for project parcial ****
+18:52:21 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+18:52:34 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+19:02:38 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_counterSameClients':
+..\src\Controller.c:248:14: warning: variable 'bufferClientList' set but not used [-Wunused-but-set-variable]
+  248 |  LinkedList* bufferClientList;
+      |              ^~~~~~~~~~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:04:06 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:05:38 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+19:10:45 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:11:49 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:13:08 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:22:16 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:24:27 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+..\src\LinkedList.c: In function 'll_reduceInt':
+..\src\LinkedList.c:626:26: warning: passing argument 2 of 'pFunc' makes pointer from integer without a cast [-Wint-conversion]
+  626 |    acc+= pFunc(pElement, id);
+      |                          ^~
+      |                          |
+      |                          int
+..\src\LinkedList.c:626:26: note: expected 'void *' but argument is of type 'int'
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:25:45 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_counterSameClients':
+..\src\Controller.c:268:39: warning: passing argument 2 of 'll_reduceInt' from incompatible pointer type [-Wincompatible-pointer-types]
+  268 |      if(!ll_reduceInt(bufferSoldList, venta_sameId, bufferId ,&counter))
+      |                                       ^~~~~~~~~~~~
+      |                                       |
+      |                                       int (*)(void *, void *)
+In file included from ..\src\Controller.c:6:
+..\src\Linkedlist.h:60:42: note: expected 'int (*)(void *, int)' but argument is of type 'int (*)(void *, void *)'
+   60 | int ll_reduceInt(LinkedList* this, int (*pFunc)(void*, int), int id,int* pResultado);
+      |                                    ~~~~~~^~~~~~~~~~~~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:26:38 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+..\src\Venta.c: In function 'venta_sameId':
+..\src\Venta.c:353:21: warning: comparison between pointer and integer
+  353 |  if(this!=NULL && id!=NULL)
+      |                     ^~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+19:28:32 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:31:43 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+..\src\Venta.c: In function 'venta_sameId':
+..\src\Venta.c:350:6: warning: unused variable 'bufferId' [-Wunused-variable]
+  350 |  int bufferId;
+      |      ^~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:32:48 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+19:40:14 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+19:43:51 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:44:42 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:45:48 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+..\src\Venta.c: In function 'venta_sameId':
+..\src\Venta.c:356:21: warning: comparison between pointer and integer
+  356 |   if(bufferClientId == id)
+      |                     ^~
+..\src\Venta.c:350:6: warning: unused variable 'bufferId' [-Wunused-variable]
+  350 |  int bufferId;
+      |      ^~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+..\src\LinkedList.c: In function 'll_reduceInt':
+..\src\LinkedList.c:626:31: warning: passing argument 2 of 'pFunc' makes pointer from integer without a cast [-Wint-conversion]
+  626 |    acc= acc + pFunc(pElement, id);
+      |                               ^~
+      |                               |
+      |                               int
+..\src\LinkedList.c:626:31: note: expected 'void *' but argument is of type 'int'
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:46:25 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+..\src\Venta.c: In function 'venta_sameId':
+..\src\Venta.c:355:21: warning: comparison between pointer and integer
+  355 |   if(bufferClientId == id)
+      |                     ^~
+..\src\Venta.c:351:6: warning: unused variable 'bufferId' [-Wunused-variable]
+  351 |  int bufferId = (int) id;
+      |      ^~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:46:53 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:47:57 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:52:23 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:53:14 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+19:55:10 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_saveClientsWithChargedPosters':
+..\src\Controller.c:293:45: warning: the address of 'venta_isSold' will always evaluate as 'true' [-Waddress]
+  293 |   bufferSoldList = ll_cloneFilter(sellList, !venta_isSold);
+      |                                             ^
+..\src\Controller.c:293:45: warning: passing argument 2 of 'll_cloneFilter' makes pointer from integer without a cast [-Wint-conversion]
+  293 |   bufferSoldList = ll_cloneFilter(sellList, !venta_isSold);
+      |                                             ^~~~~~~~~~~~~
+      |                                             |
+      |                                             int
+In file included from ..\src\Controller.c:6:
+..\src\Linkedlist.h:59:13: note: expected 'int (*)(void *)' but argument is of type 'int'
+   59 | LinkedList* ll_cloneFilter(LinkedList* this, int (*pFunc)(void*));
+      |             ^~~~~~~~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:55:53 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:56:50 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+..\src\segundoParcial.c: In function 'main':
+..\src\segundoParcial.c:83:5: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+   83 |     controller_printClients(listaCliente);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+      |     controller_addClient
+..\src\segundoParcial.c:86:5: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+   86 |     controller_printSells(listaVenta);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+      |     controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\segundoParcial.o: in function `main':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:83: undefined reference to `controller_printClients'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:86: undefined reference to `controller_printSells'
+collect2.exe: error: ld returned 1 exit status
+19:57:56 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_saveClientsWithChargedPosters':
+..\src\Controller.c:293:18: warning: assignment to 'LinkedList *' {aka 'struct LinkedList *'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+  293 |   bufferSoldList = !ll_cloneFilter(sellList, venta_isSold);
+      |                  ^
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+19:58:09 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+20:00:26 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+20:01:18 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+20:02:13 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_saveClientsWithChargedPosters':
+..\src\Controller.c:293:61: error: expected ';' before ')' token
+  293 |   bufferSoldList = ll_cloneFilter(sellList, venta_isNotSold));
+      |                                                             ^
+      |                                                             ;
+..\src\Controller.c:293:61: error: expected statement before ')' token
+20:02:14 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_saveClientsWithChargedPosters':
+..\src\Controller.c:293:61: error: expected ';' before ')' token
+  293 |   bufferSoldList = ll_cloneFilter(sellList, venta_isNotSold));
+      |                                                             ^
+      |                                                             ;
+..\src\Controller.c:293:61: error: expected statement before ')' token
+20:02:24 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:106:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  106 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:148:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  148 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+16:46:00 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+..\src\LinkedList.c: In function 'll_reduceInt':
+..\src\LinkedList.c:626:31: warning: passing argument 2 of 'pFunc' makes pointer from integer without a cast [-Wint-conversion]
+  626 |    acc= acc + pFunc(pElement, id);
+      |                               ^~
+      |                               |
+      |                               int
+..\src\LinkedList.c:626:31: note: expected 'void *' but argument is of type 'int'
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu.o" "..\\src\\menu.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+16:46:25 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+..\src\LinkedList.c: In function 'll_reduceInt':
+..\src\LinkedList.c:626:30: warning: passing argument 2 of 'pFunc' makes pointer from integer without a cast [-Wint-conversion]
+  626 |    acc= acc + pFunc(pElement,(int) id);
+      |                              ^~~~~~~~
+      |                              |
+      |                              int
+..\src\LinkedList.c:626:30: note: expected 'void *' but argument is of type 'int'
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+16:46:33 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+16:48:38 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+..\src\segundoParcial.c: In function 'main':
+..\src\segundoParcial.c:98:10: warning: implicit declaration of function 'controller_report'; did you mean 'controller_sellPoster'? [-Wimplicit-function-declaration]
+   98 |      if(!controller_report(listaCliente, listaVenta))
+      |          ^~~~~~~~~~~~~~~~~
+      |          controller_sellPoster
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+16:48:52 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+16:54:50 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_clientMaxPosterQty':
+..\src\Controller.c:360:30: error: expected identifier before '!' token
+  360 |    if(bufferSell!=NULL && && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, venta_sameId, bufferClientId, &currentCounter))
+      |                              ^
+..\src\Controller.c:366:30: error: expected ';' before '}' token
+  366 |      auxClient = bufferClient
+      |                              ^
+      |                              ;
+  367 |     }
+      |     ~                         
+..\src\Controller.c:351:6: warning: unused variable 'indexClient' [-Wunused-variable]
+  351 |  int indexClient;
+      |      ^~~~~~~~~~~
+..\src\Controller.c:350:6: warning: unused variable 'bufferClientId' [-Wunused-variable]
+  350 |  int bufferClientId;
+      |      ^~~~~~~~~~~~~~
+16:58:27 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_clientMaxPosterQty':
+..\src\Controller.c:366:30: error: expected ';' before '}' token
+  366 |      auxClient = bufferClient
+      |                              ^
+      |                              ;
+  367 |     }
+      |     ~                         
+..\src\Controller.c:351:6: warning: unused variable 'indexClient' [-Wunused-variable]
+  351 |  int indexClient;
+      |      ^~~~~~~~~~~
+16:58:33 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_clientMaxPosterQty':
+..\src\Controller.c:359:6: warning: 'bufferSell' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  359 |    if(bufferSell!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, venta_sameId, bufferClientId, &currentCounter))
+      |      ^
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+16:58:47 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+17:02:59 **** Incremental Build of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
+gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+17:03:02 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:107:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  107 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:149:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  149 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+..\src\Controller.c: In function 'controller_clientMaxPosterQty':
+..\src\Controller.c:352:11: warning: variable 'auxClient' set but not used [-Wunused-but-set-variable]
+  352 |  Cliente* auxClient;
+      |           ^~~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for parcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for parcial
+17:07:06 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:108:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  108 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:150:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  150 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for parcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+17:21:03 **** Rebuild of configuration Debug for project parcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\cliente.o" "..\\src\\cliente.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
 gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
+17:21:09 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Venta.o" "..\\src\\Venta.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\menu.o" "..\\src\\menu.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:108:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  108 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:150:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  150 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
 Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:31:02 **** Incremental Build of configuration Debug for project parcial ****
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for parcial
+17:37:39 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'altaForzada':
-..\src\info.c:190:28: error: 'adlist' undeclared (first use in this function); did you mean 'adList'?
-  190 |  if(list!=NULL && len>0 && adlist!=NULL && adLen>0)
-      |                            ^~~~~~
-      |                            adList
-..\src\info.c:190:28: note: each undeclared identifier is reported only once for each function it appears in
-Info: Nothing to build for Fantasma
-16:31:14 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for parcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for parcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for parcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+17:46:46 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-..\src\parcial.c: In function 'main':
-..\src\parcial.c:40:7: warning: implicit declaration of function 'client_hardcodeAdd' [-Wimplicit-function-declaration]
-   40 |       client_hardcodeAdd(arrayClient, ARRAYCLIENT_SIZE);
-      |       ^~~~~~~~~~~~~~~~~~
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\parcial.o: in function `main':
-C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\parcial\Debug/../src/parcial.c:40: undefined reference to `client_hardcodeAdd'
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+17:48:31 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:49:08 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+17:54:18 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:56:01 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+17:59:30 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:59:57 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:02:30 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+18:03:47 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:04:04 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:18:12 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:3: warning: implicit declaration of function 'controller_printClients'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   controller_printClients(clientList);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:151:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  151 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+18:18:46 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:110:3: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  110 |   controller_print(clientList, cliente_print);
+      |   ^~~~~~~~~~~~~~~~
+      |   controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:152:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  152 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:19:21 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:150:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  150 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+18:20:11 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:150:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  150 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\Controller.o: in function `controller_modifySell':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/Controller.c:150: undefined reference to `controller_printSells'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\Controller.o: in function `controller_chargePoster':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/Controller.c:213: undefined reference to `controller_printSells'
 collect2.exe: error: ld returned 1 exit status
-Info: Nothing to build for Fantasma
-16:31:27 **** Incremental Build of configuration Debug for project parcial ****
+18:25:07 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-..\src\parcial.c: In function 'main':
-..\src\parcial.c:40:7: error: too few arguments to function 'altaForzada'
-   40 |       altaForzada(arrayClient, ARRAYCLIENT_SIZE);
-      |       ^~~~~~~~~~~
-In file included from ..\src\parcial.c:9:
-..\src\info.h:13:5: note: declared here
-   13 | int altaForzada(Client *list, int len, Advertisement *adList, int adLen);
-      |     ^~~~~~~~~~~
-Info: Nothing to build for Fantasma
-16:31:37 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:150:3: warning: implicit declaration of function 'controller_printSells'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+  150 |   controller_printSells(bufferSellList);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\Controller.o: in function `controller_modifySell':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/Controller.c:150: undefined reference to `controller_printSells'
+collect2.exe: error: ld returned 1 exit status
+18:25:33 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-16:32:51 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:150:53: error: expected ')' before '!' token
+  150 |   if( !controller_print(bufferSellList, venta_print) !utn_getInt("\nIngrese el ID de la venta a modificar: ", "\nERROR!", &bufferId, 2, 1, 99999) && !controller_findByIdSells(sellList, bufferId, &indexSell))
+      |     ~                                               ^~
+      |                                                     )
+18:25:37 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:37:23 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:109:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  109 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+11:33:31 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:42:18 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:111:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  111 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+..\src\Controller.c: In function 'controller_findByIdGen':
+..\src\Controller.c:546:28: warning: passing argument 2 of 'pFunc' makes integer from pointer without a cast [-Wint-conversion]
+  546 |    if(!pFunc(bufferEntity, &bufferId) && bufferId == id)
+      |                            ^~~~~~~~~
+      |                            |
+      |                            int *
+..\src\Controller.c:546:28: note: expected 'int' but argument is of type 'int *'
+At top level:
+..\src\Controller.c:535:12: warning: 'controller_findByIdGen' defined but not used [-Wunused-function]
+  535 | static int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int), int id, int* index)
+      |            ^~~~~~~~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+11:34:44 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-16:42:46 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:111:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  111 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+..\src\Controller.c:113:40: warning: passing argument 2 of 'controller_findByIdGen' from incompatible pointer type [-Wincompatible-pointer-types]
+  113 |    !controller_findByIdGen(clientList, cliente_getId, bufferIdClient, &index))
+      |                                        ^~~~~~~~~~~~~
+      |                                        |
+      |                                        int (*)(Cliente *, int *) {aka int (*)(struct <anonymous> *, int *)}
+..\src\Controller.c:20:59: note: expected 'int (*)(void *, int)' but argument is of type 'int (*)(Cliente *, int *)' {aka 'int (*)(struct <anonymous> *, int *)'}
+   20 | static int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int), int id, int* index);
+      |                                                     ~~~~~~^~~~~~~~~~~~~~~~~
+..\src\Controller.c: In function 'controller_findByIdGen':
+..\src\Controller.c:547:28: warning: passing argument 2 of 'pFunc' makes integer from pointer without a cast [-Wint-conversion]
+  547 |    if(!pFunc(bufferEntity, &bufferId) && bufferId == id)
+      |                            ^~~~~~~~~
+      |                            |
+      |                            int *
+..\src\Controller.c:547:28: note: expected 'int' but argument is of type 'int *'
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+11:35:44 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:45:38 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:111:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  111 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+..\src\Controller.c:113:40: warning: passing argument 2 of 'controller_findByIdGen' from incompatible pointer type [-Wincompatible-pointer-types]
+  113 |    !controller_findByIdGen(clientList, cliente_getId, bufferIdClient, &index))
+      |                                        ^~~~~~~~~~~~~
+      |                                        |
+      |                                        int (*)(Cliente *, int *) {aka int (*)(struct <anonymous> *, int *)}
+..\src\Controller.c:20:59: note: expected 'int (*)(void *, int *)' but argument is of type 'int (*)(Cliente *, int *)' {aka 'int (*)(struct <anonymous> *, int *)'}
+   20 | static int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), int id, int* index);
+      |                                                     ~~~~~~^~~~~~~~~~~~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+11:38:05 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-16:52:04 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
+..\src\Cliente.c:54:5: error: conflicting types for 'cliente_getId'
+   54 | int cliente_getId(void* this, int* pResult)
+      |     ^~~~~~~~~~~~~
+In file included from ..\src\Cliente.c:4:
+..\src\Cliente.h:25:5: note: previous declaration of 'cliente_getId' was here
+   25 | int cliente_getId(Cliente* this, int* pResult);
+      |     ^~~~~~~~~~~~~
+..\src\Cliente.c: In function 'cliente_getId':
+..\src\Cliente.c:61:3: error: invalid operands to binary * (have 'Cliente *' {aka 'struct <anonymous> *'} and 'int *')
+   60 |   bufferClient = (Cliente*) this
+      |                  ~~~~~~~~~~~~~~~
+      |                  |
+      |                  Cliente * {aka struct <anonymous> *}
+   61 |   *pResult = bufferClient->id;
+      |   ^
+11:38:55 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-16:54:34 **** Incremental Build of configuration Debug for project parcial ****
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
+..\src\Cliente.c:54:5: error: conflicting types for 'cliente_getId'
+   54 | int cliente_getId(void* this, int* pResult)
+      |     ^~~~~~~~~~~~~
+In file included from ..\src\Cliente.c:4:
+..\src\Cliente.h:25:5: note: previous declaration of 'cliente_getId' was here
+   25 | int cliente_getId(Cliente* this, int* pResult);
+      |     ^~~~~~~~~~~~~
+11:39:33 **** Incremental Build of configuration Debug for project segundoParcial ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-16:54:46 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:55:30 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:56:28 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-16:57:31 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-17:09:17 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-17:09:49 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:15:14 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'info_clientWithMaxAdQty':
-..\src\info.c:162:6: warning: unused variable 'sectorCounter' [-Wunused-variable]
-  162 |  int sectorCounter=0;
-      |      ^~~~~~~~~~~~~
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-17:15:18 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:20:32 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'info_clientWithMaxAdQty':
-..\src\info.c:162:6: warning: unused variable 'sectorCounter' [-Wunused-variable]
-  162 |  int sectorCounter=0;
-      |      ^~~~~~~~~~~~~
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-17:20:35 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:20:48 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:22:28 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'info_clientWithMaxAdQty':
-..\src\info.c:163:9: warning: variable 'bufferMaxTwo' set but not used [-Wunused-but-set-variable]
-  163 |  Client bufferMaxTwo;
-      |         ^~~~~~~~~~~~
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-17:22:38 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:23:30 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:23:48 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:25:45 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:26:12 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:26:32 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:29:36 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:34:24 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-..\src\advertisement.c: In function 'advertisement_sectorMaxQtyAds':
-..\src\advertisement.c:512:31: warning: format '%s' expects argument of type 'char *', but argument 2 has type 'int' [-Wformat=]
-  512 |   printf("\nNumero de rubro: %s con %d avisos",aux.sector,maxCounter);
-      |                              ~^                ~~~~~~~~~~
-      |                               |                   |
-      |                               char *              int
-      |                              %d
-..\src\advertisement.c:518:33: warning: format '%s' expects argument of type 'char *', but argument 2 has type 'int' [-Wformat=]
-  518 |     printf("\nNumero de rubro: %s con %d avisos",anotherAux.sector,maxCounter);
-      |                                ~^                ~~~~~~~~~~~~~~~~~
-      |                                 |                          |
-      |                                 char *                     int
-      |                                %d
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-17:34:42 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:35:35 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:38:14 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:38:51 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:39:15 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:40:33 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:40:49 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-17:41:17 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-18:07:28 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-..\src\advertisement.c: In function 'advertisement_sectorMaxQtyAds':
-..\src\advertisement.c:498:6: warning: unused variable 'flagSector' [-Wunused-variable]
-  498 |  int flagSector;
-      |      ^~~~~~~~~~
-..\src\advertisement.c:497:16: warning: unused variable 'anotherAux' [-Wunused-variable]
-  497 |  Advertisement anotherAux;
-      |                ^~~~~~~~~~
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-18:07:33 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-18:08:30 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-18:10:18 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for Fantasma
-18:49:08 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'info_clientWithMaxPausedAd':
-..\src\info.c:257:59: warning: passing argument 3 of 'advertisement_pausedAdsQty' makes pointer from integer without a cast [-Wint-conversion]
-  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
-      |                                              ~~~~~~~~~~~~~^~~
-      |                                                           |
-      |                                                           int
-In file included from ..\src\info.c:6:
-..\src\advertisement.h:36:71: note: expected 'int *' but argument is of type 'int'
-   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
-      |                                                                  ~~~~~^~~~~~~~
-..\src\info.c:257:4: error: too many arguments to function 'advertisement_pausedAdsQty'
-  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
-      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from ..\src\info.c:6:
-..\src\advertisement.h:36:5: note: declared here
-   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
-Info: Nothing to build for Fantasma
-18:50:32 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-..\src\advertisement.c:309:5: error: conflicting types for 'advertisement_pausedAdsQtyPerClient'
-  309 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int id, int *pCounter)
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from ..\src\advertisement.c:7:
-..\src\advertisement.h:42:5: note: previous declaration of 'advertisement_pausedAdsQtyPerClient' was here
-   42 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int *pCounter);
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Info: Nothing to build for Fantasma
-18:52:21 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-..\src\advertisement.c:309:5: error: conflicting types for 'advertisement_pausedAdsQtyPerClient'
-  309 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int id, int *pCounter)
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from ..\src\advertisement.c:7:
-..\src\advertisement.h:42:5: note: previous declaration of 'advertisement_pausedAdsQtyPerClient' was here
-   42 | int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int *pCounter);
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Info: Nothing to build for Fantasma
-18:52:40 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parcial.o" "..\\src\\parcial.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-..\src\info.c: In function 'info_clientWithMaxPausedAd':
-..\src\info.c:257:59: warning: passing argument 3 of 'advertisement_pausedAdsQty' makes pointer from integer without a cast [-Wint-conversion]
-  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
-      |                                              ~~~~~~~~~~~~~^~~
-      |                                                           |
-      |                                                           int
-In file included from ..\src\info.c:6:
-..\src\advertisement.h:36:71: note: expected 'int *' but argument is of type 'int'
-   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
-      |                                                                  ~~~~~^~~~~~~~
-..\src\info.c:257:4: error: too many arguments to function 'advertisement_pausedAdsQty'
-  257 |    advertisement_pausedAdsQty(adList, adLen, clientList[i].id, &currentCounter);
-      |    ^~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from ..\src\info.c:6:
-..\src\advertisement.h:36:5: note: declared here
-   36 | int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter);
-      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
-Info: Nothing to build for Fantasma
-18:52:59 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-18:53:48 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:01:01 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\advertisement.o" "..\\src\\advertisement.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:01:36 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:01:54 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:02:28 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:02:58 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:04:04 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:04:48 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
-Info: Nothing to build for Fantasma
-19:06:03 **** Incremental Build of configuration Debug for project parcial ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\info.o" "..\\src\\info.c" 
-gcc -o parcial.exe "src\\advertisement.o" "src\\cliente.o" "src\\info.o" "src\\parcial.o" "src\\utn.o" 
-Info: Nothing to build for parcial
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:111:8: warning: implicit declaration of function 'controller_print'; did you mean 'controller_addClient'? [-Wimplicit-function-declaration]
+  111 |   if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
+      |        ^~~~~~~~~~~~~~~~
+      |        controller_addClient
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial

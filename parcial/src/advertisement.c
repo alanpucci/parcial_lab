@@ -272,10 +272,10 @@ int advertisement_activeAdCounterPerClient(Advertisement *adList, int adLen, int
 			if(adList[i].clientID == id && adList[i].isActive == TRUE)
 			{
 				counter++;
+				retornar = 0;
 			}
 		}
 		*pCounter = counter;
-		retornar = 0;
 	}
 	return retornar;
 }
@@ -298,10 +298,10 @@ int advertisement_pausedAdsQty(Advertisement *adList, int adLen, int *pCounter)
 			if(adList[i].isActive == FALSE)
 			{
 				counter++;
+				retornar=0;
 			}
 		}
 		*pCounter = counter;
-		retornar=0;
 	}
 	return retornar;
 }
@@ -324,10 +324,10 @@ int advertisement_pausedAdsQtyPerClient(Advertisement *adList, int adLen, int id
 			if(adList[i].clientID == id && adList[i].isActive == FALSE)
 			{
 				counter++;
+				retornar=0;
 			}
 		}
 		*pCounter = counter;
-		retornar=0;
 	}
 	return retornar;
 }

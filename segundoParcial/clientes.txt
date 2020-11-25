@@ -1,0 +1,9 @@
+id,nombre,apellido,cuit
+10,Aggie,Bronnie,23-37933049-0
+11,Brandea,Shel,23-37933040-1
+12,Cordelie,Megan,23-37933040-2
+15,Blanch,Cristobal,23-37933040-5
+17,Shaughn,Katrine,23-37933040-7
+18,Cristi,Cristie,23-37933040-8
+19,Solomon,Nananne,23-37933040-9
+20,Sacha,Morse,23-37933052-0
