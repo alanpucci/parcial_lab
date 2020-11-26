@@ -7,3 +7,4 @@ id,nombre,apellido,cuit
 18,Cristi,Cristie,23-37933040-8
 19,Solomon,Nananne,23-37933040-9
 20,Sacha,Morse,23-37933052-0
+21,alan,pucci,20-38622370-0

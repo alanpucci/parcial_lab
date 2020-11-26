@@ -15,7 +15,7 @@ int main(void) {
 	LinkedList* listaVenta = ll_newLinkedList();
 
 	controller_loadClientFromText("clientes.txt", listaCliente);
-	controller_loadSellFromText("ventas.txt", listaVenta);
+	controller_loadSaleFromText("ventas.txt", listaVenta);
 	do
 	{
 		if(!utn_getMenu(&menuOption, 2, 1, 8))
@@ -32,10 +32,10 @@ int main(void) {
 			case 2:
 				if(!ll_isEmpty(listaCliente))
 				{
-					if(!controller_sellPoster(listaCliente, listaVenta))
+					if(!controller_addSale(listaCliente, listaVenta))
 					{
 						printf("\nVenta 'a cobrar' cargada exitosamente\n");
-						controller_saveSellsAsText("ventas.txt", listaVenta);
+						controller_saveSalesAsText("ventas.txt", listaVenta);
 					}
 				}
 				else
@@ -46,10 +46,10 @@ int main(void) {
 			case 3:
 				if(!ll_isEmpty(listaCliente) && !ll_isEmpty(listaVenta))
 				{
-					if(!controller_modifySell(listaCliente, listaVenta))
+					if(!controller_modifySale(listaCliente, listaVenta))
 					{
 						printf("\nVenta modificada exitosamente\n");
-						controller_saveSellsAsText("ventas.txt", listaVenta);
+						controller_saveSalesAsText("ventas.txt", listaVenta);
 					}
 				}
 				else
@@ -63,7 +63,7 @@ int main(void) {
 					if(!controller_chargePoster(listaCliente, listaVenta))
 					{
 						printf("\nVenta cobrada exitosamente\n");
-						controller_saveSellsAsText("ventas.txt", listaVenta);
+						controller_saveSalesAsText("ventas.txt", listaVenta);
 					}
 				}
 				else

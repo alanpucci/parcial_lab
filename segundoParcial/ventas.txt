@@ -1,6 +1,7 @@
 id_venta,id_cliente,cantidad_afiches,nombre_archivo,zona,estado
-1,10,20,lola,1,1
-2,11,23,asd,3,0
-3,12,41,asdf,2,1
-4,11,34,asff,3,0
-5,20,350,asdqwe,2,0
+1,10,20,lola.jpg,1,1
+2,11,23,alfajores.png,3,0
+3,12,41,matambre.jpg,2,1
+4,11,34,araucano.jpeg,3,0
+5,20,350,salamin.png,2,0
+6,21,350,arbustos.png,2,0

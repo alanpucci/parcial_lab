@@ -10,3 +10,151 @@ gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c"
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Cliente.o" "..\\src\\Cliente.c" 
 gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Venta.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:42:06 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+..\src\parser.c: In function 'parser_sellFromText':
+..\src\parser.c:58:2: error: unknown type name 'Venta'
+   58 |  Venta* bufferSell;
+      |  ^~~~~
+..\src\parser.c:65:16: warning: assignment to 'int *' from incompatible pointer type 'Sale *' {aka 'struct <anonymous> *'} [-Wincompatible-pointer-types]
+   65 |     bufferSell = venta_newWithParametersTxt(bufferIdClient, bufferIdSell, bufferPosterQty, bufferFileName, bufferZone, bufferState);
+      |                ^
+..\src\parser.c:71:18: warning: passing argument 1 of 'venta_delete' from incompatible pointer type [-Wincompatible-pointer-types]
+   71 |     venta_delete(bufferSell);
+      |                  ^~~~~~~~~~
+      |                  |
+      |                  int *
+In file included from ..\src\parser.c:5:
+..\src\Sale.h:19:25: note: expected 'Sale *' {aka 'struct <anonymous> *'} but argument is of type 'int *'
+   19 | void venta_delete(Sale* this);
+      |                   ~~~~~~^~~~
+17:42:17 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+..\src\Info.c: In function 'controller_sellMaxPosterQty':
+..\src\Info.c:138:2: error: unknown type name 'Venta'
+  138 |  Venta* bufferSell;
+      |  ^~~~~
+17:42:36 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+17:45:04 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+..\src\Info.c: In function 'controller_sellMaxPosterQty':
+..\src\Info.c:161:7: warning: implicit declaration of function 'venta_getSaleId'; did you mean 'venta_getSellId'? [-Wimplicit-function-declaration]
+  161 |      !venta_getSaleId(bufferSale, &bufferIdSale)  && !controller_findByIdGen(clientList, cliente_getId, bufferIdClient, &clientIndex))
+      |       ^~~~~~~~~~~~~~~
+      |       venta_getSellId
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\Info.o: in function `controller_sellMaxPosterQty':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/Info.c:161: undefined reference to `venta_getSaleId'
+collect2.exe: error: ld returned 1 exit status
+17:45:40 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_sellPoster':
+..\src\Controller.c:112:53: error: 'venta_getSellId' undeclared (first use in this function); did you mean 'venta_getSaleId'?
+  112 |     bufferIdSell = controller_searchMaxId(sellList, venta_getSellId);
+      |                                                     ^~~~~~~~~~~~~~~
+      |                                                     venta_getSaleId
+..\src\Controller.c:112:53: note: each undeclared identifier is reported only once for each function it appears in
+..\src\Controller.c: In function 'controller_modifySell':
+..\src\Controller.c:146:38: error: 'venta_getSellId' undeclared (first use in this function); did you mean 'venta_getSaleId'?
+  146 |    !controller_findByIdGen(sellList, venta_getSellId, bufferId, &indexSell))
+      |                                      ^~~~~~~~~~~~~~~
+      |                                      venta_getSaleId
+..\src\Controller.c: In function 'controller_chargePoster':
+..\src\Controller.c:209:39: error: 'venta_getSellId' undeclared (first use in this function); did you mean 'venta_getSaleId'?
+  209 |     !controller_findByIdGen(sellList, venta_getSellId, bufferId, &indexSell))
+      |                                       ^~~~~~~~~~~~~~~
+      |                                       venta_getSaleId
+..\src\Controller.c: In function 'controller_saveSellsAsText':
+..\src\Controller.c:458:10: warning: implicit declaration of function 'venta_getSellId'; did you mean 'venta_getSaleId'? [-Wimplicit-function-declaration]
+  458 |     if( !venta_getSellId(bufferSell, &bufferIdSell) && !venta_getClientId(bufferSell, &bufferIdClient) && !venta_getPosterQty(bufferSell, &bufferPosterQty) &&
+      |          ^~~~~~~~~~~~~~~
+      |          venta_getSaleId
+17:45:53 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\segundoParcial.o: in function `main':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:18: undefined reference to `controller_loadSellFromText'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:38: undefined reference to `controller_saveSellsAsText'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:49: undefined reference to `controller_modifySell'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:52: undefined reference to `controller_saveSellsAsText'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/segundoParcial.c:66: undefined reference to `controller_saveSellsAsText'
+collect2.exe: error: ld returned 1 exit status
+17:46:07 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+..\src\segundoParcial.c: In function 'main':
+..\src\segundoParcial.c:18:2: warning: implicit declaration of function 'controller_loadSaleFromText'; did you mean 'controller_loadSellFromText'? [-Wimplicit-function-declaration]
+   18 |  controller_loadSaleFromText("ventas.txt", listaVenta);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |  controller_loadSellFromText
+..\src\segundoParcial.c:38:7: warning: implicit declaration of function 'controller_saveSalesAsText'; did you mean 'controller_saveSellsAsText'? [-Wimplicit-function-declaration]
+   38 |       controller_saveSalesAsText("ventas.txt", listaVenta);
+      |       ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |       controller_saveSellsAsText
+..\src\segundoParcial.c:49:10: warning: implicit declaration of function 'controller_modifySale'; did you mean 'controller_modifySell'? [-Wimplicit-function-declaration]
+   49 |      if(!controller_modifySale(listaCliente, listaVenta))
+      |          ^~~~~~~~~~~~~~~~~~~~~
+      |          controller_modifySell
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:46:19 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:46:59 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+..\src\parser.c: In function 'parser_sellFromText':
+..\src\parser.c:65:18: warning: implicit declaration of function 'venta_newWithParametersTxt'; did you mean 'cliente_newWithParametersTxt'? [-Wimplicit-function-declaration]
+   65 |     bufferSell = venta_newWithParametersTxt(bufferIdClient, bufferIdSell, bufferPosterQty, bufferFileName, bufferZone, bufferState);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                  cliente_newWithParametersTxt
+..\src\parser.c:65:16: warning: assignment to 'Sale *' {aka 'struct <anonymous> *'} from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   65 |     bufferSell = venta_newWithParametersTxt(bufferIdClient, bufferIdSell, bufferPosterQty, bufferFileName, bufferZone, bufferState);
+      |                ^
+..\src\parser.c:71:5: warning: implicit declaration of function 'venta_delete'; did you mean 'cliente_delete'? [-Wimplicit-function-declaration]
+   71 |     venta_delete(bufferSell);
+      |     ^~~~~~~~~~~~
+      |     cliente_delete
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: src\parser.o: in function `parser_sellFromText':
+C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/parser.c:65: undefined reference to `venta_newWithParametersTxt'
+c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: C:\Users\alane\OneDrive\Escritorio\Facultad\Laboratorio Prog 1\laboratorio_parcial\segundoParcial\Debug/../src/parser.c:71: undefined reference to `venta_delete'
+collect2.exe: error: ld returned 1 exit status
+17:47:22 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:50:22 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+17:56:25 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\segundoParcial.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial

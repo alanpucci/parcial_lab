@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Cliente.h"
-#include "Venta.h"
+#include "Sale.h"
 #include "Linkedlist.h"
 #include "parser.h"
 #include "utn.h"
@@ -12,6 +12,11 @@
 static int controller_searchMaxId(LinkedList* list, int (*pFunc)(void*,int*));
 static int controller_isCuitRegistered(LinkedList* clientList, char* cuit);
 
+/** \brief Cargar los clientes desde un archivo que recibimos por parametro
+ * \param char* path: Recibimos el nombre del archivo
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \return (-1) si algo salio mal (0) si Ok
+ */
 int controller_loadClientFromText(char* path, LinkedList* clientList)
 {
 	int retornar=-1;
@@ -33,7 +38,12 @@ int controller_loadClientFromText(char* path, LinkedList* clientList)
     return retornar;
 }
 
-int controller_loadSellFromText(char* path, LinkedList* sellList)
+/** \brief Cargar las ventas desde un archivo que recibimos por parametro
+ * \param char* path: Recibimos el nombre del archivo
+ * \param LinkedList* sellList: Puntero a la lista de ventas
+ * \return (-1) si algo salio mal (0) si Ok
+ */
+int controller_loadSaleFromText(char* path, LinkedList* sellList)
 {
 	int retornar=-1;
 	FILE* pFile;
@@ -54,6 +64,10 @@ int controller_loadSellFromText(char* path, LinkedList* sellList)
     return retornar;
 }
 
+/** \brief Agregar un cliente a nuestra lista de clientes
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \return (-1) si algo salio mal (0) si Ok
+ */
 int controller_addClient(LinkedList* clientList)
 {
 	int retornar=-1;
@@ -89,16 +103,21 @@ int controller_addClient(LinkedList* clientList)
 	return retornar;
 }
 
-int controller_sellPoster(LinkedList* clientList, LinkedList* sellList)
+/** \brief Agregar una venta a nuestra lista de ventas
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \param LinkedList* sellList: Puntero a la lista de ventas
+ * \return (-1) si algo salio mal (0) si Ok
+ */
+int controller_addSale(LinkedList* clientList, LinkedList* sellList)
 {
 	int retornar=-1;
 	int bufferIdClient;
-	int bufferIdSell;
+	int bufferIdSale;
 	int index;
 	int bufferPosterQty;
 	char bufferFileName[POSTER_SIZE];
 	int bufferZone;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(clientList!=NULL)
 	{
 		if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
@@ -109,10 +128,10 @@ int controller_sellPoster(LinkedList* clientList, LinkedList* sellList)
 				!utn_getInt("\nIngrese la zona donde se pegaran los afiches: \n1)CABA\n2)ZONA SUR\n3)ZONA OESTE", "\nERROR!", &bufferZone, 2, 1, 3))
 			{
 				retornar=0;
-				bufferIdSell = controller_searchMaxId(sellList, venta_getSellId);
-				printf("\nID para la venta: %d", bufferIdSell);
-				bufferSell = venta_newWithParameters(bufferIdClient, bufferIdSell, bufferPosterQty, bufferFileName, bufferZone, 0);
-				ll_add(sellList, bufferSell);
+				bufferIdSale = controller_searchMaxId(sellList, sale_getSaleId);
+				printf("\nID para la venta: %d", bufferIdSale);
+				bufferSale = sale_newWithParameters(bufferIdClient, bufferIdSale, bufferPosterQty, bufferFileName, bufferZone, 0);
+				ll_add(sellList, bufferSale);
 			}
 			else
 			{
@@ -127,26 +146,31 @@ int controller_sellPoster(LinkedList* clientList, LinkedList* sellList)
 	return retornar;
 }
 
-int controller_modifySell(LinkedList* clientList, LinkedList* sellList)
+/** \brief Modificar una venta NO cobrada
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \param LinkedList* sellList: Puntero a la lista de ventas
+ * \return (-1) si algo salio mal (0) si Ok
+ */
+int controller_modifySale(LinkedList* clientList, LinkedList* sellList)
 {
 	int retornar=-1;
-	LinkedList* bufferSellList;
+	LinkedList* bufferSaleList;
 	int bufferId;
-	int indexSell;
+	int indexSale;
 	int indexClient;
 	Cliente* bufferClient;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	int choosenOption;
 	int bufferInt;
 	char bufferString[POSTER_SIZE];
 	if(clientList!=NULL && sellList!=NULL)
 	{
-		bufferSellList = ll_cloneFilter(sellList, venta_isSold);
-		if( !controller_print(bufferSellList, venta_print) && !utn_getInt("\nIngrese el ID de la venta a modificar: ", "\nERROR!", &bufferId, 2, 1, 99999) &&
-			!controller_findByIdGen(sellList, venta_getSellId, bufferId, &indexSell))
+		bufferSaleList = ll_cloneFilter(sellList, sale_isSold);
+		if( !controller_print(bufferSaleList, sale_print) && !utn_getInt("\nIngrese el ID de la venta a modificar: ", "\nERROR!", &bufferId, 2, 1, 99999) &&
+			!controller_findByIdGen(sellList, sale_getSaleId, bufferId, &indexSale))
 		{
-			bufferSell = ll_get(sellList, indexSell);
-			if(venta_isSold(bufferSell) && !venta_getClientId(bufferSell, &bufferId) && !controller_findByIdGen(clientList, cliente_getId, bufferId, &indexClient))
+			bufferSale = ll_get(sellList, indexSale);
+			if(sale_isSold(bufferSale) && !sale_getClientId(bufferSale, &bufferId) && !controller_findByIdGen(clientList, cliente_getId, bufferId, &indexClient))
 			{
 				bufferClient = ll_get(clientList, indexClient);
 				cliente_print(bufferClient);
@@ -155,24 +179,24 @@ int controller_modifySell(LinkedList* clientList, LinkedList* sellList)
 					switch(choosenOption)
 					{
 						case 1:
-							if( !utn_getInt("\nIngrese la nueva cantidad de afiches: ", "\nERROR!", &bufferInt, 2, 1, 999999) && !venta_setPosterQty(bufferSell, bufferInt))
+							if( !utn_getInt("\nIngrese la nueva cantidad de afiches: ", "\nERROR!", &bufferInt, 2, 1, 999999) && !sale_setPosterQty(bufferSale, bufferInt))
 							{
-								ll_set(sellList, indexSell, bufferSell);
+								ll_set(sellList, indexSale, bufferSale);
 								retornar=0;
 							}
 						break;
 						case 2:
 							if( !utn_getStringAlphanumeric("\nIngrese el nuevo nombre del archivo: ", "\nERROR!", bufferString, 2, POSTER_SIZE) &&
-								!venta_setFileName(bufferSell, bufferString))
+								!sale_setFileName(bufferSale, bufferString))
 							{
-								ll_set(sellList, indexSell, bufferSell);
+								ll_set(sellList, indexSale, bufferSale);
 								retornar=0;
 							}
 						break;
 						case 3:
-							if( !utn_getInt("\nIngrese la nueva zona: ", "\nERROR!", &bufferInt, 2, 1, 3) && !venta_setZone(bufferSell, bufferInt))
+							if( !utn_getInt("\nIngrese la nueva zona: ", "\nERROR!", &bufferInt, 2, 1, 3) && !sale_setZone(bufferSale, bufferInt))
 							{
-								ll_set(sellList, indexSell, bufferSell);
+								ll_set(sellList, indexSale, bufferSale);
 								retornar=0;
 							}
 						break;
@@ -192,41 +216,41 @@ int controller_modifySell(LinkedList* clientList, LinkedList* sellList)
 	return retornar;
 }
 
+/** \brief Cobrar una venta NO cobrada
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \param LinkedList* sellList: Puntero a la lista de ventas
+ * \return (-1) si algo salio mal (0) si Ok
+ */
 int controller_chargePoster(LinkedList* clientList, LinkedList* sellList)
 {
 	int retornar=-1;
-		LinkedList* bufferSellList;
-		int bufferId;
-		int indexSell;
-		int indexClient;
-		Cliente* bufferClient;
-		Venta* bufferSell;
-		int bufferInt;
-		if(clientList!=NULL && sellList!=NULL)
+	LinkedList* bufferSaleList;
+	int bufferId;
+	int indexSale;
+	int indexClient;
+	Cliente* bufferClient;
+	Sale* bufferSale;
+	int bufferInt;
+	if(clientList!=NULL && sellList!=NULL)
+	{
+		bufferSaleList = ll_cloneFilter(sellList, sale_isSold);
+		if( !controller_print(bufferSaleList, sale_print) && !utn_getInt("\nIngrese el ID de la venta a cobrar: ", "\nERROR!", &bufferId, 2, 1, 99999) &&
+			!controller_findByIdGen(sellList, sale_getSaleId, bufferId, &indexSale))
 		{
-			bufferSellList = ll_cloneFilter(sellList, venta_isSold);
-			if( !controller_print(bufferSellList, venta_print) && !utn_getInt("\nIngrese el ID de la venta a cobrar: ", "\nERROR!", &bufferId, 2, 1, 99999) &&
-				!controller_findByIdGen(sellList, venta_getSellId, bufferId, &indexSell))
+			bufferSale = ll_get(sellList, indexSale);
+			if(sale_isSold(bufferSale) && !sale_getClientId(bufferSale, &bufferId) && !controller_findByIdGen(clientList, cliente_getId, bufferId, &indexClient))
 			{
-				bufferSell = ll_get(sellList, indexSell);
-				if(venta_isSold(bufferSell) && !venta_getClientId(bufferSell, &bufferId) && !controller_findByIdGen(clientList, cliente_getId, bufferId, &indexClient))
+				bufferClient = ll_get(clientList, indexClient);
+				cliente_print(bufferClient);
+				if( !utn_getInt("\n\nDesea cobrar esta venta?\nPresione 1 para cobrar o 2 para volver atras: ", "\nERROR!", &bufferInt, 2, 1, 2) &&
+					bufferInt==1 && !sale_setState(bufferSale, 1))
 				{
-					bufferClient = ll_get(clientList, indexClient);
-					cliente_print(bufferClient);
-					if( !utn_getInt("\n\nDesea cobrar esta venta?\nPresione 1 para cobrar o 2 para volver atras: ", "\nERROR!", &bufferInt, 2, 1, 2) &&
-						bufferInt==1 && !venta_setState(bufferSell, 1))
-					{
-						ll_set(sellList, indexSell, bufferSell);
-						retornar=0;
-					}
-					else
-					{
-						printf("\nVenta NO cobrada\n");
-					}
+					ll_set(sellList, indexSale, bufferSale);
+					retornar=0;
 				}
 				else
 				{
-					printf("\nID no encontrado!\n");
+					printf("\nVenta NO cobrada\n");
 				}
 			}
 			else
@@ -234,15 +258,26 @@ int controller_chargePoster(LinkedList* clientList, LinkedList* sellList)
 				printf("\nID no encontrado!\n");
 			}
 		}
-		return retornar;
+		else
+		{
+			printf("\nID no encontrado!\n");
+		}
+	}
+	return retornar;
 }
 
+
+/** \brief Guardar en un archivo los clientes con las ventas NO cobradas
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \param LinkedList* sellList: Puntero a la lista de ventas
+ * \return (-1) si algo salio mal (0) si Ok
+ */
 int controller_saveClientsWithUnchargedPosters(LinkedList* clientList, LinkedList* sellList)
 {
 	int retornar=-1;
 	Cliente* bufferClient;
 	FILE* pFile;
-	LinkedList* bufferSellList;
+	LinkedList* bufferSaleList;
 	int counter;
 	int bufferId;
 	char bufferName[NAME_SIZE];
@@ -250,7 +285,7 @@ int controller_saveClientsWithUnchargedPosters(LinkedList* clientList, LinkedLis
 	char bufferCuit[CUIT_SIZE];
 	if(clientList!=NULL && sellList!=NULL)
 	{
-		bufferSellList = ll_cloneFilter(sellList, venta_isSold);
+		bufferSaleList = ll_cloneFilter(sellList, sale_isSold);
 		pFile = fopen("a_cobrar.txt", "w");
 		if(pFile!=NULL)
 		{
@@ -261,7 +296,7 @@ int controller_saveClientsWithUnchargedPosters(LinkedList* clientList, LinkedLis
 				if( !cliente_getId(bufferClient, &bufferId) && !cliente_getName(bufferClient, bufferName) &&
 					!cliente_getLastName(bufferClient, bufferLastName) && !cliente_getCuit(bufferClient, bufferCuit))
 				{
-					if(!ll_reduceInt(bufferSellList, venta_sameId, bufferId ,&counter) && counter!=0)
+					if(!ll_reduceInt(bufferSaleList, sale_sameId, bufferId ,&counter) && counter!=0)
 					{
 						fprintf(pFile, "%d,%s,%s,%s,%d\n", bufferId, bufferName, bufferLastName, bufferCuit, counter);
 					}
@@ -274,12 +309,17 @@ int controller_saveClientsWithUnchargedPosters(LinkedList* clientList, LinkedLis
 	return retornar;
 }
 
+/** \brief Guardar en un archivo los clientes con las ventas cobradas
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \param LinkedList* sellList: Puntero a la lista de ventas
+ * \return (-1) si algo salio mal (0) si Ok
+ */
 int controller_saveClientsWithChargedPosters(LinkedList* clientList, LinkedList* sellList)
 {
 	int retornar=-1;
 	Cliente* bufferClient;
 	FILE* pFile;
-	LinkedList* bufferSellList;
+	LinkedList* bufferSaleList;
 	int counter;
 	int bufferId;
 	char bufferName[NAME_SIZE];
@@ -287,7 +327,7 @@ int controller_saveClientsWithChargedPosters(LinkedList* clientList, LinkedList*
 	char bufferCuit[CUIT_SIZE];
 	if(clientList!=NULL && sellList!=NULL)
 	{
-		bufferSellList = ll_cloneFilter(sellList, venta_isNotSold);
+		bufferSaleList = ll_cloneFilter(sellList, sale_isNotSold);
 		pFile = fopen("cobrados.txt", "w");
 		if(pFile!=NULL)
 		{
@@ -298,7 +338,7 @@ int controller_saveClientsWithChargedPosters(LinkedList* clientList, LinkedList*
 				if( !cliente_getId(bufferClient, &bufferId) && !cliente_getName(bufferClient, bufferName) &&
 					!cliente_getLastName(bufferClient, bufferLastName) && !cliente_getCuit(bufferClient, bufferCuit))
 				{
-					if(!ll_reduceInt(bufferSellList, venta_sameId, bufferId ,&counter) && counter!=0)
+					if(!ll_reduceInt(bufferSaleList, sale_sameId, bufferId ,&counter) && counter!=0)
 					{
 						fprintf(pFile, "%d,%s,%s,%s,%d\n", bufferId, bufferName, bufferLastName, bufferCuit, counter);
 					}
@@ -312,7 +352,8 @@ int controller_saveClientsWithChargedPosters(LinkedList* clientList, LinkedList*
 }
 
 /** \brief Busca en la lista de empleados el maximo id y retorna ese valor + 1
- * \param pArrayListEmployee LinkedList*: Puntero a la LinkedList
+ * \param LinkedList* list: Puntero a la lista
+ * \param int pFunc: Funcion criterio que recibe dos parametros
  * \return el valor del maximo id encontrado + 1 o (-1) si algo salio mal
  */
 static int controller_searchMaxId(LinkedList* list, int (*pFunc)(void*,int*))
@@ -340,6 +381,13 @@ static int controller_searchMaxId(LinkedList* list, int (*pFunc)(void*,int*))
 	return retornar;
 }
 
+/** \brief Busca en la lista el id que pasamos por parametro y compara a traves de una funcion criterio, devuelve el indice por referencia
+ * \param LinkedList* list: Puntero a la lista
+ * \param int pFunc: Funcion criterio que recibe dos parametros
+ * \param int id: Recibimos el id a comparar
+ * \param int* index: Devolvemos por referencia el indice encontrado
+ * \return (-1) si algo salio mal o (0) si OK
+ */
 int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), int id, int* index)
 {
 	int retornar=-1;
@@ -362,6 +410,11 @@ int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), int id, i
 	return retornar;
 }
 
+/** \brief Funcion para verificar si el cuit que recibimos por parametro ya es de un cliente existente
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \param char* cuit: Recibimos el cuit a comparar
+ * \return (-1) si algo salio mal o (0) si OK
+ */
 static int controller_isCuitRegistered(LinkedList* clientList, char* cuit)
 {
 	int retornar=-1;
@@ -385,18 +438,28 @@ static int controller_isCuitRegistered(LinkedList* clientList, char* cuit)
 	return retornar;
 }
 
-int controller_print(LinkedList* clientList, int (*pFunc)(void*))
+/** \brief Funcion para imprimir una lista
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \param pFunc: funcion criterio para determinar que lista imprimimos
+ * \return (-1) si algo salio mal o (0) si OK
+ */
+int controller_print(LinkedList* list, int (*pFunc)(void*))
 {
 	int retornar=-1;
-	if(clientList!=NULL && pFunc!=NULL)
+	if(list!=NULL && pFunc!=NULL)
 	{
 		retornar=0;
-		ll_map(clientList, pFunc);
+		ll_map(list, pFunc);
 		printf("\n---------------------------------------------------------------------\n");
 	}
 	return retornar;
 }
 
+/** \brief Funcion para guardar la lista de los clientes en un archivo como texto
+ * \param char* path: Recibimos la direccion del archivo donde vamos a guardar
+ * \param LinkedList* clientList: Puntero a la lista de clientes
+ * \return (-1) si algo salio mal o (0) si OK
+ */
 int controller_saveClientAsText(char* path, LinkedList* clientList)
 {
 	int retornar=-1;
@@ -434,12 +497,17 @@ int controller_saveClientAsText(char* path, LinkedList* clientList)
 	return retornar;
 }
 
-int controller_saveSellsAsText(char* path, LinkedList* sellList)
+/** \brief Funcion para guardar la lista de las ventas en un archivo como texto
+ * \param char* path: Recibimos la direccion del archivo donde vamos a guardar
+ * \param LinkedList* sellList: Puntero a la lista de ventas
+ * \return (-1) si algo salio mal o (0) si OK
+ */
+int controller_saveSalesAsText(char* path, LinkedList* sellList)
 {
 	int retornar=-1;
 	FILE* pFile;
-	Venta* bufferSell;
-	int bufferIdSell;
+	Sale* bufferSale;
+	int bufferIdSale;
 	int bufferIdClient;
 	int bufferPosterQty;
 	char bufferFileName[POSTER_SIZE];
@@ -454,11 +522,11 @@ int controller_saveSellsAsText(char* path, LinkedList* sellList)
 			retornar=0;
 			for(int i=0;i<ll_len(sellList);i++)
 			{
-				bufferSell = ll_get(sellList, i);
-				if( !venta_getSellId(bufferSell, &bufferIdSell) && !venta_getClientId(bufferSell, &bufferIdClient) && !venta_getPosterQty(bufferSell, &bufferPosterQty) &&
-					!venta_getFileName(bufferSell, bufferFileName) && !venta_getZone(bufferSell, &bufferZone) && !venta_getState(bufferSell, &bufferState))
+				bufferSale = ll_get(sellList, i);
+				if( !sale_getSaleId(bufferSale, &bufferIdSale) && !sale_getClientId(bufferSale, &bufferIdClient) && !sale_getPosterQty(bufferSale, &bufferPosterQty) &&
+					!sale_getFileName(bufferSale, bufferFileName) && !sale_getZone(bufferSale, &bufferZone) && !sale_getState(bufferSale, &bufferState))
 				{
-					fprintf(pFile, "%d,%d,%d,%s,%d,%d\n",bufferIdSell,bufferIdClient,bufferPosterQty,bufferFileName,bufferZone,bufferState);
+					fprintf(pFile, "%d,%d,%d,%s,%d,%d\n",bufferIdSale,bufferIdClient,bufferPosterQty,bufferFileName,bufferZone,bufferState);
 				}
 			}
 		}

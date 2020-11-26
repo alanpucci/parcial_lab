@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "Venta.h"
+#include "Sale.h"
 #define BUFFER_SIZE 4096
 
 static int isValidInt(char* string);
@@ -11,9 +11,9 @@ static int isAlphaNumeric(char* pResultado);
 /** \brief Uso de malloc para obtener una nueva direccion de memoria
  * 	\return la nueva direccion de memoria
  */
-Venta* venta_new()
+Sale* sale_new()
 {
-	return (Venta*) malloc(sizeof(Venta));
+	return (Sale*) malloc(sizeof(Sale));
 }
 
 /** \brief Dar de alta una venta recibiendo los parametros
@@ -25,19 +25,19 @@ Venta* venta_new()
  * \param int state: Recibo el estado de la venta
  * \return la direccion de memoria de la venta con todos sus datos cargados o NULL en caso de que algo haya salido mal
  */
-Venta* venta_newWithParameters(int clientId, int posterId, int posterQty, char* posterName, int zone, int state)
+Sale* sale_newWithParameters(int clientId, int posterId, int posterQty, char* posterName, int zone, int state)
 {
-	Venta* this = venta_new();
+	Sale* this = sale_new();
 	if(this!=NULL)
 	{
-		if( !venta_setClientId(this, clientId) && !venta_setSellId(this, posterId) && !venta_setPosterQty(this, posterQty) &&
-			!venta_setFileName(this, posterName) && !venta_setZone(this, zone) && !venta_setState(this, state))
+		if( !sale_setClientId(this, clientId) && !sale_setSaleId(this, posterId) && !sale_setPosterQty(this, posterQty) &&
+			!sale_setFileName(this, posterName) && !sale_setZone(this, zone) && !sale_setState(this, state))
 		{
 			return this;
 		}
 		else
 		{
-			venta_delete(this);
+			sale_delete(this);
 		}
 	}
 	return NULL;
@@ -53,29 +53,29 @@ Venta* venta_newWithParameters(int clientId, int posterId, int posterQty, char* 
  * \return la direccion de memoria de la venta con todos sus datos cargados o NULL en caso de que algo haya salido mal
  */
 
-Venta* venta_newWithParametersTxt(char* clientId, char* posterId, char* posterQty, char* posterName, char* zone, char* state)
+Sale* sale_newWithParametersTxt(char* clientId, char* posterId, char* posterQty, char* posterName, char* zone, char* state)
 {
-	Venta* this = venta_new();
+	Sale* this = sale_new();
 	if(this!=NULL)
 	{
-		if( !venta_setClientIdTxt(this, clientId) && !venta_setSellIdTxt(this, posterId) && !venta_setPosterQtyTxt(this, posterQty) &&
-			!venta_setFileName(this, posterName) && !venta_setZoneTxt(this, zone) && !venta_setStateTxt(this, state))
+		if( !sale_setClientIdTxt(this, clientId) && !sale_setSaleIdTxt(this, posterId) && !sale_setPosterQtyTxt(this, posterQty) &&
+			!sale_setFileName(this, posterName) && !sale_setZoneTxt(this, zone) && !sale_setStateTxt(this, state))
 		{
 			return this;
 		}
 		else
 		{
-			venta_delete(this);
+			sale_delete(this);
 		}
 	}
 	return NULL;
 }
 
 /** \brief Borra la direccion de memoria reservada de una venta
- *  \param Venta* this: Puntero de la venta
+ *  \param Sale* this: Puntero de la venta
  *
  */
-void venta_delete(Venta* this)
+void sale_delete(Sale* this)
 {
 	free(this);
 }
@@ -86,14 +86,14 @@ void venta_delete(Venta* this)
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
 
-int venta_getClientId(void* this, int* pResult)
+int sale_getClientId(void* this, int* pResult)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL)
 	{
-		bufferSell = (Venta*) this;
-		*pResult = bufferSell->clientId;
+		bufferSale = (Sale*) this;
+		*pResult = bufferSale->clientId;
 		retornar=0;
 	}
 	return retornar;
@@ -104,14 +104,14 @@ int venta_getClientId(void* this, int* pResult)
  * \param int* pResult: Pasaje por referencia del id de la venta
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_getSellId(void* this, int* pResult)
+int sale_getSaleId(void* this, int* pResult)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL)
 	{
-		bufferSell = (Venta*) this;
-		*pResult = bufferSell->sellId;
+		bufferSale = (Sale*) this;
+		*pResult = bufferSale->sellId;
 		retornar=0;
 	}
 	return retornar;
@@ -122,14 +122,14 @@ int venta_getSellId(void* this, int* pResult)
  * \param int* pResult: Pasaje por referencia de la cantidad de afiches
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_getPosterQty(void* this, int* pResult)
+int sale_getPosterQty(void* this, int* pResult)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL)
 	{
-		bufferSell = (Venta*) this;
-		*pResult = bufferSell->posterQty;
+		bufferSale = (Sale*) this;
+		*pResult = bufferSale->posterQty;
 		retornar=0;
 	}
 	return retornar;
@@ -140,15 +140,15 @@ int venta_getPosterQty(void* this, int* pResult)
  * \param char* pResult: Pasaje por referencia del nombre del archivo
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_getFileName(void* this, char* pResult)
+int sale_getFileName(void* this, char* pResult)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL)
 	{
 		retornar=0;
-		bufferSell = (Venta*) this;
-		strncpy(pResult, bufferSell->posterName, POSTER_SIZE);
+		bufferSale = (Sale*) this;
+		strncpy(pResult, bufferSale->posterName, POSTER_SIZE);
 	}
 	return retornar;
 }
@@ -158,14 +158,14 @@ int venta_getFileName(void* this, char* pResult)
  * \param int* pResult: Pasaje por referencia de la localidad
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_getZone(void* this, int* pResult)
+int sale_getZone(void* this, int* pResult)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL)
 	{
-		bufferSell = (Venta*) this;
-		*pResult = bufferSell->zone;
+		bufferSale = (Sale*) this;
+		*pResult = bufferSale->zone;
 		retornar=0;
 	}
 	return retornar;
@@ -176,14 +176,14 @@ int venta_getZone(void* this, int* pResult)
  * \param int* pResult: Pasaje por referencia del estado de la venta
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_getState(void* this, int* pResult)
+int sale_getState(void* this, int* pResult)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL)
 	{
-		bufferSell = (Venta*) this;
-		*pResult = bufferSell->state;
+		bufferSale = (Sale*) this;
+		*pResult = bufferSale->state;
 		retornar=0;
 	}
 	return retornar;
@@ -194,14 +194,14 @@ int venta_getState(void* this, int* pResult)
  * \param int clientId: Recibo el id del cliente a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setClientId(void* this, int clientId)
+int sale_setClientId(void* this, int clientId)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && clientId>-1)
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->clientId = clientId;
+		bufferSale = (Sale*) this;
+		bufferSale->clientId = clientId;
 		retornar=0;
 	}
 	return retornar;
@@ -212,14 +212,14 @@ int venta_setClientId(void* this, int clientId)
  * \param char* clientId: Recibo el id en forma de texto del cliente a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setClientIdTxt(void* this, char* clientId)
+int sale_setClientIdTxt(void* this, char* clientId)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && clientId!=NULL && isValidInt(clientId))
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->clientId = atoi(clientId);
+		bufferSale = (Sale*) this;
+		bufferSale->clientId = atoi(clientId);
 		retornar=0;
 	}
 	return retornar;
@@ -230,14 +230,14 @@ int venta_setClientIdTxt(void* this, char* clientId)
  * \param int sellId: Recibo el id del cliente a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setSellId(void* this, int sellId)
+int sale_setSaleId(void* this, int sellId)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && sellId>-1)
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->sellId = sellId;
+		bufferSale = (Sale*) this;
+		bufferSale->sellId = sellId;
 		retornar=0;
 	}
 	return retornar;
@@ -248,14 +248,14 @@ int venta_setSellId(void* this, int sellId)
  * \param int sellId: Recibo el id en forma de texto de la venta a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setSellIdTxt(void* this, char* sellId)
+int sale_setSaleIdTxt(void* this, char* sellId)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && sellId!=NULL && isValidInt(sellId))
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->sellId = atoi(sellId);
+		bufferSale = (Sale*) this;
+		bufferSale->sellId = atoi(sellId);
 		retornar=0;
 	}
 	return retornar;
@@ -266,14 +266,14 @@ int venta_setSellIdTxt(void* this, char* sellId)
  * \param int posterQty: Recibo la cantida de afiches a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setPosterQty(void* this, int posterQty)
+int sale_setPosterQty(void* this, int posterQty)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && posterQty>-1)
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->posterQty = posterQty;
+		bufferSale = (Sale*) this;
+		bufferSale->posterQty = posterQty;
 		retornar=0;
 	}
 	return retornar;
@@ -284,14 +284,14 @@ int venta_setPosterQty(void* this, int posterQty)
  * \param int posterQty: Recibo la cantidad de afiches a asignar en forma de texto
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setPosterQtyTxt(void* this, char* posterQty)
+int sale_setPosterQtyTxt(void* this, char* posterQty)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && posterQty!=NULL && isValidInt(posterQty))
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->posterQty = atoi(posterQty);
+		bufferSale = (Sale*) this;
+		bufferSale->posterQty = atoi(posterQty);
 		retornar=0;
 	}
 	return retornar;
@@ -302,14 +302,14 @@ int venta_setPosterQtyTxt(void* this, char* posterQty)
  * \param char* posterName: recibo el nombre del archivo a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setFileName(void* this, char* posterName)
+int sale_setFileName(void* this, char* posterName)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && posterName!=NULL && isAlphaNumeric(posterName))
 	{
-		bufferSell = (Venta*) this;
-		strncpy(bufferSell->posterName, posterName, POSTER_SIZE);
+		bufferSale = (Sale*) this;
+		strncpy(bufferSale->posterName, posterName, POSTER_SIZE);
 		retornar=0;
 	}
 	return retornar;
@@ -320,14 +320,14 @@ int venta_setFileName(void* this, char* posterName)
  * \param int zone: Recibo la zona a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setZone(void* this, int zone)
+int sale_setZone(void* this, int zone)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && (zone>0 && zone<5))
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->zone = zone;
+		bufferSale = (Sale*) this;
+		bufferSale->zone = zone;
 		retornar=0;
 	}
 	return retornar;
@@ -338,14 +338,14 @@ int venta_setZone(void* this, int zone)
  * \param int zone: Recibo la zona a asignar en forma de texto
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setZoneTxt(void* this, char* zone)
+int sale_setZoneTxt(void* this, char* zone)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && zone!=NULL && isValidInt(zone))
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->zone = atoi(zone);
+		bufferSale = (Sale*) this;
+		bufferSale->zone = atoi(zone);
 		retornar=0;
 	}
 	return retornar;
@@ -356,14 +356,14 @@ int venta_setZoneTxt(void* this, char* zone)
  * \param int state: Recibo el estado de la venta a asignar
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setState(void* this, int state)
+int sale_setState(void* this, int state)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && (state==0 || state==1))
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->state = state;
+		bufferSale = (Sale*) this;
+		bufferSale->state = state;
 		retornar=0;
 	}
 	return retornar;
@@ -374,14 +374,14 @@ int venta_setState(void* this, int state)
  * \param int state: Recibo el estado de la venta a asignar en forma de texto
  * \return (0) Si todo esta OK o (-1) Si algo salio mal
  */
-int venta_setStateTxt(void* this, char* state)
+int sale_setStateTxt(void* this, char* state)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	if(this!=NULL && state!=NULL && isValidInt(state))
 	{
-		bufferSell = (Venta*) this;
-		bufferSell->state = atoi(state);
+		bufferSale = (Sale*) this;
+		bufferSale->state = atoi(state);
 		retornar=0;
 	}
 	return retornar;
@@ -442,15 +442,15 @@ static int isAlphaNumeric(char* pResultado)
 
 /**
  * \brief Funcion para imprimir todos los datos de una venta
- * \void* this: Puntero a void que luego convertiremos en un tipo de dato Venta
+ * \void* this: Puntero a void que luego convertiremos en un tipo de dato Sale
  * \return (-1) si algo salio mal (0) si todo esta OK
  */
-int venta_print(void* this)
+int sale_print(void* this)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	int bufferIdClient;
-	int bufferIdSell;
+	int bufferIdSale;
 	int bufferPosterQty;
 	char bufferFileName[POSTER_SIZE];
 	int bufferZone;
@@ -460,9 +460,9 @@ int venta_print(void* this)
 	if(this!=NULL)
 	{
 		retornar=0;
-		bufferSell = (Venta*) this;
-		if( !venta_getClientId(bufferSell, &bufferIdClient) && !venta_getSellId(bufferSell, &bufferIdSell) && !venta_getPosterQty(bufferSell, &bufferPosterQty) &&
-			!venta_getFileName(bufferSell, bufferFileName) && !venta_getZone(bufferSell, &bufferZone) && !venta_getState(bufferSell, &bufferState))
+		bufferSale = (Sale*) this;
+		if( !sale_getClientId(bufferSale, &bufferIdClient) && !sale_getSaleId(bufferSale, &bufferIdSale) && !sale_getPosterQty(bufferSale, &bufferPosterQty) &&
+			!sale_getFileName(bufferSale, bufferFileName) && !sale_getZone(bufferSale, &bufferZone) && !sale_getState(bufferSale, &bufferState))
 		{
 			switch(bufferZone)
 			{
@@ -485,7 +485,7 @@ int venta_print(void* this)
 				sprintf(bufferStateString, "A COBRAR");
 			}
 			printf("\nID venta: %d - ID cliente: %d - Cantidad: %d - Nombre archivo: %s - Zona: %s - Estado: %s",
-					bufferIdSell, bufferIdClient, bufferPosterQty, bufferFileName, bufferZoneString, bufferStateString);
+					bufferIdSale, bufferIdClient, bufferPosterQty, bufferFileName, bufferZoneString, bufferStateString);
 		}
 	}
 	return retornar;
@@ -493,19 +493,19 @@ int venta_print(void* this)
 
 /**
  * \brief Funcion para corroborar si una venta NO esta cobrada
- * \void* this: Puntero a void que luego convertiremos en un tipo de dato Venta
+ * \void* this: Puntero a void que luego convertiremos en un tipo de dato Sale
  * \return (-1) si algo salio mal (0) si todo esta OK
  */
-int venta_isSold(void* this)
+int sale_isSold(void* this)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	int bufferState;
 	if(this!=NULL)
 	{
 		retornar=0;
-		bufferSell = (Venta*) this;
-		if(!venta_getState(bufferSell, &bufferState) && bufferState==0)
+		bufferSale = (Sale*) this;
+		if(!sale_getState(bufferSale, &bufferState) && bufferState==0)
 		{
 			retornar=1;
 		}
@@ -515,19 +515,19 @@ int venta_isSold(void* this)
 
 /**
  * \brief Funcion para corroborar si una venta ESTA cobrada
- * \void* this: Puntero a void que luego convertiremos en un tipo de dato Venta
+ * \void* this: Puntero a void que luego convertiremos en un tipo de dato Sale
  * \return (-1) si algo salio mal (0) si todo esta OK
  */
-int venta_isNotSold(void* this)
+int sale_isNotSold(void* this)
 {
 	int retornar=-1;
-	Venta* bufferSell;
+	Sale* bufferSale;
 	int bufferState;
 	if(this!=NULL)
 	{
 		retornar=1;
-		bufferSell = (Venta*) this;
-		if(!venta_getState(bufferSell, &bufferState) && bufferState==0)
+		bufferSale = (Sale*) this;
+		if(!sale_getState(bufferSale, &bufferState) && bufferState==0)
 		{
 			retornar=0;
 		}
@@ -537,17 +537,17 @@ int venta_isNotSold(void* this)
 
 /**
  * \brief Funcion para comparar id que recibimos por parametro y el id del cliente en una venta
- * \void* this: Puntero a void que luego convertiremos en un tipo de dato Venta
+ * \void* this: Puntero a void que luego convertiremos en un tipo de dato Sale
  * \void* id: Puntero a void que luego convertiremos en un int
  * \return (-1) si algo salio mal (0) si todo esta OK
  */
-int venta_sameId(void* this, void* id)
+int sale_sameId(void* this, void* id)
 {
 	int retornar=0;
 	int bufferClientId;
 	int bufferId = (int) id;
-	Venta* bufferSell = (Venta*) this;
-	if( !venta_getClientId(bufferSell, &bufferClientId))
+	Sale* bufferSale = (Sale*) this;
+	if( !sale_getClientId(bufferSale, &bufferClientId))
 	{
 		if(bufferClientId == bufferId)
 		{

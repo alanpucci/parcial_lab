@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Cliente.h"
-#include "Venta.h"
+#include "Sale.h"
 #define BUFFER_SIZE 4096
 
 /** \brief Parsea los datos de los clientes desde un archivo(modo texto).
@@ -55,20 +55,20 @@ int parser_sellFromText(FILE* pFile , LinkedList* sellList)
 	char bufferFileName[BUFFER_SIZE];
 	char bufferZone[BUFFER_SIZE];
 	char bufferState[BUFFER_SIZE];
-	Venta* bufferSell;
+	Sale* bufferSell;
 	if(pFile!=NULL && sellList!=NULL)
 	{
 		do
 		{
 			if(fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",bufferIdSell, bufferIdClient,bufferPosterQty,bufferFileName,bufferZone, bufferState)==6)
 			{
-				bufferSell = venta_newWithParametersTxt(bufferIdClient, bufferIdSell, bufferPosterQty, bufferFileName, bufferZone, bufferState);
+				bufferSell = sale_newWithParametersTxt(bufferIdClient, bufferIdSell, bufferPosterQty, bufferFileName, bufferZone, bufferState);
 				ll_add(sellList, bufferSell);
 				retornar=0;
 			}
 			else
 			{
-				venta_delete(bufferSell);
+				sale_delete(bufferSell);
 			}
 		}while(feof(pFile)==0);
 	}
