@@ -296,7 +296,7 @@ int controller_saveClientsWithUnchargedPosters(LinkedList* clientList, LinkedLis
 				if( !cliente_getId(bufferClient, &bufferId) && !cliente_getName(bufferClient, bufferName) &&
 					!cliente_getLastName(bufferClient, bufferLastName) && !cliente_getCuit(bufferClient, bufferCuit))
 				{
-					if(!ll_reduceInt(bufferSaleList, sale_sameId, bufferId ,&counter) && counter!=0)
+					if(!ll_reduceInt(bufferSaleList, sale_sameIdUncharged, bufferId ,&counter) && counter!=0)
 					{
 						fprintf(pFile, "%d,%s,%s,%s,%d\n", bufferId, bufferName, bufferLastName, bufferCuit, counter);
 					}
@@ -338,7 +338,7 @@ int controller_saveClientsWithChargedPosters(LinkedList* clientList, LinkedList*
 				if( !cliente_getId(bufferClient, &bufferId) && !cliente_getName(bufferClient, bufferName) &&
 					!cliente_getLastName(bufferClient, bufferLastName) && !cliente_getCuit(bufferClient, bufferCuit))
 				{
-					if(!ll_reduceInt(bufferSaleList, sale_sameId, bufferId ,&counter) && counter!=0)
+					if(!ll_reduceInt(bufferSaleList, sale_sameIdCharged, bufferId ,&counter) && counter!=0)
 					{
 						fprintf(pFile, "%d,%s,%s,%s,%d\n", bufferId, bufferName, bufferLastName, bufferCuit, counter);
 					}

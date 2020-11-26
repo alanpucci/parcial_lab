@@ -158,3 +158,100 @@ gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\segundoParcial.o" "..\\src\\seg
 gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
 Info: Nothing to build for segundoParcial
 Info: Nothing to build for segundoParcial
+18:05:11 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+Info: Nothing to build for segundoParcial
+18:07:15 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:08:31 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:09:47 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+..\src\Controller.c: In function 'controller_saveClientsWithUnchargedPosters':
+..\src\Controller.c:299:39: error: 'sale_sameId' undeclared (first use in this function); did you mean 'sale_setSaleId'?
+  299 |      if(!ll_reduceInt(bufferSaleList, sale_sameId, bufferId ,&counter) && counter!=0)
+      |                                       ^~~~~~~~~~~
+      |                                       sale_setSaleId
+..\src\Controller.c:299:39: note: each undeclared identifier is reported only once for each function it appears in
+..\src\Controller.c: In function 'controller_saveClientsWithChargedPosters':
+..\src\Controller.c:341:39: error: 'sale_sameId' undeclared (first use in this function); did you mean 'sale_setSaleId'?
+  341 |      if(!ll_reduceInt(bufferSaleList, sale_sameId, bufferId ,&counter) && counter!=0)
+      |                                       ^~~~~~~~~~~
+      |                                       sale_setSaleId
+18:10:02 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+..\src\Info.c: In function 'controller_clientMaxPosterQty':
+..\src\Info.c:68:102: error: 'sale_sameId' undeclared (first use in this function); did you mean 'sale_setSaleId'?
+   68 |    if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameId, bufferClientId, &currentCounter))
+      |                                                                                                      ^~~~~~~~~~~
+      |                                                                                                      sale_setSaleId
+..\src\Info.c:68:102: note: each undeclared identifier is reported only once for each function it appears in
+..\src\Info.c: In function 'controller_clientMinPosterQty':
+..\src\Info.c:105:102: error: 'sale_sameId' undeclared (first use in this function); did you mean 'sale_setSaleId'?
+  105 |    if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameId, bufferClientId, &currentCounter))
+      |                                                                                                      ^~~~~~~~~~~
+      |                                                                                                      sale_setSaleId
+18:10:20 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+..\src\Info.c: In function 'controller_clientMinPosterQty':
+..\src\Info.c:117:102: error: 'sale_sameId' undeclared (first use in this function); did you mean 'sale_setSaleId'?
+  117 |    if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameId, bufferClientId, &currentCounter))
+      |                                                                                                      ^~~~~~~~~~~
+      |                                                                                                      sale_setSaleId
+..\src\Info.c:117:102: note: each undeclared identifier is reported only once for each function it appears in
+18:10:32 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\parser.o" "..\\src\\parser.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:11:46 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Sale.o" "..\\src\\Sale.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial
+18:16:59 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+..\src\Info.c: In function 'controller_sellMaxPosterQty':
+..\src\Info.c:147:106: warning: passing argument 2 of 'sale_getState' makes pointer from integer without a cast [-Wint-conversion]
+  147 |    if(bufferSale!=NULL && !sale_getPosterQty(bufferSale, &bufferPosterQty) && !sale_getState(bufferSale, bufferState))
+      |                                                                                                          ^~~~~~~~~~~
+      |                                                                                                          |
+      |                                                                                                          int
+In file included from ..\src\Info.c:9:
+..\src\Sale.h:40:36: note: expected 'int *' but argument is of type 'int'
+   40 | int sale_getState(void* this, int* pResult);
+      |                               ~~~~~^~~~~~~
+..\src\Info.c:159:106: warning: passing argument 2 of 'sale_getState' makes pointer from integer without a cast [-Wint-conversion]
+  159 |    if(bufferSale!=NULL && !sale_getPosterQty(bufferSale, &bufferPosterQty) && !sale_getState(bufferSale, bufferState))
+      |                                                                                                          ^~~~~~~~~~~
+      |                                                                                                          |
+      |                                                                                                          int
+In file included from ..\src\Info.c:9:
+..\src\Sale.h:40:36: note: expected 'int *' but argument is of type 'int'
+   40 | int sale_getState(void* this, int* pResult);
+      |                               ~~~~~^~~~~~~
+..\src\Info.c:147:80: warning: 'bufferState' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  147 |    if(bufferSale!=NULL && !sale_getPosterQty(bufferSale, &bufferPosterQty) && !sale_getState(bufferSale, bufferState))
+      |                                                                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+18:17:08 **** Incremental Build of configuration Debug for project segundoParcial ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Info.o" "..\\src\\Info.c" 
+gcc -o segundoParcial.exe "src\\Cliente.o" "src\\Controller.o" "src\\Info.o" "src\\LinkedList.o" "src\\Sale.o" "src\\menu.o" "src\\parser.o" "src\\segundoParcial.o" "src\\utn.o" 
+Info: Nothing to build for segundoParcial

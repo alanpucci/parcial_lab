@@ -44,6 +44,7 @@ int sale_setStateTxt(void* this, char* state);
 int sale_print(void* this);
 int sale_isSold(void* this);
 int sale_isNotSold(void* this);
-int sale_sameId(void* this, void* id);
+int sale_sameIdCharged(void* this, void* id);
+int sale_sameIdUncharged(void* this, void* id);
 
 #endif /* SALE_H_ */

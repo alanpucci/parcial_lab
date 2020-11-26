@@ -541,15 +541,33 @@ int sale_isNotSold(void* this)
  * \void* id: Puntero a void que luego convertiremos en un int
  * \return (-1) si algo salio mal (0) si todo esta OK
  */
-int sale_sameId(void* this, void* id)
+int sale_sameIdCharged(void* this, void* id)
 {
 	int retornar=0;
 	int bufferClientId;
 	int bufferId = (int) id;
+	int bufferState;
 	Sale* bufferSale = (Sale*) this;
-	if( !sale_getClientId(bufferSale, &bufferClientId))
+	if( !sale_getClientId(bufferSale, &bufferClientId) && !sale_getState(bufferSale, &bufferState))
 	{
-		if(bufferClientId == bufferId)
+		if(bufferClientId == bufferId && bufferState==1)
+		{
+			retornar=1;
+		}
+	}
+	return retornar;
+}
+
+int sale_sameIdUncharged(void* this, void* id)
+{
+	int retornar=0;
+	int bufferClientId;
+	int bufferId = (int) id;
+	int bufferState;
+	Sale* bufferSale = (Sale*) this;
+	if( !sale_getClientId(bufferSale, &bufferClientId) && !sale_getState(bufferSale, &bufferState))
+	{
+		if(bufferClientId == bufferId && bufferState==0)
 		{
 			retornar=1;
 		}

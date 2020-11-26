@@ -1,3 +1,4 @@
 id,nombre,apellido,cuit,ventas_a_cobrar
 11,Brandea,Shel,23-37933040-1,2
 20,Sacha,Morse,23-37933052-0,1
+21,alan,pucci,20-38622370-0,1

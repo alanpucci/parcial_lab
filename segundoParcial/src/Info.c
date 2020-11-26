@@ -65,7 +65,7 @@ static int controller_clientMaxPosterQty(LinkedList* clientList, LinkedList* sel
 		for(int i=0;i<ll_len(clientList);i++)
 		{
 			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameId, bufferClientId, &currentCounter))
+			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameIdCharged, bufferClientId, &currentCounter))
 			{
 				if(i==0 || maxQty<currentCounter)
 				{
@@ -77,7 +77,7 @@ static int controller_clientMaxPosterQty(LinkedList* clientList, LinkedList* sel
 		for(int i=0;i<ll_len(clientList);i++)
 		{
 			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameId, bufferClientId, &currentCounter))
+			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameIdCharged, bufferClientId, &currentCounter))
 			{
 				if(currentCounter == maxQty)
 				{
@@ -102,9 +102,9 @@ static int controller_clientMinPosterQty(LinkedList* clientList, LinkedList* sel
 		for(int i=0;i<ll_len(clientList);i++)
 		{
 			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameId, bufferClientId, &currentCounter))
+			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameIdCharged, bufferClientId, &currentCounter))
 			{
-				if(i==0 || minQty>currentCounter)
+				if((i==0 || minQty>currentCounter))
 				{
 					minQty = currentCounter;
 				}
@@ -114,7 +114,7 @@ static int controller_clientMinPosterQty(LinkedList* clientList, LinkedList* sel
 		for(int i=0;i<ll_len(clientList);i++)
 		{
 			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameId, bufferClientId, &currentCounter))
+			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, sale_sameIdCharged, bufferClientId, &currentCounter))
 			{
 				if(currentCounter == minQty)
 				{
@@ -135,6 +135,7 @@ static int controller_sellMaxPosterQty(LinkedList* clientList, LinkedList* sellL
 	int bufferIdClient;
 	int clientIndex;
 	char bufferCuit[CUIT_SIZE];
+	int bufferState;
 	Sale* bufferSale;
 	Cliente* bufferClient;
 	if(clientList!=NULL && sellList!=NULL)
@@ -143,9 +144,9 @@ static int controller_sellMaxPosterQty(LinkedList* clientList, LinkedList* sellL
 		for(int i=0;i<ll_len(sellList);i++)
 		{
 			bufferSale = ll_get(sellList, i);
-			if(bufferSale!=NULL && !sale_getPosterQty(bufferSale, &bufferPosterQty))
+			if(bufferSale!=NULL && !sale_getPosterQty(bufferSale, &bufferPosterQty) && !sale_getState(bufferSale, &bufferState))
 			{
-				if(i==0 || maxPosterQty<bufferPosterQty)
+				if((i==0 || maxPosterQty<bufferPosterQty) && bufferState==1)
 				{
 					maxPosterQty=bufferPosterQty;
 				}
@@ -155,9 +156,9 @@ static int controller_sellMaxPosterQty(LinkedList* clientList, LinkedList* sellL
 		for(int i=0;i<ll_len(sellList);i++)
 		{
 			bufferSale = ll_get(sellList, i);
-			if(bufferSale!=NULL && !sale_getPosterQty(bufferSale, &bufferPosterQty))
+			if(bufferSale!=NULL && !sale_getPosterQty(bufferSale, &bufferPosterQty) && !sale_getState(bufferSale, &bufferState))
 			{
-				if( bufferPosterQty==maxPosterQty && !sale_getClientId(bufferSale, &bufferIdClient) &&
+				if( bufferPosterQty==maxPosterQty && bufferState==1 && !sale_getClientId(bufferSale, &bufferIdClient) &&
 					!sale_getSaleId(bufferSale, &bufferIdSale)  && !controller_findByIdGen(clientList, cliente_getId, bufferIdClient, &clientIndex))
 				{
 					bufferClient = ll_get(clientList, clientIndex);
