@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include "Linkedlist.h"
 #include "Controller.h"
+#include "Info.h"
 #include "utn.h"
 #include "menu.h"
 
@@ -25,6 +26,7 @@ int main(void) {
 				if(!controller_addClient(listaCliente))
 				{
 					printf("\nCliente ingresado exitosamente\n");
+					controller_saveClientAsText("clientes.txt", listaCliente);
 				}
 			break;
 			case 2:
@@ -33,6 +35,7 @@ int main(void) {
 					if(!controller_sellPoster(listaCliente, listaVenta))
 					{
 						printf("\nVenta 'a cobrar' cargada exitosamente\n");
+						controller_saveSellsAsText("ventas.txt", listaVenta);
 					}
 				}
 				else
@@ -46,6 +49,7 @@ int main(void) {
 					if(!controller_modifySell(listaCliente, listaVenta))
 					{
 						printf("\nVenta modificada exitosamente\n");
+						controller_saveSellsAsText("ventas.txt", listaVenta);
 					}
 				}
 				else
@@ -59,6 +63,7 @@ int main(void) {
 					if(!controller_chargePoster(listaCliente, listaVenta))
 					{
 						printf("\nVenta cobrada exitosamente\n");
+						controller_saveSellsAsText("ventas.txt", listaVenta);
 					}
 				}
 				else
@@ -104,8 +109,6 @@ int main(void) {
 			}
 		}
 	}while(menuOption!=8);
-	controller_saveClientAsText("clientes.txt", listaCliente);
-	controller_saveSellsAsText("ventas.txt", listaVenta);
 	printf("Adios!");
 	return EXIT_SUCCESS;
 }

@@ -6,18 +6,11 @@
 #include "Linkedlist.h"
 #include "parser.h"
 #include "utn.h"
+#include "Controller.h"
 #define BUFFER_SIZE 4096
 
-static int controller_searchMaxId(LinkedList* clientList);
+static int controller_searchMaxId(LinkedList* list, int (*pFunc)(void*,int*));
 static int controller_isCuitRegistered(LinkedList* clientList, char* cuit);
-static int controller_findByClientId(LinkedList* clientList, int id, int* index);
-static int controller_searchMaxIdSells(LinkedList* sellList);
-static int controller_findByIdSells(LinkedList* sellList, int id, int* index);
-static int controller_clientMaxPosterQty(LinkedList* clientList, LinkedList* sellList);
-static int controller_clientMinPosterQty(LinkedList* clientList, LinkedList* sellList);
-static int controller_sellMaxPosterQty(LinkedList* clientList, LinkedList* sellList);
-
-static int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), int id, int* index);
 
 int controller_loadClientFromText(char* path, LinkedList* clientList)
 {
@@ -78,7 +71,7 @@ int controller_addClient(LinkedList* clientList)
 			if(!controller_isCuitRegistered(clientList, bufferCuit))
 			{
 				retornar=0;
-				bufferId = controller_searchMaxId(clientList);
+				bufferId = controller_searchMaxId(clientList, cliente_getId);
 				printf("\nID para el nuevo cliente: %d", bufferId);
 				bufferClient = cliente_newWithParameters(bufferId, bufferName, bufferLastName, bufferCuit);
 				ll_add(clientList, bufferClient);
@@ -109,7 +102,6 @@ int controller_sellPoster(LinkedList* clientList, LinkedList* sellList)
 	if(clientList!=NULL)
 	{
 		if( !controller_print(clientList, cliente_print) && !utn_getInt("\nIngrese el ID del cliente: ", "\nERROR!", &bufferIdClient, 2, 1, 999999) &&
-			//!controller_findByClientId(clientList, bufferIdClient, &index))
 			!controller_findByIdGen(clientList, cliente_getId, bufferIdClient, &index))
 		{
 			if( !utn_getInt("\nIngrese la cantidad de afiches a vender: ", "\nERROR!", &bufferPosterQty, 2, 1, 99999) &&
@@ -117,7 +109,7 @@ int controller_sellPoster(LinkedList* clientList, LinkedList* sellList)
 				!utn_getInt("\nIngrese la zona donde se pegaran los afiches: \n1)CABA\n2)ZONA SUR\n3)ZONA OESTE", "\nERROR!", &bufferZone, 2, 1, 3))
 			{
 				retornar=0;
-				bufferIdSell = controller_searchMaxIdSells(sellList);
+				bufferIdSell = controller_searchMaxId(sellList, venta_getSellId);
 				printf("\nID para la venta: %d", bufferIdSell);
 				bufferSell = venta_newWithParameters(bufferIdClient, bufferIdSell, bufferPosterQty, bufferFileName, bufferZone, 0);
 				ll_add(sellList, bufferSell);
@@ -151,10 +143,10 @@ int controller_modifySell(LinkedList* clientList, LinkedList* sellList)
 	{
 		bufferSellList = ll_cloneFilter(sellList, venta_isSold);
 		if( !controller_print(bufferSellList, venta_print) && !utn_getInt("\nIngrese el ID de la venta a modificar: ", "\nERROR!", &bufferId, 2, 1, 99999) &&
-			!controller_findByIdSells(sellList, bufferId, &indexSell))
+			!controller_findByIdGen(sellList, venta_getSellId, bufferId, &indexSell))
 		{
 			bufferSell = ll_get(sellList, indexSell);
-			if(venta_isSold(bufferSell) && !venta_getClientId(bufferSell, &bufferId) && !controller_findByClientId(clientList, bufferId, &indexClient))
+			if(venta_isSold(bufferSell) && !venta_getClientId(bufferSell, &bufferId) && !controller_findByIdGen(clientList, cliente_getId, bufferId, &indexClient))
 			{
 				bufferClient = ll_get(clientList, indexClient);
 				cliente_print(bufferClient);
@@ -214,10 +206,10 @@ int controller_chargePoster(LinkedList* clientList, LinkedList* sellList)
 		{
 			bufferSellList = ll_cloneFilter(sellList, venta_isSold);
 			if( !controller_print(bufferSellList, venta_print) && !utn_getInt("\nIngrese el ID de la venta a cobrar: ", "\nERROR!", &bufferId, 2, 1, 99999) &&
-				!controller_findByIdSells(sellList, bufferId, &indexSell))
+				!controller_findByIdGen(sellList, venta_getSellId, bufferId, &indexSell))
 			{
 				bufferSell = ll_get(sellList, indexSell);
-				if(venta_isSold(bufferSell) && !venta_getClientId(bufferSell, &bufferId) && !controller_findByClientId(clientList, bufferId, &indexClient))
+				if(venta_isSold(bufferSell) && !venta_getClientId(bufferSell, &bufferId) && !controller_findByIdGen(clientList, cliente_getId, bufferId, &indexClient))
 				{
 					bufferClient = ll_get(clientList, indexClient);
 					cliente_print(bufferClient);
@@ -319,183 +311,23 @@ int controller_saveClientsWithChargedPosters(LinkedList* clientList, LinkedList*
 	return retornar;
 }
 
-int controller_report(LinkedList* clientList, LinkedList* sellList)
-{
-	int retornar=-1;
-	int choosenOption;
-	LinkedList* bufferSellList = ll_cloneFilter(sellList, venta_isNotSold);
-	if(clientList!=NULL && sellList!=NULL)
-	{
-		if( !utn_getInt("\nIngrese una opcion:\n"
-						"1)Cliente al que se le vendio mas afiches\n"
-						"2)Cliente al que se le vendio menos afiches\n"
-						"3)Venta con mas afiches vendidos\n"
-						"4)Volver atras\n> > OPCION: ",
-						"\nERROR!", &choosenOption, 2, 1, 4))
-		{
-			switch(choosenOption)
-			{
-			case 1:
-				if(!controller_clientMaxPosterQty(clientList, bufferSellList))
-				{
-					retornar=0;
-				}
-			break;
-			case 2:
-				if(!controller_clientMinPosterQty(clientList, bufferSellList))
-				{
-					retornar=0;
-				}
-			break;
-			case 3:
-				if(!controller_sellMaxPosterQty(clientList, bufferSellList))
-				{
-					retornar=0;
-				}
-			break;
-			}
-		}
-	}
-	return retornar;
-}
-
-static int controller_clientMaxPosterQty(LinkedList* clientList, LinkedList* sellList)
-{
-	int retornar=-1;
-	int maxQty;
-	int currentCounter;
-	int bufferClientId;
-	Cliente* bufferClient;
-	if(clientList!=NULL && sellList!=NULL)
-	{
-		retornar=0;
-		for(int i=0;i<ll_len(clientList);i++)
-		{
-			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, venta_sameId, bufferClientId, &currentCounter))
-			{
-				if(i==0 || maxQty<currentCounter)
-				{
-					maxQty = currentCounter;
-				}
-			}
-		}
-		printf("\nEl/los cliente/s con mas afiches es/son: \n");
-		for(int i=0;i<ll_len(clientList);i++)
-		{
-			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, venta_sameId, bufferClientId, &currentCounter))
-			{
-				if(currentCounter == maxQty)
-				{
-					cliente_print(bufferClient);
-				}
-			}
-		}
-	}
-	return retornar;
-}
-
-static int controller_clientMinPosterQty(LinkedList* clientList, LinkedList* sellList)
-{
-	int retornar=-1;
-	int minQty;
-	int currentCounter;
-	int bufferClientId;
-	Cliente* bufferClient;
-	if(clientList!=NULL && sellList!=NULL)
-	{
-		retornar=0;
-		for(int i=0;i<ll_len(clientList);i++)
-		{
-			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, venta_sameId, bufferClientId, &currentCounter))
-			{
-				if(i==0 || minQty>currentCounter)
-				{
-					minQty = currentCounter;
-				}
-			}
-		}
-		printf("\nEl/los cliente/s con menos afiches es/son: \n");
-		for(int i=0;i<ll_len(clientList);i++)
-		{
-			bufferClient = ll_get(clientList, i);
-			if(bufferClient!=NULL && !cliente_getId(bufferClient, &bufferClientId) && !ll_reduceInt(sellList, venta_sameId, bufferClientId, &currentCounter))
-			{
-				if(currentCounter == minQty)
-				{
-					cliente_print(bufferClient);
-				}
-			}
-		}
-	}
-	return retornar;
-}
-
-static int controller_sellMaxPosterQty(LinkedList* clientList, LinkedList* sellList)
-{
-	int retornar=-1;
-	int bufferPosterQty;
-	int maxPosterQty;
-	int bufferIdSell;
-	int bufferIdClient;
-	int clientIndex;
-	char bufferCuit[CUIT_SIZE];
-	Venta* bufferSell;
-	Cliente* bufferClient;
-	if(clientList!=NULL && sellList!=NULL)
-	{
-		retornar=0;
-		for(int i=0;i<ll_len(sellList);i++)
-		{
-			bufferSell = ll_get(sellList, i);
-			if(bufferSell!=NULL && !venta_getPosterQty(bufferSell, &bufferPosterQty))
-			{
-				if(i==0 || maxPosterQty<bufferPosterQty)
-				{
-					maxPosterQty=bufferPosterQty;
-				}
-			}
-		}
-		printf("\nLa/las venta/s con mas afiches vendidos es/son: \n");
-		for(int i=0;i<ll_len(sellList);i++)
-		{
-			bufferSell = ll_get(sellList, i);
-			if(bufferSell!=NULL && !venta_getPosterQty(bufferSell, &bufferPosterQty))
-			{
-				if( bufferPosterQty==maxPosterQty && !venta_getClientId(bufferSell, &bufferIdClient) &&
-					!venta_getSellId(bufferSell, &bufferIdSell)  && !controller_findByClientId(clientList, bufferIdClient, &clientIndex))
-				{
-					bufferClient = ll_get(clientList, clientIndex);
-					if(bufferClient!=NULL && !cliente_getCuit(bufferClient, bufferCuit))
-					{
-						printf("\nID venta: %d - Cuit cliente: %s", bufferIdSell, bufferCuit);
-					}
-				}
-			}
-		}
-	}
-	return retornar;
-}
-
 /** \brief Busca en la lista de empleados el maximo id y retorna ese valor + 1
  * \param pArrayListEmployee LinkedList*: Puntero a la LinkedList
  * \return el valor del maximo id encontrado + 1 o (-1) si algo salio mal
  */
-static int controller_searchMaxId(LinkedList* clientList)
+static int controller_searchMaxId(LinkedList* list, int (*pFunc)(void*,int*))
 {
 	int retornar=-1;
-	int len = ll_len(clientList);
-	Cliente* bufferClient;
+	int len = ll_len(list);
+	void* bufferEntity;
 	int id;
 	int maxId;
-	if(clientList!=NULL)
+	if(list!=NULL)
 	{
 		for(int i=0;i<len;i++)
 		{
-			bufferClient = ll_get(clientList, i);
-			if(!cliente_getId(bufferClient, &id))
+			bufferEntity = ll_get(list, i);
+			if(!pFunc(bufferEntity, &id))
 			{
 				if(i==0 || id>maxId)
 				{
@@ -508,32 +340,7 @@ static int controller_searchMaxId(LinkedList* clientList)
 	return retornar;
 }
 
-static int controller_searchMaxIdSells(LinkedList* sellList)
-{
-	int retornar=-1;
-	int len = ll_len(sellList);
-	Venta* bufferSell;
-	int id;
-	int maxId;
-	if(sellList!=NULL)
-	{
-		for(int i=0;i<len;i++)
-		{
-			bufferSell = ll_get(sellList, i);
-			if(!venta_getSellId(bufferSell, &id))
-			{
-				if(i==0 || id>maxId)
-				{
-					maxId = id;
-				}
-			}
-		}
-		retornar = maxId+1;
-	}
-	return retornar;
-}
-
-static int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), int id, int* index)
+int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), int id, int* index)
 {
 	int retornar=-1;
 	int len = ll_len(list);
@@ -545,50 +352,6 @@ static int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), in
 		{
 			bufferEntity = ll_get(list, i);
 			if(!pFunc(bufferEntity, &bufferId) && bufferId == id)
-			{
-				retornar = 0;
-				*index = i;
-				break;
-			}
-		}
-	}
-	return retornar;
-}
-
-static int controller_findByClientId(LinkedList* clientList, int id, int* index)
-{
-	int retornar=-1;
-	int len = ll_len(clientList);
-	int bufferId;
-	Cliente* bufferClient;
-	if(clientList!=NULL && id>0 && index!=NULL)
-	{
-		for(int i=0;i<len;i++)
-		{
-			bufferClient = ll_get(clientList, i);
-			if(!cliente_getId(bufferClient, &bufferId) && bufferId == id)
-			{
-				retornar = 0;
-				*index = i;
-				break;
-			}
-		}
-	}
-	return retornar;
-}
-
-static int controller_findByIdSells(LinkedList* sellList, int id, int* index)
-{
-	int retornar=-1;
-	int len = ll_len(sellList);
-	int bufferId;
-	Venta* bufferSell;
-	if(sellList!=NULL && id>0 && index!=NULL)
-	{
-		for(int i=0;i<len;i++)
-		{
-			bufferSell = ll_get(sellList, i);
-			if(!venta_getSellId(bufferSell, &bufferId) && bufferId == id)
 			{
 				retornar = 0;
 				*index = i;

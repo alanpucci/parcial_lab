@@ -12,8 +12,7 @@ int controller_modifySell(LinkedList* clientList, LinkedList* sellList);
 int controller_chargePoster(LinkedList* clientList, LinkedList* sellList);
 int controller_saveClientsWithUnchargedPosters(LinkedList* clientList, LinkedList* sellList);
 int controller_saveClientsWithChargedPosters(LinkedList* clientList, LinkedList* sellList);
-int controller_report(LinkedList* clientList, LinkedList* sellList);
-
 int controller_print(LinkedList* clientList, int (*pFunc)(void*));
+int controller_findByIdGen(LinkedList* list, int (*pFunc)(void*,int*), int id, int* index);
 
 #endif /* CONTROLLER_H_ */

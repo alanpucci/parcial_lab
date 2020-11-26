@@ -5,10 +5,10 @@
 #include "Venta.h"
 #define BUFFER_SIZE 4096
 
-/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
+/** \brief Parsea los datos de los clientes desde un archivo(modo texto).
  *
- * \param path char*: Direccion del archivo
- * \param pArrayListEmployee LinkedList*: Puntero a la LinkedList
+ * \param pFile FILE*: Direccion del archivo
+ * \param clientList LinkedList*: Puntero a la LinkedList
  * \return (-1) Si algo salio mal o (0) si todo esta bien
  *
  */
@@ -39,6 +39,13 @@ int parser_clientFromText(FILE* pFile , LinkedList* clientList)
     return retornar;
 }
 
+/** \brief Parsea los datos de las ventas desde un archivo(modo texto).
+ *
+ * \param pFile FILE*: Direccion del archivo
+ * \param sellList LinkedList*: Puntero a la LinkedList
+ * \return (-1) Si algo salio mal o (0) si todo esta bien
+ *
+ */
 int parser_sellFromText(FILE* pFile , LinkedList* sellList)
 {
 	int retornar=-1;

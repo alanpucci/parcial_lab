@@ -94,7 +94,7 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     int returnAux = -1;
     int len = ll_len(this);
     Node* pNewNode=NULL;
-    Node* pPrevNode;
+    Node* pPrevNode=NULL;
     if(this!=NULL && nodeIndex>-1 && len>=nodeIndex)
     {
     	pNewNode = (Node*) malloc(sizeof(Node));
@@ -250,15 +250,14 @@ int ll_remove(LinkedList* this,int index)
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
-    //Node* pAuxNode=NULL;
     if(this!=NULL)
     {
-    	for(int i=0;i<ll_len(this);i++)
+    	while(ll_len(this))
     	{
-    		ll_remove(this, i);
+    		ll_remove(this, 0);
     	}
+		returnAux=0;
     	this->pFirstNode=NULL;
-    	returnAux=0;
     }
     return returnAux;
 }
@@ -524,6 +523,12 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 }
 
+/** \brief Recorre toda la lista y por cada uno de los elementos de la misma llama a una funcion criterio
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                                ( 0) Si ok
+ */
 int ll_map(LinkedList* this, int (*pFunc)(void*))
 {
 	int returnAux=-1;
@@ -542,7 +547,14 @@ int ll_map(LinkedList* this, int (*pFunc)(void*))
 	}
 	return returnAux;
 }
-
+/** \brief Recorre toda la lista y por cada uno de los elementos de la misma llama a una funcion criterio que ademas va a comparar con otro parametro
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio, recibe puntero a void y a char
+ * \param char* cuit Cuit a comparar en la funcion criterio
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                                ( 1) Si ok
+                                ( 0) si ningun elemento cumplio con la funcion criterio
+ */
 int ll_map2(LinkedList* this, int (*pFunc)(void*, char*), char* cuit)
 {
 	int returnAux=-1;
@@ -563,6 +575,11 @@ int ll_map2(LinkedList* this, int (*pFunc)(void*, char*), char* cuit)
 	return returnAux;
 }
 
+/** \brief Filtra a traves de una funcion criterio y devuelve una lista nueva
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio
+ * \return lista nueva y filtrada
+ */
 LinkedList* ll_cloneFilter(LinkedList* this, int (*pFunc)(void*))
 {
 	int len = ll_len(this);
@@ -586,7 +603,12 @@ LinkedList* ll_cloneFilter(LinkedList* this, int (*pFunc)(void*))
 	return auxList;
 }
 
-
+/** \brief Filtra a traves de una funcion criterio y remueve los elementos que no la cumplan
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio
+ * \return int (-1) si la lista es NULL
+ * 			   (0) si Ok
+ */
 int ll_filter(LinkedList* this, int (*pFunc)(void*))
 {
 	int returnAux=-1;
@@ -595,6 +617,7 @@ int ll_filter(LinkedList* this, int (*pFunc)(void*))
 	void* pElement=NULL;
 	if(this!=NULL && pFunc!=NULL)
 	{
+		returnAux=0;
 		do
 		{
 			flagRemove=1;
@@ -612,6 +635,14 @@ int ll_filter(LinkedList* this, int (*pFunc)(void*))
 	return returnAux;
 }
 
+/** \brief Recorre la lista y devuelve un acumulador INT con respecto a una funcion criterio
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio, recibe dos punteros a void
+ * \param int id : parametro a comparar, ID
+ * \param int* pResultado : Retornamos por referencia el acumulador INT
+ * \return int (-1) si la lista es NULL
+ * 			   (0) si Ok
+ */
 int ll_reduceInt(LinkedList* this, int (*pFunc)(void*, void*), int id,int* pResultado)
 {
 	int returnAux=-1;
@@ -631,6 +662,13 @@ int ll_reduceInt(LinkedList* this, int (*pFunc)(void*, void*), int id,int* pResu
 	return returnAux;
 }
 
+/** \brief Recorre la lista y devuelve un acumulador float con respecto a una funcion criterio
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio, recibe puntero a void
+ * \param int* pResultado : Retornamos por referencia el acumulador float
+ * \return int (-1) si la lista es NULL
+ * 			   (0) si Ok
+ */
 int ll_reduceFloat(LinkedList* this, int (*pFunc)(void*), float* pResultado)
 {
 	int returnAux=-1;

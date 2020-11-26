@@ -23,17 +23,17 @@ Cliente* cliente_newWithParametersTxt(char* id, char* name, char* lastName, char
 void cliente_delete(Cliente* this);
 
 int cliente_getId(void* this, int* pResult);
-int cliente_setId(Cliente* this, int id);
-int cliente_setIdTxt(Cliente* this, char* id);
+int cliente_setId(void* this, int id);
+int cliente_setIdTxt(void* this, char* id);
 
-int cliente_getName(Cliente* this, char* pResult);
-int cliente_setName(Cliente* this, char* name);
+int cliente_getName(void* this, char* pResult);
+int cliente_setName(void* this, char* name);
 
-int cliente_getLastName(Cliente* this, char* pResult);
-int cliente_setLastName(Cliente* this, char* lastName);
+int cliente_getLastName(void* this, char* pResult);
+int cliente_setLastName(void* this, char* lastName);
 
-int cliente_getCuit(Cliente* this, char* pResult);
-int cliente_setCuit(Cliente* this, char* cuit);
+int cliente_getCuit(void* this, char* pResult);
+int cliente_setCuit(void* this, char* cuit);
 
 int cliente_print(void* this);
 //int cliente_compareCuit(void* this, char* cuit);

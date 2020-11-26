@@ -6,11 +6,13 @@
 		<item key="wholeword" value="true"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="bufferEntity"/>
+		<item key="selection" value="list"/>
 		<list key="findhistory">
-			<item value="bufferClient"/>
 			<item value="clientList"/>
+			<item value="Venta"/>
 			<item value="Cliente"/>
+			<item value="controller_findById"/>
+			<item value="bufferClient"/>
 			<item value="cliente"/>
 			<item value="posterList"/>
 			<item value="list"/>
@@ -21,10 +23,11 @@
 			<item value="posterId"/>
 			<item value="clientId"/>
 			<item value="envio_"/>
-			<item value="envio"/>
-			<item value="Envio"/>
 		</list>
 		<list key="replacehistory">
+			<item value="list"/>
+			<item value="void"/>
+			<item value="controller_findByClientId"/>
 			<item value="bufferEntity"/>
 			<item value="bufferSell"/>
 			<item value="sellList"/>
@@ -37,8 +40,6 @@
 			<item value="posterQty"/>
 			<item value="posterId"/>
 			<item value="cliente_"/>
-			<item value="cliente"/>
-			<item value="Cliente"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
